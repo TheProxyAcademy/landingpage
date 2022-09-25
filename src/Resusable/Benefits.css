@@ -1,0 +1,131 @@
+ * {
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+}
+
+.benefits-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.numbered {
+    background-color:   #29d01f;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 15px;
+}
+
+.diff-diff h6 {
+    color: hsl(228, 39%, 23%);
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.diff-diff p {
+    color:   hsl(227, 12%, 61%);
+    font-size: 16px;  
+    font-weight: 400; 
+    max-width: 77%;
+}
+
+@media (max-width: 1024px) {
+    .diff-diff p {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .diff-diff p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 425px) {
+    .numbered {
+        position: absolute;
+    }
+
+    .numbered:after {
+        content: '';
+        background-color: #6EDB65;
+        width: 364px;
+        height: 23px;
+        position: absolute;
+        z-index: -1;
+    }
+
+
+    .diff-diff h6 {
+        margin-left: 60px;
+        margin-bottom: 0px;
+        margin-top: 5px;
+    }
+
+    .diff-diff p {
+        font-size: 16px;
+        margin-top: 1.3em;
+    }
+}
+
+@media (max-width: 415px) {
+    .numbered:after {
+        width: 350px;
+    }
+}
+
+@media (max-width: 395px) {
+    .numbered:after {
+        width: 330px;
+    }
+}
+
+@media (max-width: 375px) {
+    .numbered:after {
+        width: 317px;
+    }
+}
+
+@media (max-width: 365px) {
+    .numbered:after {
+        width: 300px;
+    }
+
+    .diff-diff h6 {
+        font-size: 15px;
+        margin-bottom: 8px;
+    }
+
+    
+    .diff-diff p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 320px) {
+    .numbered:after {
+        width: 267px;
+    }
+
+    .diff-diff h6 {
+        font-size: 13px;
+    }
+
+    .diff-diff p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 280px) {
+    .numbered:after {
+        width: 235px;
+    }
+
+    .diff-diff h6 {
+        font-size: 11px;
+        margin-top: 10px;
+    }
+}
