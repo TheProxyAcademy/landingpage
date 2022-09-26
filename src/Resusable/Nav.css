@@ -48,7 +48,7 @@
 
 .shown {
     display: block;
-    color:  hsl(12, 88%, 59%);
+    color:   #29D01F;
 }
 
 .mobile {
@@ -132,7 +132,7 @@
     }
   
     .mobile-list li:hover {
-      color:  hsl(12, 88%, 59%);
+      color:  #29D01F;
     }
 }
 

@@ -45,8 +45,9 @@ button {
 
 .build-words p {
     color:   hsl(227, 12%, 61%);
-    font-size: 16px;  
+    font-size: 1em;  
     font-weight: 400; 
+    max-width: 30.7vw;
 }
 
 .differ {
@@ -113,12 +114,20 @@ button {
         font-size: 36px;
     }
 
+    .build-words p {
+        font-size: .9em;
+    }
+
     .simplify-container {
         background-position: bottom 0px left -120px;
     }
 
     .simplify-container h1 {
         max-width: 50vw;
+    }
+
+    .differ-heading {
+        max-width: 85%;
     }
 }
 
@@ -139,7 +148,8 @@ button {
     }
 
     .build-words p {
-        font-size: 14px;
+        font-size: 13px;
+        max-width: 39.7vw;
     }
 
     .build-better img {
@@ -181,6 +191,7 @@ button {
     .build-better {
         flex-direction: column-reverse;
         margin: 0px auto;
+        margin-bottom: 4em;
     }
 
     .build-words {
@@ -198,6 +209,7 @@ button {
 
     .build-words p {
         font-size: 16px;
+        max-width: initial;
     }
 
     .differ {
@@ -239,10 +251,10 @@ button {
    }
 }
 
-@media (max-width: 365px) {
+@media (max-width: 375px) {
 
     .build-words p {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     .differ-words {

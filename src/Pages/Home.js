@@ -25,9 +25,9 @@ const Home = () => {
                                 Teaching kids for a bright future.
                             </h1>
                             <p>
-                                The Proxy Academy aims to provide education in the most innovative,<br />
-                                interactive and unorthodox manner. This gives the children a better<br />
-                                insight on valuable skills the traditinal educaton system<br />
+                                The Proxy Academy aims to provide education in the most innovative,
+                                interactive and unorthodox manner. This gives the children a better
+                                insight on valuable skills the traditinal educaton system
                                 doesn't highlight.
                             </p>
                             <Button words={'Enroll'} />
@@ -49,8 +49,8 @@ const Home = () => {
                             </h1>
                             <p>
                                 We are a team of professional and experts in the 
-                                in the education <br /> and technology industry.
-                                Our teachers are trained, <br /> patient and fun.
+                                in the education and technology industry.
+                                Our teachers are trained, patient and fun.
                             </p>
                         </div>
                     </div>
@@ -94,6 +94,11 @@ const Home = () => {
                                       productivity solution.`}
                             />
                         </div>
+
+                    </div>
+
+
+                    <div className='fee option'>
 
                     </div>
 
