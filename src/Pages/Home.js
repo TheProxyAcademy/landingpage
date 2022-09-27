@@ -133,18 +133,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
-
-            <div className='simplify-container' data-aos="zoom" data-aos-duration="700">
-                <h1>
-                    Enroll your kids today.
-                </h1>
-
-                <Button white={`white`} words={`Enroll`} />
-
-
-            </div>
-
             <Footer />
         </div>
     )

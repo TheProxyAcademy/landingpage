@@ -107,11 +107,6 @@ small {
   justify-content: space-between;
 }
 
-.nav-links {
-  display: flex;
-  justify-content: space-between;
-  gap: 12em;
-}
 
 @media (max-width:1024px) {
   .footer {
@@ -122,18 +117,10 @@ small {
     gap: 5em;
   }
 
-  .nav-links {
-    gap: 7em;
-  }
-
 }
 
 @media (max-width:768px) {
   .footer-nav {
-    gap: 3em;
-  }
-
-  .nav-links {
     gap: 3em;
   }
 

@@ -12,7 +12,7 @@
     padding: 30px 0px;
 }
 
-.logo {
+.logo h3 {
     color: #242D52;
 }
 
@@ -25,10 +25,11 @@
 
 .ul li {
     list-style: none;
+    color: #00C2A8;
 }
 
 .ul li:hover {
-    color: #808080;
+    color: #4FFBDF;
     cursor: pointer;
 }
 

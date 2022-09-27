@@ -49,10 +49,6 @@ const Footer = () => {
                                     </li>
                                 </ul>
                             </div>
-
-                            <div>
-                                
-                            </div>
                         </div>
                         <div className='go-cont'>
                             <div>
