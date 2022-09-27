@@ -48,7 +48,7 @@ const Home = () => {
                                 Teaching Kids digital skills, for finicial freedom
                             </h1>
                             <p>
-                                We are a team of professional and experts in the 
+                                We are a team of professional and experts in the
                                 in the education and technology industry.
                                 Our teachers are trained, patient and fun.
                             </p>
@@ -98,8 +98,32 @@ const Home = () => {
                     </div>
 
 
-                    <div className='fee option'>
+                    <div className='fee-option'>
+                        <div className='naija'>
+                            <h1>Nigeria</h1>
+                            <div>
+                                <h3> 1 month plan</h3>
+                                <h2> &#8358; 40,000</h2>
+                            </div>
 
+                            <div>
+                                <h3> 3 month plan</h3>
+                                <h2> &#8358; 110,000</h2>
+                            </div>
+                        </div>
+
+                        <div className='jand'>
+                            <h1>Outside Nigeria</h1>
+                            <div>
+                                <h3> 1 month plan</h3>
+                                <h2>  &#36; 40,000</h2>
+                            </div>
+
+                            <div>
+                                <h3> 3 month plan</h3>
+                                <h2>  &#36; 110,000</h2>
+                            </div>
+                        </div>
                     </div>
 
                     <div className='sliders-cont' data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">

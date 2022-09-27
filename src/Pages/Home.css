@@ -44,9 +44,9 @@ button {
 }
 
 .build-words p {
-    color:   hsl(227, 12%, 61%);
-    font-size: 1em;  
-    font-weight: 400; 
+    color: hsl(227, 12%, 61%);
+    font-size: 1em;
+    font-weight: 400;
     max-width: 30.7vw;
 }
 
@@ -66,9 +66,9 @@ button {
 }
 
 .differ-words {
-    color:   hsl(227, 12%, 61%);
-    font-size: 16px;  
-    font-weight: 400; 
+    color: hsl(227, 12%, 61%);
+    font-size: 16px;
+    font-weight: 400;
 }
 
 .simplify-container {
@@ -99,8 +99,69 @@ button {
 }
 
 .sliders-cont {
+    margin-top: 5em;
     margin-bottom: 2em;
     text-align: center;
+}
+
+.fee-option {
+    display: flex;
+    gap: 4em;
+    align-items: center;
+    justify-content: center;
+}
+
+.naija {
+    background: #29D01F;
+    text-align: center;
+    padding: 15px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+    -webkit-box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+}
+
+.jand {
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+    -webkit-box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+    -moz-box-shadow: 1px 10px 5px 0px rgba(0, 0, 0, 0.52);
+}
+
+.naija h1
+{
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.jand h1 {
+    margin-bottom: 15px;
+    color: #29D01F;
+}
+
+.naija h2 {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.jand h2 {
+    margin-bottom: 10px;
+    color: #29D01F;
+}
+
+.naija h3 {
+    margin-bottom: 5px;
+    color: hsl(228, 39%, 23%);
+}
+
+.jand h3 {
+    margin-bottom: 5px;
+    color: hsl(228, 39%, 23%);
 }
 
 
@@ -128,6 +189,11 @@ button {
 
     .differ-heading {
         max-width: 85%;
+    }
+
+    .naija,
+    .jand {
+        width: 35%
     }
 }
 
@@ -173,6 +239,11 @@ button {
     .simplify-container h1 {
         font-size: 30px
     }
+
+    .naija,
+    .jand {
+        width: 40%;
+    }
 }
 
 
@@ -185,9 +256,9 @@ button {
 
     .bck-2 {
         background-size: 330px;
-        background-position: bottom 1338px left 258px;
+        background-position: bottom 725px left 258px;
     }
-    
+
     .build-better {
         flex-direction: column-reverse;
         margin: 0px auto;
@@ -228,27 +299,38 @@ button {
         margin-bottom: 5em;
     }
 
-    
-   .sliders-cont button {
-      display: block;
-      margin: 0px auto;
-      width: 40%;
-   }
 
-   .simplify-container {
-       flex-direction: column;
-       text-align: center;
-       background-image: url('../Icons/bg-simplify-section-mobile.svg');
-       background-position: unset;
-   }
-   .simplify-container h1 {
-       max-width: 100%;
-       font-size: 37px;
-   }
+    .sliders-cont button {
+        display: block;
+        margin: 0px auto;
+        width: 40%;
+    }
 
-   .simplify-container button {
-       display: block;
-   }
+    .simplify-container {
+        flex-direction: column;
+        text-align: center;
+        background-image: url('../Icons/bg-simplify-section-mobile.svg');
+        background-position: unset;
+    }
+
+    .simplify-container h1 {
+        max-width: 100%;
+        font-size: 37px;
+    }
+
+    .simplify-container button {
+        display: block;
+    }
+
+    .fee-option {
+        flex-direction: column;
+    }
+
+   
+    .naija,
+    .jand {
+        width: 80%;
+    }
 }
 
 @media (max-width: 375px) {
@@ -260,6 +342,8 @@ button {
     .differ-words {
         font-size: 15px;
     }
+
+   
 }
 
 @media (max-width: 320px) {
@@ -269,7 +353,7 @@ button {
     }
 
     .bck-2 {
-        background-position: bottom 1338px left 190px;
+        background-position: bottom 715px left 190px;
     }
 
     .build-words h1 {
@@ -296,6 +380,10 @@ button {
         font-size: 30px;
     }
 
+    .naija,
+    .jand {
+        width: 85%;
+    }
 }
 
 @media (max-width: 280px) {
