@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../Icons/Logo'
 import Facebook from '../Icons/Facebook';
 import Youtube from '../Icons/Youtube';
 import Twitter from '../Icons/Twitter';
