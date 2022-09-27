@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import Logo from '../Icons/Logo';
 import Button from './Button';
 import './Nav.css';
 import Ham from '../Icons/Hamburger';
