@@ -53,7 +53,7 @@
         content: '';
         background-color: #6EDB65;
         width: 364px;
-        height: 23px;
+        height: 25px;
         position: absolute;
         z-index: -1;
     }
@@ -68,6 +68,10 @@
     .diff-diff p {
         font-size: 16px;
         margin-top: 1.3em;
+    }
+
+    .benefits-container {
+        margin-bottom: 4em;
     }
 }
 

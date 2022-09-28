@@ -215,12 +215,14 @@ small {
   small {
     left: 63px;
   }
-}
 
-@media (max-width: 280px) {
   .media {
     gap: 2em;
   }
+}
+
+@media (max-width: 280px) {
+
 
   .email {
     margin-right: 2px;
