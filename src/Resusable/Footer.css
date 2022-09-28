@@ -98,7 +98,7 @@ small {
 
 .go {
   display: flex;
-  gap: 7em;
+  gap: 15em;
 }
 
 .go-cont {
@@ -130,6 +130,10 @@ small {
   .special {
     width: 2vw;
   }
+
+  .go {
+    gap: 12em;
+  }
 }
 
 @media (max-width:768px) {
@@ -142,7 +146,7 @@ small {
   }
 
   .go {
-    gap: 2em;
+    gap: 7em;
   }
 
   .special {
@@ -256,7 +260,7 @@ small {
 }
 
 @media (max-width: 280px) {
-  
+
   .email {
     margin-right: 2px;
     padding: 14px 5px;
