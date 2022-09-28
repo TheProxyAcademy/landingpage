@@ -53,7 +53,7 @@
         content: '';
         background-color: #6EDB65;
         width: 364px;
-        height: 25px;
+        height: 23px;
         position: absolute;
         z-index: -1;
     }
@@ -63,6 +63,7 @@
         margin-left: 60px;
         margin-bottom: 0px;
         margin-top: 5px;
+        padding: 3px 0px;
     }
 
     .diff-diff p {
