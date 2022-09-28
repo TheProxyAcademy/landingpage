@@ -107,6 +107,16 @@ small {
   justify-content: space-between;
 }
 
+.special {
+  width: 1.4vw;
+  color: #fff;
+  fill: currentColor;
+}
+
+.special:hover {
+  color: #6EDB65;
+}
+
 
 @media (max-width:1024px) {
   .footer {
@@ -117,6 +127,9 @@ small {
     gap: 5em;
   }
 
+  .special {
+    width: 2vw;
+  }
 }
 
 @media (max-width:768px) {
@@ -130,6 +143,10 @@ small {
 
   .go {
     gap: 2em;
+  }
+
+  .special {
+    width: 2.6vw;
   }
 }
 
@@ -197,17 +214,30 @@ small {
     left: 113px;
   }
 
+
+  .special {
+    width: 4.6vw;
+  }
+
 }
 
 @media (max-width: 375px) {
   small {
     left: 97px;
   }
+
+  .special {
+    width: 5.2vw;
+  }
 }
 
 @media (max-width: 360px) {
   small {
     left: 83px;
+  }
+
+  .special {
+    width: 5.4vw;
   }
 }
 
@@ -219,11 +249,14 @@ small {
   .media {
     gap: 2em;
   }
+
+  .special {
+    width: 6vw;
+  }
 }
 
 @media (max-width: 280px) {
-
-
+  
   .email {
     margin-right: 2px;
     padding: 14px 5px;
@@ -232,5 +265,9 @@ small {
 
   small {
     left: 30px;
+  }
+
+  .special {
+    width: 7vw;
   }
 }

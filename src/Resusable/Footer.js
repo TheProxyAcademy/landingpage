@@ -1,11 +1,11 @@
 import React from 'react';
 import Facebook from '../Icons/Facebook';
-import Youtube from '../Icons/Youtube';
+import Linkedin from '../Icons/linkedin';
 import Twitter from '../Icons/Twitter';
-import Pinterest from '../Icons/Pinterest'
 import Instagram from '../Icons/Instagram';
 import Button from '../Resusable/Button';
 import './Footer.css'
+
 
 
 const Footer = () => {
@@ -19,9 +19,8 @@ const Footer = () => {
 
                             <div className='media'>
                                 <Facebook />
-                                <Youtube />
+                                <Linkedin  />
                                 <Twitter />
-                                <Pinterest />
                                 <Instagram />
                             </div>
                         </div>
