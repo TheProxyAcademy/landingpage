@@ -5,6 +5,8 @@
 }
 
 
+
+
 .footer {
   display: grid;
   padding: 40px 120px;
@@ -111,6 +113,11 @@ small {
   width: 1.4vw;
   color: #fff;
   fill: currentColor;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .special:hover {
