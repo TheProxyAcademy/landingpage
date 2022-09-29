@@ -24,6 +24,10 @@
     padding: 14px 30px;
 }
 
+.white a {
+    color:  #29D01F;
+    text-decoration: none;
+}
 
 @media (max-width: 425px) {
     .white {
