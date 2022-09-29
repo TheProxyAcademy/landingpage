@@ -46,12 +46,23 @@ const Nav = () => {
 
             <div className={toggle ? 'mobile nav' : 'mobile'} >
                 <ul className='mobile-list'>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                    <li>Blog</li>
-                    <li>Careers</li>
+
+                <li>
+                    About Us
+                </li>
+
+                <li>
+                    Testimonials
+                </li>
+
+                <li>
+                    Contact Us
+                </li>
+
+             
                 </ul>
+
+                <Button words={'Enroll'} white='white' />
             </div>
         </div>
     )

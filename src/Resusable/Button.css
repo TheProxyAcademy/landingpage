@@ -23,3 +23,14 @@
     background-color: #fff;
     padding: 14px 30px;
 }
+
+
+@media (max-width: 425px) {
+    .white {
+        display: block;
+    }
+
+    .button {
+        display: none;
+    }
+}
