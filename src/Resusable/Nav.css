@@ -12,6 +12,16 @@
     padding: 30px 0px;
 }
 
+.logo-act {
+    width: 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
 .logo h3 {
     color: #242D52;
 }
@@ -74,6 +84,10 @@
     .nav-container ul {
         gap: 1em;
     }
+
+    .logo {
+        gap: 1em;
+    }
 }
 
 
@@ -86,7 +100,7 @@
 
     .nav-container {
         gap: 8em;
-        align-items: flex-start;
+        align-items: center;
         justify-content: space-between;
         padding: 40px 40px;
     }
@@ -112,7 +126,7 @@
     }
   
     .mobile.nav {
-      top: 70px;
+      top: 90px;
       transition: all ease-in-out 350ms;
     }
 

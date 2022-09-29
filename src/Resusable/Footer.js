@@ -3,6 +3,7 @@ import Facebook from '../Icons/Facebook';
 import Linkedin from '../Icons/linkedin';
 import Twitter from '../Icons/Twitter';
 import Instagram from '../Icons/Instagram';
+import Logo from '../Icons/Logo.png'
 import Button from '../Resusable/Button';
 import './Footer.css'
 
@@ -15,11 +16,14 @@ const Footer = () => {
                 <div className='footer'>
                     <div className='footer-nav'>
                         <div className='media-container'>
-                            <h3>Proxy Academy</h3>
+                            <div className='footer-logo'>
+                                <img src={Logo} className='logo-act' alt='Logo' />
+                                <h3>Proxy Academy</h3>
+                            </div>
 
                             <div className='media'>
                                 <Facebook />
-                                <Linkedin  />
+                                <Linkedin />
                                 <Twitter />
                                 <Instagram />
                             </div>

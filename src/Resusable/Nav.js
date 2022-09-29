@@ -3,7 +3,8 @@ import { useState } from 'react';
 import Button from './Button';
 import './Nav.css';
 import Ham from '../Icons/Hamburger';
-import Close from '../Icons/Close'
+import Close from '../Icons/Close';
+import Logo from '../Icons/Logo.png';
 
 const Nav = () => {
 
@@ -16,6 +17,7 @@ const Nav = () => {
     return (
         <div className='nav-container'>
             <div className='logo'>
+             <img src={Logo} className='logo-act' alt ='Logo'/>
                 <h3>Proxy Academy</h3>
             </div>
 

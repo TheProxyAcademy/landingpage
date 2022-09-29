@@ -27,6 +27,9 @@
 
 .footer-logo {
   color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 2em;
 }
 
 .footer-copy-right {
@@ -158,6 +161,10 @@ a {
 
   .special {
     width: 2.6vw;
+  }
+
+  .footer-logo {
+    gap: 1em;
   }
 }
 
