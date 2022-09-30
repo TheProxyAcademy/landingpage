@@ -116,12 +116,12 @@ const Home = () => {
                             <h1>Outside Nigeria</h1>
                             <div>
                                 <h3> 1 month plan</h3>
-                                <h2>  &#36; 40,000</h2>
+                                <h2>  &#36; 100</h2>
                             </div>
 
                             <div>
                                 <h3> 3 month plan</h3>
-                                <h2>  &#36; 110,000</h2>
+                                <h2>  &#36; 250</h2>
                             </div>
                         </div>
                     </div>
