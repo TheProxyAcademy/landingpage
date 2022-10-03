@@ -17,51 +17,59 @@ const Nav = () => {
     return (
         <div className='nav-container'>
             <div className='logo'>
-             <img src={Logo} className='logo-act' alt ='Logo'/>
+                <img src={Logo} className='logo-act' alt='Logo' />
                 <h3>Proxy Academy</h3>
             </div>
 
             <ul className='ul'>
                 <li>
-                    About Us
+                    <a href='\'>
+                        About Us
+                    </a>
                 </li>
 
                 <li>
-                    Testimonials
+                    <a href='\'>
+                        Testimonials
+                    </a>
                 </li>
 
                 <li>
-                    Contact Us
+                    <a href='mailto:support@theproxyacademy.com'>
+                        Contact Us
+                    </a>
                 </li>
             </ul>
 
             <Button words={'Enroll'} />
 
-            
+
             <div className='ham-container' >
-                <Ham onClick={isToggle}  className={toggle ? 'hide' : 'white-ham'}/>
+                <Ham onClick={isToggle} className={toggle ? 'hide' : 'white-ham'} />
 
                 <Close onClick={isToggle} className={toggle ? 'shown' : 'hidden'} />
-    
+
             </div>
 
 
             <div className={toggle ? 'mobile nav' : 'mobile'} >
                 <ul className='mobile-list'>
 
-                <li>
-                    About Us
-                </li>
+                    <li>
+                        About Us
+                    </li>
 
-                <li>
-                    Testimonials
-                </li>
+                    <li>
+                        Testimonials
+                    </li>
 
-                <li>
-                    Contact Us
-                </li>
+                    <li>
+                        <a href='support@theproxyacademy.com'>
+                            Contact Us
+                        </a>
+                    </li>
 
-             
+
                 </ul>
 
                 <Button words={'Enroll'} white='white' />

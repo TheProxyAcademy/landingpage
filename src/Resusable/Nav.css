@@ -38,7 +38,11 @@
     color: #00C2A8;
 }
 
-.ul li:hover {
+.ul li a {
+    color: #00C2A8;
+}
+
+.ul li a:hover {
     color: #4FFBDF;
     cursor: pointer;
 }
