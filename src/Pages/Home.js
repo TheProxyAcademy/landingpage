@@ -47,7 +47,7 @@ const Home = () => {
                             <h1>
                                 Teaching Kids digital skills, for finicial freedom
                             </h1>
-                            <p>
+                            <p id="us">
                                 We are a team of professional and experts in the
                                 in the education and technology industry.
                                 Our teachers are trained, patient and fun.
@@ -126,7 +126,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className='sliders-cont' data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
+                    <div className='sliders-cont' id="test" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
                         <Slider />
                         <Mobile />
                         <Button words={'Enroll'} />

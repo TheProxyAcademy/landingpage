@@ -5,6 +5,7 @@ import './Nav.css';
 import Ham from '../Icons/Hamburger';
 import Close from '../Icons/Close';
 import Logo from '../Icons/Logo.png';
+import { Link } from 'react-scroll';
 
 const Nav = () => {
 
@@ -22,17 +23,20 @@ const Nav = () => {
             </div>
 
             <ul className='ul'>
-                <li>
-                    <a href='\'>
-                        About Us
-                    </a>
-                </li>
 
-                <li>
-                    <a href='\'>
+
+
+                <Link to="us" spy={true} smooth={true} offset={10} duration={500}>
+                    <li>
+                        About Us
+                    </li>
+                </Link>
+
+                <Link to="test" spy={true} smooth={true} offset={10} duration={500}>
+                    <li>
                         Testimonials
-                    </a>
-                </li>
+                    </li>
+                </Link>
 
                 <li>
                     <a href='mailto:support@theproxyacademy.com'>
@@ -55,16 +59,20 @@ const Nav = () => {
             <div className={toggle ? 'mobile nav' : 'mobile'} >
                 <ul className='mobile-list'>
 
-                    <li>
-                        About Us
-                    </li>
+                    <Link to="us" spy={true} smooth={true} offset={10} duration={500}>
+                        <li>
+                            About Us
+                        </li>
+                    </Link>
+
+                    <Link to="test" spy={true} smooth={true} offset={10} duration={500}>
+                        <li>
+                            Testimonials
+                        </li>
+                    </Link>
 
                     <li>
-                        Testimonials
-                    </li>
-
-                    <li>
-                        <a href='support@theproxyacademy.com'>
+                        <a href='mailto:support@theproxyacademy.com'>
                             Contact Us
                         </a>
                     </li>
