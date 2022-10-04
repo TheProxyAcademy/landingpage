@@ -6,6 +6,7 @@ import Instagram from '../Icons/Instagram';
 import Logo from '../Icons/Logo.png'
 import Button from '../Resusable/Button';
 import './Footer.css'
+import { Link } from 'react-scroll';
 
 
 
@@ -35,20 +36,28 @@ const Footer = () => {
 
                             <div>
                                 <ul className='nav-list'>
-                                    <li>
-                                        Home
-                                    </li>
+                                    <Link to="home" spy={true} smooth={true} offset={10} duration={500}>
+                                        <li>
+                                            Home
+                                        </li>
+                                    </Link>
+
+                                    <Link to="us" spy={true} smooth={true} offset={-10} duration={500}>
+                                        <li>
+                                            About Us
+                                        </li>
+                                    </Link>
+
+                                    <Link to="test" spy={true} smooth={true} offset={-10} duration={500}>
+                                        <li>
+                                            Testimonials
+                                        </li>
+                                    </Link>
 
                                     <li>
-                                        Testimonials
-                                    </li>
-
-                                    <li>
-                                        Contact Us
-                                    </li>
-
-                                    <li>
-                                        About Us
+                                        <a href='mailto:support@theproxyacademy.com'>
+                                            Contact Us
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

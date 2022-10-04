@@ -26,13 +26,13 @@ const Nav = () => {
 
 
 
-                <Link to="us" spy={true} smooth={true} offset={10} duration={500}>
+                <Link to="us" spy={true} smooth={true} offset={-10} duration={500}>
                     <li>
                         About Us
                     </li>
                 </Link>
 
-                <Link to="test" spy={true} smooth={true} offset={10} duration={500}>
+                <Link to="test" spy={true} smooth={true} offset={-100} duration={500}>
                     <li>
                         Testimonials
                     </li>
