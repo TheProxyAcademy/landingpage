@@ -45,7 +45,7 @@ const Home = () => {
 
                         <div data-aos="fade-up" data-aos-duration="1000" className='build-words'>
                             <h1>
-                                Teaching Kids digital skills, for finicial freedom
+                                Teaching Kids digital skills, for financial freedom
                             </h1>
                             <p>
                                 We are a team of professional and experts in the

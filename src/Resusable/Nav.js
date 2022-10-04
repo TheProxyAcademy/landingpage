@@ -45,7 +45,9 @@ const Nav = () => {
                 </li>
             </ul>
 
-            <Button words={'Enroll'} />
+            <div className='btn-mob'>
+                <Button words={'Enroll'} white='white' />
+            </div>
 
 
             <div className='ham-container' >
