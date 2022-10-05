@@ -54,8 +54,8 @@
     .numbered:after {
         content: '';
         background-color: #6EDB65;
-        width: 364px;
-        height: 25px;
+        width: 354px;
+        height: 24px;
         position: absolute;
         z-index: -1;
     }
@@ -64,7 +64,7 @@
     .diff-diff h6 {
         margin-left: 60px;
         margin-bottom: 0px;
-        margin-top: 5px;
+        margin-top: 2px;
         padding: 3px 0px;
     }
 
