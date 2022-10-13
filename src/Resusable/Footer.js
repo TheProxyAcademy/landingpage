@@ -17,9 +17,21 @@ const Footer = () => {
                 <div className='footer'>
                     <div className='footer-nav'>
                         <div className='media-container'>
-                            <div className='footer-logo'>
-                                <img src={Logo} className='logo-act' alt='Logo' />
-                                <h3>Proxy Academy</h3>
+                            <div className='footer-container'>
+                                <div className='footer-logo'>
+                                    <img src={Logo} className='logo-act' alt='Logo' />
+                                    <h3>Proxy Academy</h3>
+                                </div>
+
+                                <div className='enquire' id='contact'>
+                                    <p>
+                                        For further enquries or information, Speak to one of our experts to help you make the
+                                        right choice. Reach us here
+                                    </p>
+                                    <p>Phone/WhatsApp number</p>
+                                    <p>+2348174453349/+2349152811014</p>
+                                    <p>Email: support@theproxyacademy</p>
+                                </div>
                             </div>
 
                             <div className='media'>

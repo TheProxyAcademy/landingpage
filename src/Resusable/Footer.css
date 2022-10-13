@@ -30,6 +30,7 @@
   display: flex;
   align-items: center;
   gap: 2em;
+  margin-bottom: 5px;
 }
 
 .footer-copy-right {
@@ -74,14 +75,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 4.5em;
+  gap: 2em;
+  max-width: 27vw;
 }
 
 .media {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 1em;
+  align-items: baseline;
+  gap: 2em;
 }
 
 .media svg:hover {
@@ -144,6 +145,10 @@ a {
   .go {
     gap: 12em;
   }
+
+  .media-container {
+    max-width: 30vw;
+  }
 }
 
 @media (max-width:768px) {
@@ -165,6 +170,10 @@ a {
 
   .footer-logo {
     gap: 1em;
+  }
+
+  .media-container {
+    max-width: 26vw;
   }
 }
 
@@ -210,6 +219,7 @@ a {
     flex-direction: column-reverse;
     align-items: center;
     gap: 2.5em;
+    max-width: initial;
   }
 
   .media {
@@ -224,6 +234,14 @@ a {
     flex-direction: column-reverse;
     gap: 3em;
     position: relative;
+  }
+
+  .footer-container {
+    text-align: center;
+  }
+
+  .footer-logo {
+    justify-content: center;
   }
 
   small {

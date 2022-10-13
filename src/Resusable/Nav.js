@@ -38,11 +38,11 @@ const Nav = () => {
                     </li>
                 </Link>
 
-                <li>
-                    <a href='mailto:support@theproxyacademy.com'>
+                <Link to="contact" spy={true} smooth={true} offset={-100} duration={500}>
+                    <li>
                         Contact Us
-                    </a>
-                </li>
+                    </li>
+                </Link>
             </ul>
 
             <div className='btn-mob'>
@@ -73,11 +73,11 @@ const Nav = () => {
                         </li>
                     </Link>
 
-                    <li>
-                        <a href='mailto:support@theproxyacademy.com'>
+                    <Link to="contact" spy={true} smooth={true} offset={-100} duration={500}>
+                        <li>
                             Contact Us
-                        </a>
-                    </li>
+                        </li>
+                    </Link>
 
 
                 </ul>

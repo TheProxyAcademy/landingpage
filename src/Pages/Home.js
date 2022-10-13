@@ -22,7 +22,7 @@ const Home = () => {
                     <div className='build-better'>
                         <div className='build-words' data-aos="fade-up" data-aos-duration="1000">
                             <h1>
-                                Teaching kids for a bright future.
+                                Fun and Interactive coding sessions for kids.
                             </h1>
                             <p>
                                 The Proxy Academy aims to provide education in the most innovative,
@@ -45,7 +45,7 @@ const Home = () => {
 
                         <div data-aos="fade-up" data-aos-duration="1000" className='build-words'>
                             <h1>
-                                Teaching Kids digital skills, for financial freedom
+                                Raising World-class Children in the digital space
                             </h1>
                             <p>
                                 We are a team of professional and experts in the
@@ -62,10 +62,10 @@ const Home = () => {
                                     What's special about Proxy Academy
                                 </h2>
                                 <p className='differ-words'>
-                                    We recognize the gap in the educational system that doesn't 
-                                    quite cater for the development of kids. We are bridging the 
-                                    gap by facilitating the knowledge of digital skills in ways kids 
-                                    can easily relate with - fun and interactive - to effectively 
+                                    We recognize the gap in the educational system that doesn't
+                                    quite cater for the development of kids. We are bridging the
+                                    gap by facilitating the knowledge of digital skills in ways kids
+                                    can easily relate with - fun and interactive - to effectively
                                     function in a world that has gone largely digital.
                                 </p>
                             </div>

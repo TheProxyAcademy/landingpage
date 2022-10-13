@@ -15,7 +15,7 @@ export default class CenterMode extends Component {
             {
                 id: 1,
                 img: richard,
-                name: 'Taiwo Bukola',
+                name: 'Taiwo Bukola, Nigeria',
                 text: `"She teaches excellently, If my child doesn't understand she explains again.
                     My child also loves her classes, she always looks forward to them."`,
 
@@ -24,7 +24,7 @@ export default class CenterMode extends Component {
             {
                 id: 2,
                 img: ali,
-                name: `Motunrayo Da-costa`,
+                name: `Motunrayo Da-costa, Nigeria`,
                 text: `"The instructor is great. I was even scared my son won't be intrested but i wanted him
                     to try various fields. After the class he liked it and he was able to follow through and he is happy."`
             },
@@ -32,10 +32,19 @@ export default class CenterMode extends Component {
             {
                 id: 3,
                 img: shanai,
-                name: `Taiwo Sunday`,
+                name: `Taiwo Sunday, Nigeria`,
                 text: `"My second daughter said she is intrested after hearing the introduction, initially she
                     wasn't intrested. But after seeing the scrath software, it tallies with what she wants."`,
+            },
+
+            {
+                id: 4,
+                img: shanai,
+                name: `Marcellin Bantek, Ireland`,
+                text: `"Apart from keeping her busy and occupied, it stimulates some critical thinking and curiosity
+                        in her that i never thought she had. Learning to code has has really helped Emmanuella a lot."`,
             }
+
 
         ]
 
