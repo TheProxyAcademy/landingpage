@@ -30,7 +30,7 @@ const Footer = () => {
                                     </p>
                                     <p>Phone/WhatsApp number</p>
                                     <p>+2348174453349/+2349152811014</p>
-                                    <p>Email: support@theproxyacademy</p>
+                                    <p>Email: Support@theproxyacademy.com</p>
                                 </div>
                             </div>
 

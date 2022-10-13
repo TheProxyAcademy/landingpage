@@ -55,6 +55,8 @@ export default class CenterMode extends Component {
             centerPadding: "390px",
             slidesToShow: 1,
             speed: 500,
+            autoplay: true,
+            autoplaySpeed: 3000, 
             responsive: [
                 {
                     breakpoint: 1025,
@@ -73,7 +75,7 @@ export default class CenterMode extends Component {
         return (
             <div className="container">
 
-                <h2>What they've said</h2>
+                <h2>What our clients have said</h2>
 
                 <Slider {...settings} className='test-container'>
                     {
