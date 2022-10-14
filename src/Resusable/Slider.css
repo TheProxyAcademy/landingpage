@@ -41,6 +41,8 @@ h2 {
     right: 200px;
     transform: scale(.7);
     z-index: 1000 !important;
+    width: 130px;
+    border-radius: 50%;
 }
 
 .container {
@@ -123,7 +125,7 @@ h2 {
 
 @media (max-width: 320px) {
     .testimonials {
-        padding: 80px 40px 120px 40px;
+        padding: 80px 30px 120px 30px;
     }
 
     .testimonials img {

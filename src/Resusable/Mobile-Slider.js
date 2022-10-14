@@ -3,10 +3,9 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Slider.css";
-import richard from '../Icons/avatar-richard.png';
-import ali from '../Icons/avatar-ali.png';
-import shanai from '../Icons/avatar-shanai.png';
-
+import avatar from '../Icons/avatar.png';
+import MsDacosta from '../Icons/MS Dacosta.jpeg'
+import MsMarc from '../Icons/Ms Marcelline.jpeg';
 export default class SimpleSlider extends Component {
 
     render() {
@@ -15,7 +14,7 @@ export default class SimpleSlider extends Component {
         const reviews = [
             {
                 id: 1,
-                img: richard,
+                img: avatar,
                 name: 'Taiwo Bukola, Nigeria',
                 text: `"She teaches excellently, If my child doesn't understand she explains again.
                     My child also loves her classes, she always looks forward to them."`,
@@ -24,7 +23,7 @@ export default class SimpleSlider extends Component {
 
             {
                 id: 2,
-                img: ali,
+                img: MsDacosta,
                 name: `Motunrayo Da-costa, Nigeria`,
                 text: `"The instructor is great. I was even scared my son won't be intrested but i wanted him
                     to try various fields. After the class he liked it and he was able to follow through and he is happy."`
@@ -32,7 +31,7 @@ export default class SimpleSlider extends Component {
 
             {
                 id: 3,
-                img: shanai,
+                img: avatar,
                 name: `Taiwo Sunday, Nigeria`,
                 text: `"My second daughter said she is intrested after hearing the introduction, initially she
                     wasn't intrested. But after seeing the scrath software, it tallies with what she wants."`,
@@ -41,10 +40,10 @@ export default class SimpleSlider extends Component {
             
             {
                 id: 4,
-                img: shanai,
+                img: MsMarc,
                 name: `Marcellin Bantek, Ireland`,
                 text: `"Apart from keeping her busy and occupied, it stimulates some critical thinking and curiosity
-                        in her that i never thought she had. Learning to code has has really helped Emmanuella a lot."`,
+                        in her that i never thought she had. Learning to code has really helped Emmanuella a lot."`,
             }
 
 
