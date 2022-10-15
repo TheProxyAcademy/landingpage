@@ -205,14 +205,15 @@ a {
 
   .go {
     flex-direction: column-reverse;
+    gap: 0em;
   }
 
   .go-cont>div {
     display: flex;
   }
 
-  .go-cont>div button {
-    display: block;
+  .email {
+    display: none;
   }
 
   .media-container {
