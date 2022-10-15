@@ -24,11 +24,11 @@ const Home = () => {
                             <h1>
                                 Fun and Interactive coding sessions for kids.
                             </h1>
-                            <p>
-                                The Proxy Academy aims to provide education in the most innovative,
-                                interactive and unorthodox manner. This gives the children a better
-                                insight on valuable skills the traditinal educaton system
-                                doesn't highlight.
+                            <p className='p-tag'>
+                                The Proxy Academy aims to provide kids from age 5-17 education in the 
+                                most innovative, interactive and unorthodox manner. This 
+                                gives the children a better insight on valuable 
+                                skills the traditinal educaton system doesn't highlight.
                             </p>
                             <Button words={'Enroll'} />
                         </div>
@@ -43,10 +43,11 @@ const Home = () => {
                             <img src={Office} alt='Office Lady' />
                         </div>
 
-                        <div data-aos="fade-up" data-aos-duration="1000" className='build-words'>
+                        <div data-aos="fade-up" data-aos-duration="1000" className='build-words-2'>
                             <h1>
                                 Raising World-class Children in the digital space
                             </h1>
+                            
                             <p>
                                 We are a team of professional and experts in the
                                 in the education and technology industry.

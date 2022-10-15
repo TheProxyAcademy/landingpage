@@ -38,7 +38,8 @@ button {
     gap: 2em;
 }
 
-.build-words h1 {
+.build-words h1,
+.build-words-2 h1 {
     font-size: 52px;
     color: hsl(228, 39%, 23%);
 }
@@ -47,8 +48,16 @@ button {
     color: hsl(227, 12%, 41%);
     font-size: 1em;
     font-weight: 400;
+    max-width: 34.7vw;
+}
+
+.build-words-2 p {
+    color: hsl(227, 12%, 41%);
+    font-size: 1em;
+    font-weight: 400;
     max-width: 30.7vw;
 }
+
 
 .differ {
     display: grid;
@@ -172,12 +181,18 @@ button {
         width: 500px;
     }
 
-    .build-words h1 {
+    .build-words h1,
+    .build-words-2 h1 {
         font-size: 36px;
     }
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 14px;
+    }
+
+    .build-words p {
+        max-width: 32.7vw;
     }
 
     .simplify-container {
@@ -215,11 +230,13 @@ button {
         background-position: bottom -80px left -410px;
     }
 
-    .build-words h1 {
+    .build-words h1,
+    .build-words-2 h1 {
         font-size: 27px;
     }
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 13px;
         max-width: 39.7vw;
     }
@@ -271,7 +288,8 @@ button {
         margin-bottom: 4em;
     }
 
-    .build-words {
+    .build-words,
+    .build-words-2 {
         text-align: center;
         align-items: center;
     }
@@ -280,11 +298,13 @@ button {
         display: block;
     }
 
-    .build-words h1 {
+    .build-words h1,
+    .build-words-2 h1 {
         font-size: 37px;
     }
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 16px;
         max-width: initial;
     }
@@ -332,8 +352,7 @@ button {
     .fee-option {
         flex-direction: column;
     }
-
-   
+ 
     .naija,
     .jand {
         width: 80%;
@@ -342,7 +361,8 @@ button {
 
 @media (max-width: 375px) {
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 14px;
     }
 
@@ -363,11 +383,13 @@ button {
         background-position: bottom 715px left 190px;
     }
 
-    .build-words h1 {
+    .build-words h1,
+    .build-words-2 h1 {
         font-size: 31px;
     }
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 13px;
     }
 
@@ -398,7 +420,8 @@ button {
         width: 265px;
     }
 
-    .build-words p {
+    .build-words p,
+    .build-words-2 p {
         font-size: 12px;
     }
 

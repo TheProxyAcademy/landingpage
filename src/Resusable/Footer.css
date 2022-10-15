@@ -255,6 +255,13 @@ a {
     width: 4.6vw;
   }
 
+  .first-p {
+    margin-bottom: 12px;
+}
+
+  .last-p {
+    margin-top: 3px;
+  }
 }
 
 @media (max-width: 375px) {

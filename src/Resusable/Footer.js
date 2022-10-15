@@ -24,13 +24,13 @@ const Footer = () => {
                                 </div>
 
                                 <div className='enquire' id='contact'>
-                                    <p>
+                                    <p className='first-p'>
                                         For further enquries or information, Speak to one of our experts to help you make the
                                         right choice. Reach us here
                                     </p>
                                     <p>Phone/WhatsApp number</p>
                                     <p>+2348174453349/+2349152811014</p>
-                                    <p>Email: Support@theproxyacademy.com</p>
+                                    <p className='last-p'>Email: Support@theproxyacademy.com</p>
                                 </div>
                             </div>
 
