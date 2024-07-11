@@ -10,7 +10,10 @@ function Faqs() {
 
       <Accordion>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out"> What programs do you offer?</Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
+            {" "}
+            What programs do you offer?
+          </Accordion.Title>
           <Accordion.Content>
             <p className="mb-2 text-gray-500 dark:text-gray-400">
               We offer various tech skills including scratch, web development,
@@ -20,7 +23,9 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">When does the summer camp start?</Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
+            When does the summer camp start?
+          </Accordion.Title>
           <Accordion.Content>
             <p className="mb-2 text-gray-500 dark:text-gray-400">
               Our summer camp is usually between July and August.
@@ -28,7 +33,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
             Do you teach outside of summer holidays?
           </Accordion.Title>
           <Accordion.Content>
@@ -39,7 +44,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
             What would my child need to prepare?
           </Accordion.Title>
           <Accordion.Content>
@@ -49,7 +54,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
             My child doesn't want to code, can they learn something else?
           </Accordion.Title>
           <Accordion.Content>
@@ -61,7 +66,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out text-shade">
             My child already does IT in school, why do they need this?
           </Accordion.Title>
           <Accordion.Content>
