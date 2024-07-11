@@ -6,7 +6,7 @@ import { faMessage } from "@fortawesome/free-solid-svg-icons";
 
 function BootcampForm() {
   return (
-    <div className="flex max-w-md flex-col gap-4 lg:max-h-screen overflow-auto mt-0 lg:mt-40 text-left no-scrollbar">
+    <div className="lg:max-h-screen overflow-auto no-scrollbar">
       <FormfacadeEmbed
         formFacadeURL="https://formfacade.com/include/111589860943922540105/form/1FAIpQLSfuIpX6J1llcWMV2tNIQPB1Hcl2wnVTLvcXi59drsBeatxUvg/classic.js/?div=ff-compose"
         onSubmitForm={() => (
