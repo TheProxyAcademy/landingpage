@@ -7,9 +7,10 @@ function Faqs() {
       <h2 className="mb-5 font-title uppercase font-bold lg:text-[32px] text-[18px]">
         Frequently Asked Questions
       </h2>
+
       <Accordion>
         <Accordion.Panel>
-          <Accordion.Title> What programs do you offer?</Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out"> What programs do you offer?</Accordion.Title>
           <Accordion.Content>
             <p className="mb-2 text-gray-500 dark:text-gray-400">
               We offer various tech skills including scratch, web development,
@@ -19,7 +20,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title>When does the summer camp start?</Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">When does the summer camp start?</Accordion.Title>
           <Accordion.Content>
             <p className="mb-2 text-gray-500 dark:text-gray-400">
               Our summer camp is usually between July and August.
@@ -27,7 +28,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
             Do you teach outside of summer holidays?
           </Accordion.Title>
           <Accordion.Content>
@@ -38,7 +39,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
             What would my child need to prepare?
           </Accordion.Title>
           <Accordion.Content>
@@ -48,7 +49,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
             My child doesn't want to code, can they learn something else?
           </Accordion.Title>
           <Accordion.Content>
@@ -60,7 +61,7 @@ function Faqs() {
           </Accordion.Content>
         </Accordion.Panel>
         <Accordion.Panel>
-          <Accordion.Title>
+          <Accordion.Title className="border font-title font-semibold italic transition-all duration-500 ease-in-out">
             My child already does IT in school, why do they need this?
           </Accordion.Title>
           <Accordion.Content>
