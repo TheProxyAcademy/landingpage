@@ -13,7 +13,7 @@ const ProgrammeModal = () => {
       setIsModalOpen(true);
       // Prevent body scrolling when modal is open
       document.body.style.overflow = isModalOpen ? "hidden" : "auto";
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
