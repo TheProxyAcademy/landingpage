@@ -36,8 +36,9 @@ function Nav() {
       </Link>
       <Link
         className="px-8 py-3 uppercase font-semibold text-xs rounded-full bg-primary text-light hover:shadow-md transition-all duration-500 ease-in-out hover:rounded-lg"
-        target="_blank"
-        to="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform"
+        //target="_blank"
+        //to="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform"
+        to="/summerbootcamp"
       >
         Enrol
       </Link>
