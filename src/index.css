@@ -55,3 +55,11 @@ body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+input[type="radio"] {
+    @apply checked:bg-primary text-primary checked:ring-primary;
+}
+
+input[type="text"], input[type="number"], input[type="email"], select {
+    @apply border rounded-lg focus:border-primary focus:outline-none focus:ring-0;
+}
