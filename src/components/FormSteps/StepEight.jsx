@@ -58,6 +58,7 @@ const StepEight = ({ handleChange, formData, errors }) => {
           Bank Name: Zenith Bank <br />
           Account Name: The Proxy Academy <br />
           Account Number: 1227467766 <br />
+          Please email us with the receipt at <strong>admin@theproxyacademy</strong>
         </h5>
       </label>
       <label className="flex flex-col gap-2 mb-3">

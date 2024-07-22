@@ -14,6 +14,7 @@ import StepFive from "./FormSteps/StepFive";
 import StepSix from "./FormSteps/StepSix";
 import StepSeven from "./FormSteps/StepSeven";
 import StepEight from "./FormSteps/StepEight";
+import Link from "react-router-dom"
 
 const formData = {
   role: "",
@@ -271,7 +272,8 @@ function BootcampForm() {
             className="text-primary h-14 animate-bounce"
             icon={faCheckCircle}
           />
-          <p className="text-4xl">Form Submitted Successfully</p>
+          <p className="text-4xl">Form Submitted Successfully!</p>
+          <p>Please join our discord channel <Link target="_blank" to="https://discord.gg/gAHAFqgXf3">here</Link> to get further information.</p>
         </div>
       )}
 
