@@ -4,7 +4,7 @@ function Hero() {
   return (
     <div className="hero h-screen w-full bg-cover">
       <div className="lg:px-20 px-10">
-        <div className="md:w-3/6 xl:w-2/5 w-full md:pt-10 xnpm lg:pt-28 pt-8 mb-5">
+        <div className="md:w-3/6 xl:w-2/5 w-full md:pt-10 lg:pt-28 pt-20 mb-5">
           <h1 className="font-title text-dark uppercase font-bold leading-[1.1] flex flex-col">
             <span className="lg:text-[16px] text-[14px]">
               Empower the Future:
