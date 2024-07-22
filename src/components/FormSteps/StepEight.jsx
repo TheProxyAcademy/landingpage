@@ -35,7 +35,11 @@ const StepEight = ({ handleChange, formData, errors }) => {
             icon={faAsterisk}
           />
         </h5>
-        <select name="classTime" value={formData.classTime} onChange={handleChange("classTime")}>
+        <select
+          name="classTime"
+          value={formData.classTime}
+          onChange={handleChange("classTime")}
+        >
           <option value="">Select an option</option>
           <option value="Mornings(10AM WAT)">Mornings(10AM WAT)</option>
           <option value="Evenings(5PM WAT)">Evenings(5PM WAT)</option>
@@ -88,10 +92,18 @@ const StepEight = ({ handleChange, formData, errors }) => {
       {errors.paid && <div style={{ color: "red" }}>{errors.paid}</div>}
       <br />
       <label className="flex flex-col gap-2 mb-3">
-        <h5>
-          How did you hear about us?{" "}
+        <h5 className="flex items-center">
+          How did you hear about us?
+          <FontAwesomeIcon
+            className="text-red-600 h-3 ml-1"
+            icon={faAsterisk}
+          />
         </h5>
-        <select name="howDidYouHearAboutUs" value={formData.howDidYouHearAboutUs} onChange={handleChange("howDidYouHearAboutUs")}>
+        <select
+          name="howDidYouHearAboutUs"
+          value={formData.howDidYouHearAboutUs}
+          onChange={handleChange("howDidYouHearAboutUs")}
+        >
           <option value="">Select an option</option>
           <option value="Twitter">Twitter</option>
           <option value="Facebook">Facebook</option>
@@ -104,6 +116,20 @@ const StepEight = ({ handleChange, formData, errors }) => {
       </label>
       {errors.howDidYouHearAboutUs && (
         <div style={{ color: "red" }}>{errors.howDidYouHearAboutUs}</div>
+      )}
+      <br />
+
+      <label className="flex flex-col gap-2 mb-3">
+        <h5>Further Comments </h5>
+        <textarea
+          name="furtherComments"
+          rows="4"
+          value={formData.furtherComments}
+          onChange={handleChange("furtherComments")}
+        />
+      </label>
+      {errors.furtherComments && (
+        <div style={{ color: "red" }}>{errors.furtherComments}</div>
       )}
     </div>
   );

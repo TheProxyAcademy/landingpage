@@ -167,33 +167,6 @@ const StepSeven = ({
         />
       </label>
       <br />
-      <Fragment>
-        <div className="flex items-center font-semibold mb-3">
-          Add another applicant{" "}
-          <FontAwesomeIcon
-            className="text-red-600 h-3 ml-1"
-            icon={faAsterisk}
-          />
-        </div>
-        <label className="flex items-center gap-2 border rounded-lg p-3 mb-3">
-          <input
-            type="radio"
-            value="yes"
-            checked={signUpAnother === "yes"}
-            onChange={handleSignUpAnotherChange}
-          />{" "}
-          Yes
-        </label>
-        <label className="flex items-center gap-2 border rounded-lg p-3">
-          <input
-            type="radio"
-            value="no"
-            checked={signUpAnother === "no"}
-            onChange={handleSignUpAnotherChange}
-          />{" "}
-          No
-        </label>
-      </Fragment>
     </div>
   );
 };

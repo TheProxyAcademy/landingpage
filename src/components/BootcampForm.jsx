@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import StepOne from "./FormSteps/StepOne";
 import StepTwo from "./FormSteps/StepTwo";
 import StepThree from "./FormSteps/StepThree";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCheck,
+  faCheckCircle,
   faLongArrowLeft,
   faLongArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
@@ -59,8 +61,10 @@ function BootcampForm() {
   const [signUpAnother, setSignUpAnother] = useState("");
   const [previousStep, setPreviousStep] = useState(null);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const formRef = useRef(null);
+
   const handleSignUpAnotherChange = (e) => {
-    console.log("HSC", e.target.value);
     setSignUpAnother(e.target.value);
   };
 
@@ -117,49 +121,6 @@ function BootcampForm() {
     return newErrors;
   };
 
-  // const handleNext = () => {
-  //   const newErrors = validate();
-  //   if (Object.keys(newErrors).length === 0) {
-  //     setErrors({});
-  //     if (signUpAnother === "yes") {
-  //       setCurrentStep(currentStep + 1);
-  //       setSignUpAnother("");
-  //     } else if (
-  //       currentStep >= 3 &&
-  //       currentStep <= 8 &&
-  //       signUpAnother === "no"
-  //     ) {
-  //       setPreviousStep(currentStep);
-  //       setCurrentStep(8);
-  //     } else if (
-  //       currentStep >= 4 &&
-  //       currentStep <= 8 &&
-  //       signUpAnother === "no"
-  //     ) {
-  //       setPreviousStep(currentStep);
-  //       setCurrentStep(8);
-  //     } else if (
-  //       currentStep >= 5 &&
-  //       currentStep <= 8 &&
-  //       signUpAnother === "no"
-  //     ) {
-  //       setPreviousStep(currentStep);
-  //       setCurrentStep(8);
-  //     } else if (
-  //       currentStep >= 6 &&
-  //       currentStep <= 8 &&
-  //       signUpAnother === "no"
-  //     ) {
-  //       setPreviousStep(currentStep);
-  //       setCurrentStep(8);
-  //     } else {
-  //       setCurrentStep(currentStep + 1);
-  //     }
-  //   } else {
-  //     setErrors(newErrors);
-  //   }
-  // };
-
   const handleNext = () => {
     const newErrors = validate();
     if (Object.keys(newErrors).length === 0) {
@@ -183,7 +144,6 @@ function BootcampForm() {
   };
 
   const handlePrev = () => {
-    // currentStep > 1 && setCurrentStep(currentStep - 1);
     if (currentStep > 1) {
       if (currentStep === 8 && previousStep !== null) {
         setCurrentStep(previousStep);
@@ -194,10 +154,10 @@ function BootcampForm() {
   };
 
   useEffect(() => {
-    console.log(form);
-    console.log(errors);
-    console.log(signUpAnother);
-  }, [form, errors, signUpAnother]);
+    if (formRef.currentStep) {
+      formRef.currentStep.scrollTo(0, 0);
+    }
+  }, [formRef]);
 
   const handleChange = (input) => (e) => {
     setForm((prevForm) => ({ ...prevForm, [input]: e.target.value }));
@@ -205,30 +165,31 @@ function BootcampForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Clicked!");
-    // console.log("Form submitted", form);
-    // setForm(form);
-
-    // const formDatab = new FormData(form);
-    fetch(
-      "https://script.google.com/macros/s/AKfycbyckurZ2gOmksA21W387FWF9TPsnHBcXjWSqtX-7C6wxr_8xmfnc2Ajiv2GiiXNR-zqYg/exec",
-      {
-        method: "POST",
-        body: form,
-        mode: "no-cors",
-      }
-    )
+    setIsLoading(true);
+    fetch("https://bootcamp-be.onrender.com/submit-form", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.message === "Form submitted successfully") {
+          setCurrentStep("submitted");
+        }
+        setForm(formData);
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   return (
-    <form>
+    <form ref={formRef}>
       {/*steps[currentStep]*/}
       {currentStep === 1 && (
         <StepOne
@@ -303,6 +264,17 @@ function BootcampForm() {
           errors={errors}
         />
       )}
+
+      {currentStep === "submitted" && (
+        <div className="grid place-items-center">
+          <FontAwesomeIcon
+            className="text-primary h-14 animate-bounce"
+            icon={faCheckCircle}
+          />
+          <p className="text-4xl">Form Submitted Successfully</p>
+        </div>
+      )}
+
       {currentStep > 1 && (
         <button
           type="button"
@@ -316,17 +288,56 @@ function BootcampForm() {
           Back
         </button>
       )}
-
-      <button
-        onClick={currentStep === 8 ? handleSubmit : handleNext}
-        className="mt-5 cursor-pointer bg-shade text-white py-2 px-5 rounded-md hover:opacity-95"
-        type="button"
-      >
-        {currentStep === 8 ? "Submit" : "Next"}
-        {currentStep < 8 && (
-          <FontAwesomeIcon className="ml-2 text-sm" icon={faLongArrowRight} />
-        )}
-      </button>
+      {currentStep === "submitted" ? (
+        ""
+      ) : (
+        <button
+          onClick={currentStep === 8 ? handleSubmit : handleNext}
+          disabled={isLoading}
+          className={`mt-5 cursor-pointer py-2 px-5 rounded-md hover:opacity-95 text-white ${
+            currentStep === 8 &&
+            form.classTime &&
+            form.howDidYouHearAboutUs &&
+            form.location
+              ? "bg-primary"
+              : "bg-shade"
+          }`}
+          type="button"
+        >
+          {isLoading ? (
+            <svg
+              className="animate-spin h-5 w-5 text-white inline mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="4"
+              ></circle>
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zM12 16a4 4 0 010-8v-4a8 8 0 000 16v-4z"
+              ></path>
+            </svg>
+          ) : (
+            <Fragment>
+              {currentStep === 8 ? "Submit" : "Next"}
+              {currentStep < 8 && (
+                <FontAwesomeIcon
+                  className="ml-2 text-sm"
+                  icon={faLongArrowRight}
+                />
+              )}
+            </Fragment>
+          )}
+        </button>
+      )}
     </form>
   );
 }
