@@ -14,7 +14,7 @@ import StepFive from "./FormSteps/StepFive";
 import StepSix from "./FormSteps/StepSix";
 import StepSeven from "./FormSteps/StepSeven";
 import StepEight from "./FormSteps/StepEight";
-import Link from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const formData = {
   role: "",
@@ -55,7 +55,7 @@ const formData = {
 
 //https://script.google.com/macros/s/AKfycbyckurZ2gOmksA21W387FWF9TPsnHBcXjWSqtX-7C6wxr_8xmfnc2Ajiv2GiiXNR-zqYg/exec
 
-function BootcampForm() {
+function BootcampForm({ onFormInteraction, onFormSubmission }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [form, setForm] = useState(formData);
   const [errors, setErrors] = useState({});
@@ -166,6 +166,7 @@ function BootcampForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    onFormSubmission();
     setIsLoading(true);
     fetch("https://bootcamp-be.onrender.com/submit-form", {
       method: "POST",
@@ -190,7 +191,7 @@ function BootcampForm() {
   };
 
   return (
-    <form ref={formRef}>
+    <form onFocus={onFormInteraction} ref={formRef}>
       {/*steps[currentStep]*/}
       {currentStep === 1 && (
         <StepOne
@@ -273,7 +274,13 @@ function BootcampForm() {
             icon={faCheckCircle}
           />
           <p className="text-4xl">Form Submitted Successfully!</p>
-          <p>Please join our discord channel <Link target="_blank" to="https://discord.gg/gAHAFqgXf3">here</Link> to get further information.</p>
+          <p>
+            Please join our discord channel{" "}
+            <Link target="_blank" to="https://discord.gg/gAHAFqgXf3">
+              here
+            </Link>{" "}
+            to get further information.
+          </p>
         </div>
       )}
 
