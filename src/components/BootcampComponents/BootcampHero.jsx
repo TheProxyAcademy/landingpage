@@ -1,6 +1,4 @@
 import React from "react";
-import Illustration from "../../assets/summer-img.jpg";
-import { Link } from "react-router-dom";
 import BootcampForm from "../BootcampForm";
 
 function BootcampHero({ onFormInteraction, onFormSubmission }) {
@@ -23,7 +21,7 @@ function BootcampHero({ onFormInteraction, onFormSubmission }) {
         </p>
         {/*<a href="https://www.freepik.com/search?format=search&last_filter=query&last_value=sign+up+section&query=sign+up+section">Image by Drazen Zigic on Freepik</a>*/}
       </div>
-      <div className="lg:w-3/6 w-full text-center lg:text-left mt-10 md:mt-0 md:mb-0 mb-10 lg:mb-0 px-5 md:px-10">
+      <div className="lg:w-3/6 w-full text-center lg:text-left mt-10 md:mt-0 md:mb-0 mb-10 lg:mb-0 py-10 px-5 md:p-10 bg-slate-100">
         <BootcampForm
           onFormInteraction={onFormInteraction}
           onFormSubmission={onFormSubmission}
