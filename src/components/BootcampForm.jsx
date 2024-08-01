@@ -213,74 +213,78 @@ function BootcampForm({ onFormInteraction, onFormSubmission }) {
         </div>
       )}
 
-      {currentStep === "final-step" && (
-        <button
-          type="button"
-          className="py-2 cursor-pointer px-5 border rounded-lg mr-3 bg-white"
-          onClick={handlePrev}
-        >
-          <FontAwesomeIcon
-            className="mr-2 rounded-md hover:opacity-95"
-            icon={faLongArrowLeft}
-          />{" "}
-          Back
-        </button>
-      )}
-
-      <button
-        onClick={currentStep === "final-step" ? handleSubmit : handleNext}
-        disabled={isLoading}
-        className={`mt-5 cursor-pointer py-2 px-5 rounded-md hover:opacity-95 text-white ${
-          (currentStep === "final-step" &&
-            form.classTime &&
-            form.howDidYouHearAboutUs &&
-            form.location) ||
-          (currentStep === "step-one" &&
-            form.parentFullname &&
-            form.parentEmail &&
-            form.parentPhoneNumber &&
-            form.applicantFullname &&
-            form.applicantAge >= 5 &&
-            form.applicantAge <= 17 &&
-            form.applicantCourse)
-            ? "bg-primary w-full"
-            : "bg-shade"
-        }`}
-        type="button"
-      >
-        {isLoading ? (
-          <svg
-            className="animate-spin h-5 w-5 text-white inline mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth="4"
-            ></circle>
-            <path
-              className="opacity-75"
-              fill="currentColor"
-              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zM12 16a4 4 0 010-8v-4a8 8 0 000 16v-4z"
-            ></path>
-          </svg>
-        ) : (
-          <Fragment>
-            {currentStep === "final-step" ? "Submit" : "Next"}
-            {currentStep !== "final-step" && (
+      {currentStep !== "submitted" && (
+        <Fragment>
+          {currentStep === "final-step" && (
+            <button
+              type="button"
+              className="py-2 cursor-pointer px-5 border rounded-lg mr-3 bg-white"
+              onClick={handlePrev}
+            >
               <FontAwesomeIcon
-                className="ml-2 text-sm"
-                icon={faLongArrowRight}
-              />
+                className="mr-2 rounded-md hover:opacity-95"
+                icon={faLongArrowLeft}
+              />{" "}
+              Back
+            </button>
+          )}
+
+          <button
+            onClick={currentStep === "final-step" ? handleSubmit : handleNext}
+            disabled={isLoading}
+            className={`mt-5 cursor-pointer py-2 px-5 rounded-md hover:opacity-95 text-white ${
+              (currentStep === "final-step" &&
+                form.classTime &&
+                form.howDidYouHearAboutUs &&
+                form.location) ||
+              (currentStep === "step-one" &&
+                form.parentFullname &&
+                form.parentEmail &&
+                form.parentPhoneNumber &&
+                form.applicantFullname &&
+                form.applicantAge >= 5 &&
+                form.applicantAge <= 17 &&
+                form.applicantCourse)
+                ? "bg-primary w-full"
+                : "bg-shade"
+            }`}
+            type="button"
+          >
+            {isLoading ? (
+              <svg
+                className="animate-spin h-5 w-5 text-white inline mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  className="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                ></circle>
+                <path
+                  className="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zM12 16a4 4 0 010-8v-4a8 8 0 000 16v-4z"
+                ></path>
+              </svg>
+            ) : (
+              <Fragment>
+                {currentStep === "final-step" ? "Submit" : "Next"}
+                {currentStep !== "final-step" && (
+                  <FontAwesomeIcon
+                    className="ml-2 text-sm"
+                    icon={faLongArrowRight}
+                  />
+                )}
+              </Fragment>
             )}
-          </Fragment>
-        )}
-      </button>
+          </button>
+        </Fragment>
+      )}
     </form>
   );
 }
