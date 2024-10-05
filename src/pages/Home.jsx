@@ -3,15 +3,15 @@ import WhyUs from "../components/WhyUs";
 import OurProgrammes from "../components/OurProgrammes";
 import Testimonials from "../components/Testimonials";
 import Faqs from "../components/Faqs";
-import Bootcamp from "../components/Bootcamp";
-import ProgrammeModal from "../components/ProgrammeModal";
+// import Bootcamp from "../components/Bootcamp";
+// import ProgrammeModal from "../components/ProgrammeModal";
 
 function Home() {
   return (
     <div>
-      <ProgrammeModal />
+      {/*<ProgrammeModal />*/}
       <Hero />
-      <Bootcamp />
+      {/*<Bootcamp />*/}
       <WhyUs />
       <OurProgrammes />
       <Testimonials />
