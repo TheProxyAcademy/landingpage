@@ -10,6 +10,9 @@ function Register({ onFormInteraction, onFormSubmission }) {
         </h2>
         <p>Please fill the form to get started with our classes</p>
         <img src={RegIllustration} alt="Illustration" />
+        <p className="text-xs text-gray-300 font-bold tracking-widest">
+          <a href="https://www.freepik.com/free-vector/metaverso-concept-illustration_28771813.htm#fromView=search&page=1&position=20&uuid=3df50b51-3b9f-4425-9556-6a8c4dc587f9&new_detail=true&query=tech+illustration">Illustration from Freepik</a>
+        </p>
       </div>
       <div className="lg:w-3/6 w-full text-center lg:text-left mt-10 md:mt-0 md:mb-0 mb-10 lg:mb-0 py-10 px-5 md:p-10 bg-slate-100">
         <BootcampForm
