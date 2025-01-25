@@ -10,12 +10,16 @@ function Home() {
   return (
     <div>
       {/*<ProgrammeModal />*/}
-      <Hero />
-      {/*<Bootcamp />*/}
-      <WhyUs />
-      <OurProgrammes />
-      <Testimonials />
-      <Faqs />
+      <div className="hero">
+        <Hero />
+      </div>
+      <div className="container">
+        {/*<Bootcamp />*/}
+        <WhyUs />
+        <OurProgrammes />
+        <Testimonials />
+        <Faqs />
+      </div>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import Logo from "../assets/icon.svg";
 export default function Component() {
   return (
     <Footer container>
-      <div className="w-full px-5 lg:px-20 py-5 border-t mt-20">
+      <div className="w-full px-5 lg:px-20 py-5 border-t 2xl:border-t-0 mt-20 container">
         <div className="mb-5 flex gap-3 items-center font-semibold">
           <img src={Logo} alt="The Proxy Academy Logo" className="h-10" />
           <h5 className="uppercase font-title text-2xl">The Proxy Academy</h5>
@@ -27,7 +27,7 @@ export default function Component() {
             className="font-title"
             href="www.theproxyacademy.com"
             by=" The Proxy Academy Ltd."
-            year={2024}
+            year={2025}
           />
           <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
             <Footer.Icon

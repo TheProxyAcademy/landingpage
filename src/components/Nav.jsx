@@ -17,7 +17,7 @@ function Nav() {
       let windowHeight = window.scrollY;
       windowHeight > 500
         ? setStickyClass(
-            "fixed top-0 left-0 z-10 flex justify-between bg-white w-full shadow-md bg-opacity-90 backdrop-blur-md transition-all duration-500 ease-in-out"
+            "fixed top-0 left-0 z-10 flex justify-between bg-white w-full shadow-md bg-opacity-90 backdrop-blur-md transition-all duration-500 ease-in-out mx-auto"
           )
         : setStickyClass("relative");
     }
@@ -25,7 +25,7 @@ function Nav() {
 
   return (
     <div
-      className={`lg:px-20 px-10 py-2 flex justify-between items-center ${stickyClass}`}
+      className={`lg:px-20 px-10 py-2 flex justify-between items-center max-w-[1440px] container ${stickyClass}`}
     >
       <Link to="/">
         <img
@@ -35,10 +35,10 @@ function Nav() {
         />
       </Link>
       <Link
-        className="px-8 py-3 uppercase font-semibold text-xs rounded-full bg-primary text-light hover:shadow-md transition-all duration-500 ease-in-out hover:rounded-lg"
+        className="px-8 py-3 uppercase font-semibold text-xs rounded-full bg-primary text-light hover:shadow-md hover:scale-110 transition-all duration-300 ease-linear"
         //target="_blank"
         //to="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform"
-        to="/summerbootcamp"
+        to="/register"
       >
         Enrol
       </Link>

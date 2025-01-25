@@ -8,8 +8,10 @@ import {
 import ReactGA from "react-ga4";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-import Bootcamp from "./pages/Bootcamp";
+// import Bootcamp from "./pages/Bootcamp";
+// import Register from "./pages/Register";
 import Footer from "./components/Footer";
+import Register from "./pages/Register";
 
 ReactGA.initialize("G-TMLPEYRV71");
 
@@ -35,7 +37,8 @@ const App = () => {
         <Nav />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/summerbootcamp" element={<BootcampPage />} />
+          {/* <Route path="/summerbootcamp" element={<BootcampPage />} /> */}
+          <Route path="/register" element={<RegistrationPage />} />
         </Routes>
         <Footer />
       </PageTrackingWrapper>
@@ -52,7 +55,8 @@ const trackFormInteraction = () => {
   ReactGA.event({
     category: "Form",
     action: "Interacted with Registration Form",
-    label: "Summer Bootcamp Registration",
+    label: "Class Registration",
+    // label: "Summer Bootcamp Registration",
   });
 };
 
@@ -60,13 +64,23 @@ const trackFormSubmission = () => {
   ReactGA.event({
     category: "Form",
     action: "Submitted Registration Form",
-    label: "Summer Bootcamp Registration",
+    // label: "Summer Bootcamp Registration",
+    label: "Class Registration",
   });
 };
 
-const BootcampPage = () => {
+// const BootcampPage = () => {
+//   return (
+//     <Bootcamp
+//       onFormInteraction={trackFormInteraction}
+//       onFormSubmission={trackFormSubmission}
+//     />
+//   );
+// };
+
+const RegistrationPage = () => {
   return (
-    <Bootcamp
+    <Register
       onFormInteraction={trackFormInteraction}
       onFormSubmission={trackFormSubmission}
     />
