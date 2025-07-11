@@ -6,7 +6,7 @@ import {
 
 function Faqs() {
   return (
-    <Box p={{ base: 5, lg: 20 }}>
+    <Box p={{ base: 5, lg: 20 }} bg="white" color="gray.800">
       <Text 
         as="h2" 
         mb={5} 
@@ -14,6 +14,7 @@ function Faqs() {
         textTransform="uppercase" 
         fontWeight="bold" 
         fontSize={{ base: "18px", lg: "32px" }}
+        color="gray.800"
       >
         Frequently Asked Questions
       </Text>
@@ -28,12 +29,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             What programs do you offer?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 We offer various tech skills including scratch, web development,
@@ -53,12 +55,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             When does the summer camp start?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 Our summer camp is usually between July and August.
@@ -76,12 +79,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             Do you teach outside of summer holidays?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 Yes. Our program is all year round. We also offer personalised and
@@ -100,12 +104,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             What would my child need to prepare?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 They only need a laptop and internet connection
@@ -123,12 +128,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             My child doesn't want to code, can they learn something else?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 Absolutely! We believe every child has unique interest and we
@@ -148,12 +154,13 @@ function Faqs() {
             fontStyle="italic" 
             transition="all 0.3s ease" 
             color="gray.700"
+            bg="white"
             _hover={{ bg: "gray.50" }}
           >
             My child already does IT in school, why do they need this?
             <Accordion.ItemIndicator />
           </Accordion.ItemTrigger>
-          <Accordion.ItemContent>
+          <Accordion.ItemContent bg="white">
             <Accordion.ItemBody>
               <Text mb={2} color="gray.500">
                 Tech is a rather broad space that has evolved beyond microsoft

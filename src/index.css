@@ -15,6 +15,8 @@
 
 body {
   @apply font-primary;
+  background-color: white;
+  color: #1a202c;
 }
 
 .hero {
@@ -30,7 +32,7 @@ body {
   }
 }
 
-.slick-slide > div {
+.slick-slide>div {
   margin: 0 10px;
 }
 
@@ -56,8 +58,10 @@ body {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 input[type="radio"] {
@@ -89,9 +93,11 @@ textarea {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-50px);
   }
+
   100% {
     transform: translateY(0);
   }

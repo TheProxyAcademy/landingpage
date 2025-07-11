@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,10 +9,10 @@ import ReactGA from "react-ga4";
 import { Provider } from "./components/ui/provider";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
-// import Bootcamp from "./pages/Bootcamp";
-// import Register from "./pages/Register";
 import Footer from "./components/Footer";
 import Register from "./pages/Register";
+import Bootcamp from "./pages/Bootcamp";
+import { Box } from "@chakra-ui/react";
 
 ReactGA.initialize("G-TMLPEYRV71");
 
@@ -32,19 +32,47 @@ const usePageTracking = () => {
 };
 
 const App = () => {
+  const [formInteracted, setFormInteracted] = useState(false);
+
+  const handleFormInteraction = () => {
+    setFormInteracted(true);
+  };
+
+  const handleFormSubmission = () => {
+    setFormInteracted(false);
+  };
+
   return (
     <Provider>
-      <Router>
-        <PageTrackingWrapper>
-          <Nav />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            {/* <Route path="/summerbootcamp" element={<BootcampPage />} /> */}
-            <Route path="/register" element={<RegistrationPage />} />
-          </Routes>
-          <Footer />
-        </PageTrackingWrapper>
-      </Router>
+      <Box bg="white" minH="100vh" color="gray.800">
+        <Router>
+          <PageTrackingWrapper>
+            <Nav />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route
+                path="/register"
+                element={
+                  <Register
+                    onFormInteraction={handleFormInteraction}
+                    onFormSubmission={handleFormSubmission}
+                  />
+                }
+              />
+              <Route
+                path="/summerbootcamp"
+                element={
+                  <Bootcamp
+                    onFormInteraction={handleFormInteraction}
+                    onFormSubmission={handleFormSubmission}
+                  />
+                }
+              />
+            </Routes>
+            <Footer />
+          </PageTrackingWrapper>
+        </Router>
+      </Box>
     </Provider>
   );
 };
