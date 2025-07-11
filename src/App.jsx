@@ -6,6 +6,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import ReactGA from "react-ga4";
+import { ChakraProvider } from "@chakra-ui/react";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 // import Bootcamp from "./pages/Bootcamp";
@@ -32,17 +33,19 @@ const usePageTracking = () => {
 
 const App = () => {
   return (
-    <Router>
-      <PageTrackingWrapper>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/summerbootcamp" element={<BootcampPage />} /> */}
-          <Route path="/register" element={<RegistrationPage />} />
-        </Routes>
-        <Footer />
-      </PageTrackingWrapper>
-    </Router>
+    <ChakraProvider>
+      <Router>
+        <PageTrackingWrapper>
+          <Nav />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            {/* <Route path="/summerbootcamp" element={<BootcampPage />} /> */}
+            <Route path="/register" element={<RegistrationPage />} />
+          </Routes>
+          <Footer />
+        </PageTrackingWrapper>
+      </Router>
+    </ChakraProvider>
   );
 };
 
