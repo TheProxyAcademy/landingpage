@@ -1,40 +1,87 @@
 import React from "react";
+import { Box, Flex, VStack, Text, Button, Image, Container } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import BoyIllustration from "../assets/boy.png";
+
 function Hero() {
   return (
-    <div className="h-screen w-full bg-cover flex flex-col md:justify-center relative container">
-      <div className="lg:px-20 px-10">
-        <div className="md:w-3/6 xl:w-2/5 w-full mb-5 pt-24 md:pt-0">
-          <h1 className="font-title text-dark uppercase font-bold leading-[1.1] flex flex-col">
-            <span className="lg:text-[16px] text-[14px]">
+    <Box
+      h="100vh"
+      w="full"
+      bgImage="url('/src/assets/hero-bg.png')"
+      bgSize="100%"
+      bgRepeat="no-repeat"
+      position="relative"
+      display="flex"
+      flexDirection="column"
+      justifyContent={{ base: "flex-start", md: "center" }}
+      className="hero"
+    >
+      <Container maxW="1440px" px={{ base: 10, lg: 20 }}>
+        <Box w={{ base: "full", md: "50%", xl: "40%" }} mb={5} pt={{ base: 24, md: 0 }}>
+          <VStack align="flex-start" spacing={0}>
+            <Text
+              fontFamily="title"
+              color="dark"
+              textTransform="uppercase"
+              fontWeight="bold"
+              lineHeight="1.1"
+              fontSize={{ base: "14px", lg: "16px" }}
+            >
               Empower the Future:
-            </span>
-            <span className="lg:text-[38px] text-[24px]">
+            </Text>
+            <Text
+              fontFamily="title"
+              color="dark"
+              textTransform="uppercase"
+              fontWeight="bold"
+              lineHeight="1.1"
+              fontSize={{ base: "24px", lg: "38px" }}
+            >
               Leading Tech Classes for Kids
-            </span>
-          </h1>
-          <p className="text-[12px] lg:text-[14px]">
+            </Text>
+          </VStack>
+          <Text 
+            mt={4}
+            fontSize={{ base: "12px", lg: "14px" }}
+            color="gray.700"
+          >
             Join us in shaping the next generation of tech leaders and
             innovators. Start their journey to success today, no matter where
             you are in the world!
-          </p>
-        </div>
-        <Link
-          className="px-8 py-3 uppercase font-semibold text-xs rounded-full bg-primary text-light hover:shadow-md hover:scale-110 transition-all duration-300 ease-linear"
+          </Text>
+        </Box>
+        <Button
+          as={Link}
           to="/register"
-          // target="_blank"
-          // to="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform"
+          px={8}
+          py={3}
+          textTransform="uppercase"
+          fontWeight="semibold"
+          fontSize="xs"
+          borderRadius="full"
+          bg="primary.500"
+          color="white"
+          _hover={{
+            shadow: "md",
+            transform: "scale(1.1)",
+          }}
+          transition="all 0.3s ease-linear"
         >
           Enrol
-        </Link>
-      </div>
-      <img
-        className="2xl:h-[750px] 2xl:-right-[25%] lg:h-[420px] h-[200px] absolute right-[10%] bottom-[5%] bounce-image"
+        </Button>
+      </Container>
+      <Image
         src={BoyIllustration}
         alt="illustration"
+        position="absolute"
+        right="10%"
+        bottom="5%"
+        h={{ base: "200px", lg: "420px", "2xl": "750px" }}
+        right={{ base: "10%", "2xl": "-25%" }}
+        className="bounce-image"
       />
-    </div>
+    </Box>
   );
 }
 

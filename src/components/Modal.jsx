@@ -1,40 +1,66 @@
 import React from "react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  Button,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const Modal = ({ onClose, title, content, buttonText, link }) => {
-  const handleOutsideClick = (e) => {
-    if (e.target.id === "modal-overlay") {
-      onClose();
-    }
-  };
-
+const CustomModal = ({ isOpen, onClose, title, content, buttonText, link }) => {
   return (
-    <div
-      id="modal-overlay"
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
-      onClick={handleOutsideClick}
-    >
-      <div className="bg-white p-6 rounded shadow-lg max-w-lg w-full relative">
-        <button
-          className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
-          onClick={onClose}
-        >
-          <FontAwesomeIcon icon="times" />
-        </button>
-        <h2 className="text-2xl font-bold mb-4 font-title">{title}</h2>
-        <p className="mb-4">{content}</p>
-        <Link to={link}>
-          <button
-            className="bg-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90"
+    <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+      <ModalOverlay bg="blackAlpha.600" />
+      <ModalContent
+        bg="white"
+        p={6}
+        borderRadius="md"
+        shadow="lg"
+        maxW="lg"
+        w="full"
+        position="relative"
+      >
+        <ModalHeader>
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            mb={4}
+            fontFamily="title"
+            color="gray.800"
+          >
+            {title}
+          </Text>
+        </ModalHeader>
+        <ModalCloseButton />
+        <ModalBody>
+          <Text mb={4} color="gray.600">
+            {content}
+          </Text>
+          <Button
+            as={Link}
+            to={link}
+            bg="primary.500"
+            color="white"
+            px={4}
+            py={2}
+            borderRadius="full"
+            _hover={{
+              bg: "primary.600",
+            }}
             onClick={onClose}
           >
             {buttonText}
-          </button>
-        </Link>
-      </div>
-    </div>
+          </Button>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   );
 };
 
-export default Modal;
+export default CustomModal;

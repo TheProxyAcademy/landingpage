@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Logo from "../assets/icon.svg";
+import { Box, Flex, Image, Button, Container } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/icon.svg";
+
 function Nav() {
   const [stickyClass, setStickyClass] = useState("relative");
 
@@ -16,33 +18,55 @@ function Nav() {
     if (window !== undefined) {
       let windowHeight = window.scrollY;
       windowHeight > 500
-        ? setStickyClass(
-            "fixed top-0 left-0 z-10 flex justify-between bg-white w-full shadow-md bg-opacity-90 backdrop-blur-md transition-all duration-500 ease-in-out mx-auto"
-          )
+        ? setStickyClass("fixed")
         : setStickyClass("relative");
     }
   };
 
   return (
-    <div
-      className={`lg:px-20 px-10 py-2 flex justify-between items-center max-w-[1440px] container ${stickyClass}`}
+    <Box
+      position={stickyClass}
+      top={stickyClass === "fixed" ? 0 : "auto"}
+      left={stickyClass === "fixed" ? 0 : "auto"}
+      zIndex={10}
+      w="full"
+      bg={stickyClass === "fixed" ? "white" : "transparent"}
+      bgBlendMode={stickyClass === "fixed" ? "multiply" : "normal"}
+      backdropFilter={stickyClass === "fixed" ? "blur(16px)" : "none"}
+      shadow={stickyClass === "fixed" ? "md" : "none"}
+      transition="all 0.5s ease-in-out"
     >
-      <Link to="/">
-        <img
-          src={Logo}
-          alt="Proxy Academy&gt;s Logo icon"
-          className="h-[50px]"
-        />
-      </Link>
-      <Link
-        className="px-8 py-3 uppercase font-semibold text-xs rounded-full bg-primary text-light hover:shadow-md hover:scale-110 transition-all duration-300 ease-linear"
-        //target="_blank"
-        //to="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform"
-        to="/register"
-      >
-        Enrol
-      </Link>
-    </div>
+      <Container maxW="1440px" px={{ base: 10, lg: 20 }} py={2}>
+        <Flex justify="space-between" align="center">
+          <Link to="/">
+            <Image
+              src={Logo}
+              alt="Proxy Academy's Logo icon"
+              h="50px"
+            />
+          </Link>
+          <Button
+            as={Link}
+            to="/register"
+            px={8}
+            py={3}
+            textTransform="uppercase"
+            fontWeight="semibold"
+            fontSize="xs"
+            borderRadius="full"
+            bg="primary"
+            color="white"
+            _hover={{
+              shadow: "md",
+              transform: "scale(1.1)",
+            }}
+            transition="all 0.3s ease-linear"
+          >
+            Enrol
+          </Button>
+        </Flex>
+      </Container>
+    </Box>
   );
 }
 

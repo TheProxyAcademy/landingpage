@@ -1,4 +1,5 @@
 import React from "react";
+import { Box, Text, Container, VStack } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -30,54 +31,98 @@ function Testimonials() {
       },
     ],
   };
+
   return (
-    <div className="p-5 lg:p-20">
-      <h2 className="mb-3 text-lg lg:text-xl font-title uppercase font-bold">
+    <Container maxW="1440px" p={{ base: 5, lg: 20 }}>
+      <Text
+        as="h2"
+        mb={3}
+        fontSize={{ base: "lg", lg: "xl" }}
+        fontFamily="title"
+        textTransform="uppercase"
+        fontWeight="bold"
+        color="gray.800"
+      >
         Testimonials
-      </h2>
+      </Text>
       <Slider {...settings}>
-        <div className="bg-[#f0f0f0] min-h-48 p-5 rounded-md">
-            <h3 className="text-dark font-title font-bold lg:text-[18px] text-[14px]">
+        <Box px={2}>
+          <Box bg="gray.100" minH="48" p={5} borderRadius="md">
+            <Text
+              color="dark"
+              fontFamily="title"
+              fontWeight="bold"
+              fontSize={{ base: "14px", lg: "18px" }}
+              mb={2}
+            >
               Taiwo Sunday, Nigeria
-            </h3>
-            <p className="text-[14px] lg:text-[16px] mt-2">
-              "My second daughter said she is intrested after hearing the
-              introduction, initially she wasn't intrested. But after seeing the
+            </Text>
+            <Text fontSize={{ base: "14px", lg: "16px" }}>
+              "My second daughter said she is interested after hearing the
+              introduction, initially she wasn't interested. But after seeing the
               scratch software, it tallies with what she wants."
-            </p>
-        </div>
-        <div className="bg-[#f0f0f0] min-h-48 p-5 rounded-md">
-          <h3 className="text-dark font-title font-bold lg:text-[18px] text-[14px]">
-            Marcellin Bantek, Ireland
-          </h3>
-          <p className="text-[14px] lg:text-[16px] mt-2">
-            "Apart from keeping her busy and occupied, it stimulates some
-            critical thinking and curiosity in her that I never thought she had.
-            Learning to code has has really helped Emmanuella a lot."
-          </p>
-        </div>
-        <div className="bg-[#f0f0f0] min-h-48 p-5 rounded-md">
-          <h3 className="text-dark font-title font-bold lg:text-[18px] text-[14px]">
-            Taiwo Bukola, Nigeria
-          </h3>
-          <p className="text-[14px] lg:text-[16px] mt-2">
-            "The tutor teaches excellently, If my child doesn't understand she
-            explains again. My child also loves her classes, she always looks
-            forward to them."
-          </p>
-        </div>
-        <div className="bg-[#f0f0f0] min-h-48 p-5 rounded-md">
-          <h3 className="text-dark font-title font-bold lg:text-[18px] text-[14px]">
-            Motunrayo Da-costa, Nigeria
-          </h3>
-          <p className="text-[14px] lg:text-[16px] mt-2">
-            "The instructor is great. I was even scared my son won't be
-            intrested but i wanted him to try various fields. After the class he
-            liked it and he was able to follow through and he is happy."
-          </p>
-        </div>
+            </Text>
+          </Box>
+        </Box>
+        
+        <Box px={2}>
+          <Box bg="gray.100" minH="48" p={5} borderRadius="md">
+            <Text
+              color="dark"
+              fontFamily="title"
+              fontWeight="bold"
+              fontSize={{ base: "14px", lg: "18px" }}
+              mb={2}
+            >
+              Marcellin Bantek, Ireland
+            </Text>
+            <Text fontSize={{ base: "14px", lg: "16px" }}>
+              "Apart from keeping her busy and occupied, it stimulates some
+              critical thinking and curiosity in her that I never thought she had.
+              Learning to code has has really helped Emmanuella a lot."
+            </Text>
+          </Box>
+        </Box>
+        
+        <Box px={2}>
+          <Box bg="gray.100" minH="48" p={5} borderRadius="md">
+            <Text
+              color="dark"
+              fontFamily="title"
+              fontWeight="bold"
+              fontSize={{ base: "14px", lg: "18px" }}
+              mb={2}
+            >
+              Taiwo Bukola, Nigeria
+            </Text>
+            <Text fontSize={{ base: "14px", lg: "16px" }}>
+              "The tutor teaches excellently, If my child doesn't understand she
+              explains again. My child also loves her classes, she always looks
+              forward to them."
+            </Text>
+          </Box>
+        </Box>
+        
+        <Box px={2}>
+          <Box bg="gray.100" minH="48" p={5} borderRadius="md">
+            <Text
+              color="dark"
+              fontFamily="title"
+              fontWeight="bold"
+              fontSize={{ base: "14px", lg: "18px" }}
+              mb={2}
+            >
+              Motunrayo Da-costa, Nigeria
+            </Text>
+            <Text fontSize={{ base: "14px", lg: "16px" }}>
+              "The instructor is great. I was even scared my son won't be
+              interested but i wanted him to try various fields. After the class he
+              liked it and he was able to follow through and he is happy."
+            </Text>
+          </Box>
+        </Box>
       </Slider>
-    </div>
+    </Container>
   );
 }
 
