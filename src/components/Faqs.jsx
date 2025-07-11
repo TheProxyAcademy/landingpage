@@ -10,7 +10,7 @@ function Faqs() {
       <Text 
         as="h2" 
         mb={5} 
-        fontFamily="var(--font-title)" 
+        fontFamily="Raleway, sans-serif" 
         textTransform="uppercase" 
         fontWeight="bold" 
         fontSize={{ base: "18px", lg: "32px" }}
@@ -23,7 +23,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 
@@ -48,7 +48,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 
@@ -71,7 +71,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 
@@ -95,7 +95,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 
@@ -118,7 +118,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 
@@ -143,7 +143,7 @@ function Faqs() {
           <Accordion.ItemTrigger 
             border="1px" 
             borderColor="gray.200" 
-            fontFamily="var(--font-title)" 
+            fontFamily="Raleway, sans-serif" 
             fontWeight="semibold" 
             fontStyle="italic" 
             transition="all 0.3s ease" 

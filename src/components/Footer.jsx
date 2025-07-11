@@ -10,7 +10,7 @@ export default function Component() {
           <Box as="img" src={Logo} alt="The Proxy Academy Logo" h={10} />
           <Text 
             textTransform="uppercase" 
-            fontFamily="var(--font-title)"
+            fontFamily="Raleway, sans-serif"
             fontSize="2xl"
           >
             The Proxy Academy
@@ -20,7 +20,7 @@ export default function Component() {
         <Box 
           w={{ base: "full", lg: "40%" }} 
           mb={5} 
-          fontFamily="var(--font-title)"
+          fontFamily="Raleway, sans-serif"
         >
           <Text>
             For further enquries or information, Speak to one of our experts to
@@ -42,7 +42,7 @@ export default function Component() {
           pt={5}
         >
           <Text 
-            fontFamily="var(--font-title)"
+            fontFamily="Raleway, sans-serif"
             fontSize="sm"
             color="gray.600"
           >
