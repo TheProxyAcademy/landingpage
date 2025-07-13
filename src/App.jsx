@@ -44,9 +44,9 @@ const App = () => {
 
   return (
     <Provider>
-      <Box bg="white" minH="100vh" color="gray.800">
-        <Router>
-          <PageTrackingWrapper>
+      <Router>
+        <PageTrackingWrapper>
+          <Box bg="white" minH="100vh" color="gray.800">
             <Nav />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -70,9 +70,9 @@ const App = () => {
               />
             </Routes>
             <Footer />
-          </PageTrackingWrapper>
-        </Router>
-      </Box>
+          </Box>
+        </PageTrackingWrapper>
+      </Router>
     </Provider>
   );
 };

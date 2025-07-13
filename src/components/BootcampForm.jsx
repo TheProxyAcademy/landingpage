@@ -202,7 +202,7 @@ function BootcampForm({ onFormInteraction, onFormSubmission }) {
                 as={Link}
                 to="https://discord.gg/gAHAFqgXf3"
                 target="_blank"
-                color="primary.500"
+                color="green.600"
                 fontWeight="semibold"
                 textDecoration="underline"
               >
@@ -211,7 +211,7 @@ function BootcampForm({ onFormInteraction, onFormSubmission }) {
               to get further information.
             </Text>
             <Button
-              bg="primary.500"
+              bg="green.600"
               color="white"
               px={5}
               py={2}
@@ -266,12 +266,12 @@ function BootcampForm({ onFormInteraction, onFormSubmission }) {
               type="button"
               onClick={nextStep}
               borderRadius="md"
-              bg="primary.500"
+              bg="green.600"
               color="white"
               px={4}
               py={2}
               _hover={{
-                bg: "primary.600",
+                bg: "green.700",
               }}
             >
               Next
@@ -283,14 +283,14 @@ function BootcampForm({ onFormInteraction, onFormSubmission }) {
             <Button
               type="submit"
               borderRadius="md"
-              bg="primary.500"
+              bg="green.600"
               color="white"
               px={4}
               py={2}
               isLoading={isLoading}
               loadingText="Submitting..."
               _hover={{
-                bg: "primary.600",
+                bg: "green.700",
               }}
             >
               {isLoading ? (

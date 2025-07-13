@@ -45,13 +45,13 @@ const CustomModal = ({ isOpen, onClose, title, content, buttonText, link }) => {
           <Button
             as={Link}
             to={link}
-            bg="primary.500"
+            bg="green.600"
             color="white"
             px={4}
             py={2}
             borderRadius="full"
             _hover={{
-              bg: "primary.600",
+              bg: "green.700",
             }}
             onClick={onClose}
           >

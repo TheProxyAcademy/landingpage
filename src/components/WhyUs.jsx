@@ -15,7 +15,7 @@ function WhyUs() {
             fontFamily="title"
             textTransform="uppercase"
             fontSize={{ base: "18px", lg: "32px" }}
-            color="primary.500"
+            color="green.600"
             fontWeight="bold"
             lineHeight="1.1"
             textAlign={{ base: "center", lg: "left" }}
@@ -39,7 +39,7 @@ function WhyUs() {
         
         <Box w={{ base: "83.33%", lg: "50%" }} mt={{ base: 10, lg: 0 }}>
           <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
-            <Box bg="primary.500" p={3} borderRadius="md" color="#DFF8D5">
+            <Box bg="green.600" p={3} borderRadius="md" color="#DFF8D5">
               <Text fontWeight="bold" fontSize="16px" textTransform="uppercase">
                 World-Class Curriculum
               </Text>

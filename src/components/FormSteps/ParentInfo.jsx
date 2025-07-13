@@ -1,13 +1,23 @@
 import { faAsterisk } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import { Text } from "@chakra-ui/react";
 
 const ParentInfo = ({ handleChange, formData, errors }) => {
   return (
     <div className="flex flex-col gap-2 border-b">
-      <h2 className="uppercase text-left lg:text-center text-primary font-semibold text-xl lg:text-2xl text-pretty font-title mb-3">
-        PARENT/GUARDIAN INFORMATION
-      </h2>
+              <Text
+          as="h2"
+          textTransform="uppercase"
+          textAlign={{ base: "left", lg: "center" }}
+          color="green.600"
+          fontWeight="semibold"
+          fontSize={{ base: "xl", lg: "2xl" }}
+          fontFamily="title"
+          mb={3}
+        >
+                  PARENT/GUARDIAN INFORMATION
+        </Text>
 
       <label className="flex flex-col gap-2 mb-3">
         <h5 className="flex items-center">

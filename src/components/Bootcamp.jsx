@@ -15,12 +15,12 @@ function Bootcamp() {
         <Box w={{ base: "83.33%", lg: "33.33%" }} position="relative">
           <Box
             position="absolute"
-            bg="primary.500"
+            bg="green.600"
             w="full"
             h="full"
             borderRadius="xl"
             border="8px"
-            borderColor="primary.500"
+            borderColor="green.600"
             right="10"
             top="10"
             zIndex={-2}
@@ -56,7 +56,7 @@ function Bootcamp() {
             fontFamily="title"
             textTransform="uppercase"
             fontWeight="bold"
-            color="primary.500"
+            color="green.600"
             fontSize={{ base: "xl", lg: "3xl" }}
             mb={3}
           >
@@ -77,7 +77,7 @@ function Bootcamp() {
             to="/summerbootcamp"
             py={5}
             px={10}
-            bg="primary.500"
+            bg="green.600"
             color="white"
             borderRadius="full"
             textTransform="uppercase"

@@ -17,7 +17,7 @@ function OurProgrammes() {
             fontFamily="title"
             textTransform="uppercase"
             fontSize={{ base: "24px", lg: "32px" }}
-            color="primary.500"
+            color="green.600"
             fontWeight="bold"
             lineHeight="1.1"
           >
@@ -58,7 +58,7 @@ function OurProgrammes() {
               <Text
                 fontWeight="bold"
                 fontFamily="title"
-                color="primary.500"
+                color="green.600"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"
               >
@@ -114,7 +114,7 @@ function OurProgrammes() {
           </Center>
           
           <Center
-            bg="primary.500"
+            bg="green.600"
             w="full"
             h="64"
             borderRadius="lg"
@@ -167,7 +167,7 @@ function OurProgrammes() {
               />
               <Text
                 fontWeight="bold"
-                color="primary.500"
+                color="green.600"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"
               >

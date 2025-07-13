@@ -54,7 +54,7 @@ function Nav() {
             fontWeight="semibold"
             fontSize="xs"
             borderRadius="full"
-            bg="primary"
+            bg="green.600"
             color="white"
             _hover={{
               shadow: "md",

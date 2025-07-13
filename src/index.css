@@ -60,8 +60,9 @@ body {
   /* Firefox */
 }
 
+/* Form input styles - converted from Tailwind to regular CSS */
 input[type="radio"] {
-  @apply checked:bg-primary text-primary checked:ring-primary;
+  accent-color: #059C02;
 }
 
 input[type="text"],
@@ -69,19 +70,20 @@ input[type="number"],
 input[type="email"],
 select,
 textarea {
-  @apply border rounded-lg focus:border-primary focus:outline-none focus:ring-0;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px 12px;
 }
 
-@media (min-width: 1280px) {
-  .container {
-    @apply max-w-full mx-auto;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    @apply max-w-[1440px] mx-auto px-6;
-  }
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+select:focus,
+textarea:focus,
+.focus\:border-primary:focus {
+  outline: none;
+  border-color: #059C02;
+  box-shadow: 0 0 0 1px #059C02;
 }
 
 /* ANIMATION */

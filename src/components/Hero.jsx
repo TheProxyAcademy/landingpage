@@ -60,7 +60,7 @@ function Hero() {
           fontWeight="semibold"
           fontSize="xs"
           borderRadius="full"
-          bg="primary.500"
+                      bg="green.600"
           color="white"
           _hover={{
             shadow: "md",
@@ -75,7 +75,6 @@ function Hero() {
         src={BoyIllustration}
         alt="illustration"
         position="absolute"
-        right="10%"
         bottom="5%"
         h={{ base: "200px", lg: "420px", "2xl": "750px" }}
         right={{ base: "10%", "2xl": "-25%" }}
