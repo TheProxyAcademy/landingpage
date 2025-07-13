@@ -1,58 +1,86 @@
-import { Footer, FooterDivider } from "flowbite-react";
+import { Box, Container, Text, HStack, Link, Icon, Flex } from "@chakra-ui/react";
 import { BsLinkedin, BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import Logo from "../assets/icon.svg";
 
 export default function Component() {
   return (
-    <Footer container>
-      <div className="w-full px-5 lg:px-20 py-5 border-t 2xl:border-t-0 mt-20 container">
-        <div className="mb-5 flex gap-3 items-center font-semibold">
-          <img src={Logo} alt="The Proxy Academy Logo" className="h-10" />
-          <h5 className="uppercase font-title text-2xl">The Proxy Academy</h5>
-        </div>
-        <div className="lg:w-2/5 w-full mb-5 font-title">
-          <p>
+    <Box as="footer" bg="gray.50" borderTop="1px" borderColor="gray.200" mt={20}>
+      <Container maxW="7xl" py={5} px={{ base: 5, lg: 20 }}>
+        <HStack spacing={3} mb={5} fontWeight="semibold">
+          <Box as="img" src={Logo} alt="The Proxy Academy Logo" h={10} />
+          <Text 
+            textTransform="uppercase" 
+            fontFamily="Raleway, sans-serif"
+            fontSize="2xl"
+          >
+            The Proxy Academy
+          </Text>
+        </HStack>
+        
+        <Box 
+          w={{ base: "full", lg: "40%" }} 
+          mb={5} 
+          fontFamily="Raleway, sans-serif"
+        >
+          <Text>
             For further enquries or information, Speak to one of our experts to
             help you make the right choice.
-          </p>
-          <p className="mt-5">
-            {" "}
-            <span className="font-semibold">Send a WhatsApp message:</span> +2348174453349/+2349152811014 Email:
+          </Text>
+          <Text mt={5}>
+            <Text as="span" fontWeight="semibold">Send a WhatsApp message:</Text> +2348174453349/+2349152811014 Email:
             Support@theproxyacademy.com
-          </p>
-        </div>
-        <FooterDivider />
-        <div className="w-full sm:flex sm:items-center sm:justify-between pt-5">
-          <Footer.Copyright
-            className="font-title"
-            href="www.theproxyacademy.com"
-            by=" The Proxy Academy Ltd."
-            year={2025}
-          />
-          <div className="mt-4 flex space-x-6 sm:mt-0 sm:justify-center">
-            <Footer.Icon
-              target="_blank"
-              href="https://www.facebook.com/theproxyacademy"
-              icon={BsFacebook}
-            />
-            <Footer.Icon
-              target="_blank"
-              href="https://www.instagram.com/theproxyacademy/"
-              icon={BsInstagram}
-            />
-            <Footer.Icon
-              target="_blank"
-              href="https://x.com/theproxyacademy"
-              icon={BsTwitter}
-            />
-            <Footer.Icon
-              target="_blank"
-              href="https://www.linkedin.com/company/the-proxy-academy/"
-              icon={BsLinkedin}
-            />
-          </div>
-        </div>
-      </div>
-    </Footer>
+          </Text>
+        </Box>
+        
+        <Box h="1px" bg="gray.200" my={5} />
+        
+        <Flex 
+          w="full" 
+          direction={{ base: "column", sm: "row" }} 
+          align="center" 
+          justify="space-between" 
+          pt={5}
+        >
+          <Text 
+            fontFamily="Raleway, sans-serif"
+            fontSize="sm"
+            color="gray.600"
+          >
+            © 2025 The Proxy Academy Ltd. All rights reserved.
+          </Text>
+          
+          <HStack spacing={6} mt={{ base: 4, sm: 0 }}>
+            <Link 
+              href="https://www.facebook.com/theproxyacademy" 
+              isExternal
+              _hover={{ color: "blue.500" }}
+            >
+              <Icon as={BsFacebook} boxSize={5} />
+            </Link>
+            <Link 
+              href="https://www.instagram.com/theproxyacademy/" 
+              isExternal
+              _hover={{ color: "pink.500" }}
+            >
+              <Icon as={BsInstagram} boxSize={5} />
+            </Link>
+            <Link 
+              href="https://x.com/theproxyacademy" 
+              isExternal
+              _hover={{ color: "blue.400" }}
+            >
+              <Icon as={BsTwitter} boxSize={5} />
+            </Link>
+            <Link 
+              href="https://www.linkedin.com/company/the-proxy-academy/" 
+              isExternal
+              _hover={{ color: "blue.600" }}
+            >
+              <Icon as={BsLinkedin} boxSize={5} />
+            </Link>
+          </HStack>
+        </Flex>
+      </Container>
+    </Box>
   );
 }

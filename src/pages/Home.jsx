@@ -1,3 +1,5 @@
+import React from "react";
+import { Box, Container } from "@chakra-ui/react";
 import Hero from "../components/Hero";
 import WhyUs from "../components/WhyUs";
 import OurProgrammes from "../components/OurProgrammes";
@@ -8,19 +10,19 @@ import Faqs from "../components/Faqs";
 
 function Home() {
   return (
-    <div>
+    <Box>
       {/*<ProgrammeModal />*/}
-      <div className="hero">
+      <Box className="hero">
         <Hero />
-      </div>
-      <div className="container">
+      </Box>
+      <Box>
         {/*<Bootcamp />*/}
         <WhyUs />
         <OurProgrammes />
         <Testimonials />
         <Faqs />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

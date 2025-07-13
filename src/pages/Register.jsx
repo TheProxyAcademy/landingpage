@@ -1,26 +1,80 @@
+import React from "react";
+import { Box, Flex, Text, Image, Link, Container } from "@chakra-ui/react";
 import BootcampForm from "../components/BootcampForm";
 import RegIllustration from "../assets/reg-illustration.png";
 
 function Register({ onFormInteraction, onFormSubmission }) {
   return (
-    <div className="lg:py-20 lg:px-20 py-10 flex flex-col lg:flex-row justify-between items-center">
-      <div className="lg:w-3/6 w-full relative px-5 md:px-10 lg:mt-40 xl:mt-0 lg:border-r">
-        <h2 className="xl:text-4xl text-2xl uppercase mb-2 font-semibold">
-          Registration
-        </h2>
-        <p>Please fill the form to get started with our classes</p>
-        <img src={RegIllustration} alt="Illustration" />
-        <p className="text-xs text-gray-300 font-bold tracking-widest">
-          <a href="https://www.freepik.com/free-vector/metaverso-concept-illustration_28771813.htm#fromView=search&page=1&position=20&uuid=3df50b51-3b9f-4425-9556-6a8c4dc587f9&new_detail=true&query=tech+illustration">Illustration from Freepik</a>
-        </p>
-      </div>
-      <div className="lg:w-3/6 w-full text-center lg:text-left mt-10 md:mt-0 md:mb-0 mb-10 lg:mb-0 py-10 px-5 md:p-10 bg-slate-100">
-        <BootcampForm
-          onFormInteraction={onFormInteraction}
-          onFormSubmission={onFormSubmission}
-        />
-      </div>
-    </div>
+    <Container maxW="1440px" py={{ base: 10, lg: 20 }} px={{ base: 5, lg: 20 }}>
+      <Flex 
+        direction={{ base: "column", lg: "row" }}
+        justify="space-between"
+        align="center"
+        gap={8}
+      >
+        <Box 
+          w={{ base: "full", lg: "50%" }}
+          position="relative"
+          px={{ base: 5, md: 10 }}
+          mt={{ base: 0, lg: 40, xl: 0 }}
+          borderRight={{ base: "none", lg: "1px solid" }}
+          borderColor="gray.200"
+        >
+          <Text
+            as="h2"
+            fontSize={{ base: "2xl", xl: "4xl" }}
+            textTransform="uppercase"
+            mb={2}
+            fontWeight="semibold"
+            color="gray.800"
+          >
+            Registration
+          </Text>
+          <Text mb={4} color="gray.600">
+            Please fill the form to get started with our classes
+          </Text>
+          <Image 
+            src={RegIllustration} 
+            alt="Illustration"
+            w="full"
+            maxW="400px"
+            mx="auto"
+          />
+          <Text 
+            fontSize="xs" 
+            color="gray.300" 
+            fontWeight="bold" 
+            letterSpacing="widest"
+            mt={2}
+          >
+            <Link 
+              href="https://www.freepik.com/free-vector/metaverso-concept-illustration_28771813.htm#fromView=search&page=1&position=20&uuid=3df50b51-3b9f-4425-9556-6a8c4dc587f9&new_detail=true&query=tech+illustration"
+              isExternal
+              textDecoration="underline"
+              color="gray.400"
+            >
+              Illustration from Freepik
+            </Link>
+          </Text>
+        </Box>
+        
+        <Box 
+          w={{ base: "full", lg: "50%" }}
+          textAlign={{ base: "center", lg: "left" }}
+          mt={{ base: 10, md: 0 }}
+          mb={{ base: 10, md: 0, lg: 0 }}
+          py={10}
+          px={{ base: 5, md: 10 }}
+          bg="gray.100"
+          borderRadius="md"
+        >
+          <BootcampForm
+            onFormInteraction={onFormInteraction}
+            onFormSubmission={onFormSubmission}
+          />
+        </Box>
+      </Flex>
+    </Container>
   );
 }
 

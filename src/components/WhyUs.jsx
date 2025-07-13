@@ -1,62 +1,90 @@
 import React from "react";
+import { Box, Flex, VStack, Text, SimpleGrid, Container } from "@chakra-ui/react";
 
 function WhyUs() {
   return (
-    <div className="p-5 lg:p-20">
-      <div className="flex lg:flex-row flex-col justify-between items-center">
-        <div className="lg:w-3/4">
-          <h2 className="font-title uppercase text-[18px] lg:text-[32px] text-primary font-bold leading-[1.1] text-center lg:text-left">
+    <Container maxW="1440px" p={{ base: 5, lg: 20 }}>
+      <Flex 
+        direction={{ base: "column", lg: "row" }}
+        justify="space-between"
+        align="center"
+        gap={8}
+      >
+        <Box w={{ base: "full", lg: "75%" }}>
+          <Text
+            fontFamily="title"
+            textTransform="uppercase"
+            fontSize={{ base: "18px", lg: "32px" }}
+            color="green.600"
+            fontWeight="bold"
+            lineHeight="1.1"
+            textAlign={{ base: "center", lg: "left" }}
+          >
             What's so special about The Proxy Academy?
-          </h2>
-          <p className="mt-2 text-dark text-center w-full text-[12px] lg:text-justify lg:w-5/6">
+          </Text>
+          <Text
+            mt={2}
+            color="dark"
+            textAlign={{ base: "center", lg: "justify" }}
+            w={{ base: "full", lg: "83.33%" }}
+            fontSize={{ base: "12px", lg: "16px" }}
+          >
             We recognize the gap in the educational system that doesn't quite
             cater for the development of kids. We are bridging the gap by
             facilitating the knowledge of digital skills in ways kids can easily
             relate with - fun and interactive - to effectively function in a
             world that has gone largely digital.
-          </p>
-        </div>
-        <div className="lg:w-2/4 w-5/6 md:grid grid-cols-2 grid-rows-2 gap-5 mt-10 lg:mt-0">
-          <div className="bg-primary p-3 mb-3 md:mb-0 rounded-md text-[#DFF8D5]">
-            <h4 className="font-bold text-[16px] uppercase">
-              World-Class Curriculum
-            </h4>
-            <p className="py-1 text-[12px]">
-              We operate with curriculums and models that have been tested and
-              have proven effective by experts over the world.
-            </p>
-          </div>
-          <div className="bg-[#fcbf00] p-3 mb-3 md:mb-0 rounded-md text-[#372c0d]">
-            <h4 className="font-bold text-[16px] uppercase">Flexibility</h4>
-            <p className="py-1 text-[12px]">
-              We operate with strict adherence to the rule of constant practice
-              and learning but not at the expense of the wellbeing of our
-              students. We consider psychological factors as well as natural
-              factors that might affect our sessions.
-            </p>
-          </div>
-          <div className="bg-[#4cd5bc] p-3 mb-3 md:mb-0 rounded-md text-[#112f29]">
-            <h4 className="font-bold text-[16px] uppercase">
-              Adaptive Learning
-            </h4>
-            <p className="py-1 text-[12px]">
-              We value the quality in our delivery and we offer a one-on-one
-              approach for our sessions as well as group classes in order to
-              understand each students and move at their pace.
-            </p>
-          </div>
-          <div className="bg-[#f00078] p-3 rounded-md text-[#ffe3f1]">
-            <h4 className="font-bold text-[16px] uppercase">
-              World-Class Curriculum
-            </h4>
-            <p className="py-1 text-[12px]">
-              We operate with curriculums and models that have been tested and
-              have proven effective by experts over the world.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Text>
+        </Box>
+        
+        <Box w={{ base: "83.33%", lg: "50%" }} mt={{ base: 10, lg: 0 }}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} gap={5}>
+            <Box bg="green.600" p={3} borderRadius="md" color="#DFF8D5">
+              <Text fontWeight="bold" fontSize="16px" textTransform="uppercase">
+                World-Class Curriculum
+              </Text>
+              <Text py={1} fontSize="12px">
+                We operate with curriculums and models that have been tested and
+                have proven effective by experts over the world.
+              </Text>
+            </Box>
+            
+            <Box bg="#fcbf00" p={3} borderRadius="md" color="#372c0d">
+              <Text fontWeight="bold" fontSize="16px" textTransform="uppercase">
+                Flexibility
+              </Text>
+              <Text py={1} fontSize="12px">
+                We operate with strict adherence to the rule of constant practice
+                and learning but not at the expense of the wellbeing of our
+                students. We consider psychological factors as well as natural
+                factors that might affect our sessions.
+              </Text>
+            </Box>
+            
+            <Box bg="#4cd5bc" p={3} borderRadius="md" color="#112f29">
+              <Text fontWeight="bold" fontSize="16px" textTransform="uppercase">
+                Adaptive Learning
+              </Text>
+              <Text py={1} fontSize="12px">
+                We value the quality in our delivery and we offer a one-on-one
+                approach for our sessions as well as group classes in order to
+                understand each students and move at their pace.
+              </Text>
+            </Box>
+            
+            <Box bg="#f00078" p={3} borderRadius="md" color="#ffe3f1">
+              <Text fontWeight="bold" fontSize="16px" textTransform="uppercase">
+                World-Class Curriculum
+              </Text>
+              <Text py={1} fontSize="12px">
+                We operate with curriculums and models that have been tested and
+                have proven effective by experts over the world.
+              </Text>
+            </Box>
+          </SimpleGrid>
+        </Box>
+      </Flex>
+    </Container>
   );
 }
 
