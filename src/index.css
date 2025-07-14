@@ -20,6 +20,7 @@ body {
   font-family: var(--font-body);
   background-color: white;
   color: #1a202c;
+  overflow-x: hidden;
 }
 
 /* Utility classes for fonts */
@@ -119,4 +120,102 @@ textarea:focus,
   100% {
     transform: translateY(0);
   }
+}
+
+/* Enhanced Hero Animations */
+@keyframes heroGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes textGlow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 0, 0.5);
+  }
+}
+
+@keyframes buttonGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.6), 0 0 35px rgba(255, 165, 0, 0.4);
+  }
+}
+
+@keyframes particleFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  33% {
+    transform: translateY(-10px) translateX(5px);
+  }
+
+  66% {
+    transform: translateY(5px) translateX(-5px);
+  }
+}
+
+/* Smooth scrolling and performance optimizations */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced mobile responsiveness */
+@media (max-width: 768px) {
+  .hero-gradient {
+    background-size: 200% 200%;
+    animation: heroGradientShift 8s ease infinite;
+  }
+
+  .hero-text {
+    font-size: clamp(24px, 8vw, 48px) !important;
+  }
+
+  .hero-particles {
+    display: none;
+    /* Hide particles on mobile for better performance */
+  }
+}
+
+/* Improved button animations */
+.hero-button {
+  animation: buttonGlow 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.hero-button:hover {
+  animation-play-state: paused;
+}
+
+/* Text selection styling */
+::selection {
+  background: rgba(255, 215, 0, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(255, 215, 0, 0.3);
+  color: white;
 }
