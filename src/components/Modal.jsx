@@ -31,7 +31,7 @@ const CustomModal = ({ isOpen, onClose, title, content, buttonText, link }) => {
             fontSize="2xl"
             fontWeight="bold"
             mb={4}
-            fontFamily="title"
+            fontFamily="'Syne', sans-serif"
             color="gray.800"
           >
             {title}

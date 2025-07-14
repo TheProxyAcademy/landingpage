@@ -53,7 +53,7 @@ function Bootcamp() {
         >
           <Text
             as="h4"
-            fontFamily="title"
+            fontFamily="'Syne', sans-serif"
             textTransform="uppercase"
             fontWeight="bold"
             color="green.600"

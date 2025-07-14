@@ -12,7 +12,7 @@ function WhyUs() {
       >
         <Box w={{ base: "full", lg: "75%" }}>
           <Text
-            fontFamily="title"
+            fontFamily="'Syne', sans-serif"
             textTransform="uppercase"
             fontSize={{ base: "18px", lg: "32px" }}
             color="green.600"

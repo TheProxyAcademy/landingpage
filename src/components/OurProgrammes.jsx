@@ -14,7 +14,7 @@ function OurProgrammes() {
       <Container maxW="1440px">
         <VStack textAlign="center" spacing={4}>
           <Text
-            fontFamily="title"
+            fontFamily="'Syne', sans-serif"
             textTransform="uppercase"
             fontSize={{ base: "24px", lg: "32px" }}
             color="green.600"
@@ -57,7 +57,7 @@ function OurProgrammes() {
               />
               <Text
                 fontWeight="bold"
-                fontFamily="title"
+                fontFamily="'Syne', sans-serif"
                 color="green.600"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"
@@ -93,7 +93,7 @@ function OurProgrammes() {
               />
               <Text
                 fontWeight="bold"
-                fontFamily="title"
+                fontFamily="'Syne', sans-serif"
                 color="white"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"
@@ -130,7 +130,7 @@ function OurProgrammes() {
               />
               <Text
                 fontWeight="bold"
-                fontFamily="title"
+                fontFamily="'Syne', sans-serif"
                 color="white"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"
@@ -167,6 +167,7 @@ function OurProgrammes() {
               />
               <Text
                 fontWeight="bold"
+                fontFamily="'Syne', sans-serif"
                 color="green.600"
                 fontSize={{ base: "14px", xl: "18px" }}
                 textTransform="uppercase"

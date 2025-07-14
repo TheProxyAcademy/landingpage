@@ -13,7 +13,7 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
         color="green.600"
         fontWeight="semibold"
         fontSize={{ base: "xl", lg: "2xl" }}
-        fontFamily="title"
+        fontFamily="'Syne', sans-serif"
         mb={3}
       >
         APPLICANT INFORMATION

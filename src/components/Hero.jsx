@@ -21,7 +21,7 @@ function Hero() {
         <Box w={{ base: "full", md: "50%", xl: "40%" }} mb={5} pt={{ base: 24, md: 0 }}>
           <VStack align="flex-start" spacing={0}>
             <Text
-              fontFamily="title"
+              fontFamily="body"
               color="dark"
               textTransform="uppercase"
               fontWeight="bold"
@@ -31,7 +31,7 @@ function Hero() {
               Empower the Future:
             </Text>
             <Text
-              fontFamily="title"
+              fontFamily="'Syne', sans-serif"
               color="dark"
               textTransform="uppercase"
               fontWeight="bold"
