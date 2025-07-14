@@ -154,12 +154,12 @@ function WhyUs() {
       </Box>
 
       <Container maxW="1440px" p={{ base: 5, lg: 20 }} position="relative" zIndex={2}>
-        <Flex 
-          direction={{ base: "column", lg: "row" }}
-          justify="space-between"
+      <Flex 
+        direction={{ base: "column", lg: "row" }}
+        justify="space-between"
           align="flex-start"
           gap={12}
-        >
+      >
           {/* Enhanced Content Section */}
           <Box 
             w={{ base: "full", lg: "45%" }}
@@ -171,14 +171,14 @@ function WhyUs() {
             <VStack align={{ base: "center", lg: "flex-start" }} spacing={6}>
               {/* Enhanced Title */}
               <Box position="relative" w="full">
-                <Text
+          <Text
                   fontFamily="'Syne', sans-serif"
-                  textTransform="uppercase"
+            textTransform="uppercase"
                   fontSize={{ base: "2xl", lg: "4xl" }}
-                  color="green.600"
-                  fontWeight="bold"
+            color="green.600"
+            fontWeight="bold"
                   lineHeight="1.2"
-                  textAlign={{ base: "center", lg: "left" }}
+            textAlign={{ base: "center", lg: "left" }}
                   position="relative"
                   _after={{
                     content: '""',
@@ -191,11 +191,11 @@ function WhyUs() {
                     bg: "linear-gradient(45deg, #FFD700, #FFA500)",
                     borderRadius: "full",
                   }}
-                >
-                  What's so special about The Proxy Academy?
-                </Text>
-              </Box>
-
+          >
+            What's so special about The Proxy Academy?
+          </Text>
+        </Box>
+        
               {/* Enhanced Description */}
               <Text
                 mt={6}
@@ -238,8 +238,8 @@ function WhyUs() {
                 </SimpleGrid>
               </Box>
             </VStack>
-          </Box>
-          
+            </Box>
+            
           {/* Enhanced Feature Cards */}
           <Box w={{ base: "full", lg: "50%" }} mt={{ base: 10, lg: 0 }}>
             <SimpleGrid columns={{ base: 1, md: 2 }} gap={6}>
@@ -300,7 +300,7 @@ function WhyUs() {
                       lineHeight="1.2"
                     >
                       {feature.title}
-                    </Text>
+              </Text>
 
                     {/* Feature description */}
                     <Text
@@ -309,7 +309,7 @@ function WhyUs() {
                       lineHeight="1.6"
                     >
                       {feature.description}
-                    </Text>
+              </Text>
                   </VStack>
 
                   {/* Floating icon background */}
@@ -325,12 +325,12 @@ function WhyUs() {
                     animation={`${pulse} 3s ease-in-out infinite`}
                     animationDelay={`${index * 0.3}s`}
                   />
-                </Box>
+            </Box>
               ))}
-            </SimpleGrid>
-          </Box>
-        </Flex>
-      </Container>
+          </SimpleGrid>
+        </Box>
+      </Flex>
+    </Container>
     </Box>
   );
 }
