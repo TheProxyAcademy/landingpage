@@ -238,7 +238,7 @@ function Faqs() {
             animation={isVisible ? `${slideInUp} 1s ease-out 0.6s both` : 'none'}
             mt={4}
           >
-            <Accordion.Root defaultValue={["0"]} allowMultiple>
+            <Accordion.Root defaultValue={["0"]} multiple>
               {faqData.map((faq, index) => (
                 <Box
                   key={index}
