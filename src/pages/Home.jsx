@@ -5,7 +5,7 @@ import WhyUs from "../components/WhyUs";
 import OurProgrammes from "../components/OurProgrammes";
 import Testimonials from "../components/Testimonials";
 import Faqs from "../components/Faqs";
-// import Bootcamp from "../components/Bootcamp";
+import Bootcamp from "../components/Bootcamp";
 // import ProgrammeModal from "../components/ProgrammeModal";
 
 function Home() {
@@ -16,7 +16,7 @@ function Home() {
         <Hero />
       </Box>
       <Box>
-        {/*<Bootcamp />*/}
+        <Bootcamp />
         <WhyUs />
         <OurProgrammes />
         <Testimonials />

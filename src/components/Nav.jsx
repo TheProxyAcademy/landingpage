@@ -37,7 +37,7 @@ function Nav() {
       transition="all 0.5s ease-in-out"
     >
       <Container maxW="1440px" px={{ base: 10, lg: 20 }} py={2}>
-        <Flex justify="space-between" align="center">
+        <Flex justify="space-between" w="full" align="center">
           <Link to="/">
             <Image
               src={Logo}

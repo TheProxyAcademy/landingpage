@@ -38,7 +38,7 @@ function Testimonials() {
         as="h2"
         mb={3}
         fontSize={{ base: "lg", lg: "xl" }}
-        fontFamily="title"
+        fontFamily="'Syne', sans-serif"
         textTransform="uppercase"
         fontWeight="bold"
         color="gray.800"
@@ -50,7 +50,7 @@ function Testimonials() {
           <Box bg="gray.100" minH="48" p={5} borderRadius="md">
             <Text
               color="dark"
-              fontFamily="title"
+              fontFamily="'Syne', sans-serif"
               fontWeight="bold"
               fontSize={{ base: "14px", lg: "18px" }}
               mb={2}
@@ -69,7 +69,7 @@ function Testimonials() {
           <Box bg="gray.100" minH="48" p={5} borderRadius="md">
             <Text
               color="dark"
-              fontFamily="title"
+              fontFamily="'Syne', sans-serif"
               fontWeight="bold"
               fontSize={{ base: "14px", lg: "18px" }}
               mb={2}
@@ -88,7 +88,7 @@ function Testimonials() {
           <Box bg="gray.100" minH="48" p={5} borderRadius="md">
             <Text
               color="dark"
-              fontFamily="title"
+              fontFamily="'Syne', sans-serif"
               fontWeight="bold"
               fontSize={{ base: "14px", lg: "18px" }}
               mb={2}
@@ -107,7 +107,7 @@ function Testimonials() {
           <Box bg="gray.100" minH="48" p={5} borderRadius="md">
             <Text
               color="dark"
-              fontFamily="title"
+              fontFamily="'Syne', sans-serif"
               fontWeight="bold"
               fontSize={{ base: "14px", lg: "18px" }}
               mb={2}
