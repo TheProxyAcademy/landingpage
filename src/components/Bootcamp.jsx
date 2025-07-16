@@ -112,8 +112,8 @@ function Bootcamp() {
   // Functional countdown timer with real target date
   useEffect(() => {
     const calculateTimeLeft = () => {
-      // Target date: August 3rd, 2025 at 11am WAT (UTC+1)
-      const targetDate = new Date('2025-08-03T11:00:00+01:00');
+      // Target date: August 2nd, 2025 at 11am WAT (UTC+1)
+      const targetDate = new Date('2025-08-02T11:00:00+01:00');
       const now = new Date();
       const difference = targetDate.getTime() - now.getTime();
 
@@ -198,7 +198,7 @@ function Bootcamp() {
         {"</bootcamp>"}
       </Box>
 
-      <Container maxW="1440px" px={{ base: 5, lg: 20 }} position="relative" zIndex={2}>
+      <Container maxW="1440px" mx="auto" px={{ base: 5, lg: 20 }} position="relative" zIndex={2}>
         <Flex 
           direction={{ base: "column-reverse", lg: "row" }}
           justify="space-between"
@@ -413,7 +413,7 @@ function Bootcamp() {
                   mt={3}
                   fontStyle="italic"
                 >
-                  August 3rd, 2025 at 11:00 AM WAT
+                  August 2nd, 2025 at 11:00 AM WAT
                 </Text>
               </Box>
 

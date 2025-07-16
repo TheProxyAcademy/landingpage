@@ -151,7 +151,7 @@ function Hero() {
       <SparkleIcon delay="2s" left="25%" top="75%" />
       <SparkleIcon delay="3s" left="75%" top="15%" />
 
-      <Container maxW="1440px" px={{ base: 10, lg: 20 }} zIndex={2} position="relative">
+      <Container maxW="1440px" mx="auto" px={{ base: 10, lg: 20 }} zIndex={2} position="relative">
         <Box w={{ base: "full", md: "50%", xl: "55%" }} mb={5} pt={{ base: 24, md: 0 }}>
           <VStack align="flex-start" spacing={4}>
             {/* Subtitle with animation */}
