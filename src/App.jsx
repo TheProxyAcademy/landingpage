@@ -13,6 +13,8 @@ import Footer from "./components/Footer";
 import Register from "./pages/Register";
 import Bootcamp from "./pages/Bootcamp";
 import { Box } from "@chakra-ui/react";
+import { Toaster } from 'react-hot-toast';
+
 
 ReactGA.initialize("G-TMLPEYRV71");
 
@@ -44,7 +46,7 @@ const App = () => {
 
   return (
     <Provider>
-      <Router>
+      <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
         <PageTrackingWrapper>
           <Box bg="white" minH="100vh" color="gray.800">
             <Nav />
@@ -70,6 +72,7 @@ const App = () => {
               />
             </Routes>
             <Footer />
+            <Toaster />
           </Box>
         </PageTrackingWrapper>
       </Router>

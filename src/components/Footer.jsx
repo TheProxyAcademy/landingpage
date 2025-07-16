@@ -90,7 +90,7 @@ export default function Component() {
       bg="linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)"
       position="relative"
       overflow="hidden"
-      mt={20}
+      // mt={20}
     >
       {/* Floating Background Elements */}
       <Box
@@ -157,7 +157,7 @@ export default function Component() {
         />
       ))}
 
-      <Container maxW="7xl" py={16} px={{ base: 5, lg: 20 }}>
+      <Container maxW="7xl" py={16} px={{ base: 5, lg: 20 }} mx="auto">
         <VStack spacing={12} align="stretch">
           {/* Header Section */}
           <VStack 
@@ -204,6 +204,7 @@ export default function Component() {
             gap={8}
             opacity={visibleSections.includes('contact') ? 1 : 0}
             animation={visibleSections.includes('contact') ? `${slideInUp} 1s ease-out 0.3s both` : 'none'}
+            mt={8}
           >
             {/* Contact Information */}
             <VStack align="start" spacing={6} mt={6}>
