@@ -252,7 +252,7 @@ function Hero() {
         >
           <Button
             as={Link}
-            to="/register"
+            to="/summerbootcamp"
             px={10}
             py={4}
             textTransform="uppercase"
