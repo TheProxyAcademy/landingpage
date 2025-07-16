@@ -363,7 +363,7 @@ const BootcampForm = ({ onFormInteraction, onFormSubmission }) => {
                   lineHeight="1.6"
                   maxW="400px"
                 >
-                  Thank you for registering! Please join our Discord community to get updates and connect with other participants.
+                  Thank you for registering! Please join our WhatsApp community to get updates and connect with other participants.
                 </Text>
               </VStack>
               
@@ -376,10 +376,10 @@ const BootcampForm = ({ onFormInteraction, onFormSubmission }) => {
                 maxW="400px"
               >
                 <Text fontSize="14px" color="gray.600" mb={3}>
-                  Join our Discord community:
+                  Join our WhatsApp community:
                 </Text>
                 <Link
-                  href="https://discord.gg/gAHAFqgXf3"
+                  href="https://chat.whatsapp.com/HnE85RIWrGGH0itPpVgUcW"
                   target="_blank"
                   display="inline-block"
                   bg="linear-gradient(135deg, #059C02 0%, #0b7f03 100%)"
@@ -411,7 +411,7 @@ const BootcampForm = ({ onFormInteraction, onFormSubmission }) => {
                     animation={`${shimmer} 2s ease-in-out infinite`}
                   />
                   <Text position="relative" zIndex={1}>
-                    Join Discord
+                    Join WhatsApp
                   </Text>
                 </Link>
               </Box>
@@ -442,9 +442,9 @@ const BootcampForm = ({ onFormInteraction, onFormSubmission }) => {
                 Register Another Child
               </Button>
               
-              <Text fontSize="12px" color="gray.500" fontStyle="italic" maxW="300px">
+              {/* <Text fontSize="12px" color="gray.500" fontStyle="italic" maxW="300px">
                 Your information has been saved. You only need to add the new candidate's details.
-              </Text>
+              </Text> */}
             </VStack>
           </Center>
         )}
