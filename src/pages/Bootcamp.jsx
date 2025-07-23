@@ -1,4 +1,3 @@
-import React from "react";
 import BootcampHero from "../components/BootcampComponents/BootcampHero";
 
 function Bootcamp({ onFormInteraction, onFormSubmission }) {

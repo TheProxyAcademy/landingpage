@@ -309,7 +309,7 @@ const BootcampForm = ({ onFormInteraction, onFormSubmission }) => {
         css={{ animation: `${slideInUp} 0.8s ease-out 0.3s both` }}
       >
         {currentStep === "step-one" && (
-          <VStack gap={8} maxH="400px" overflowY="auto">
+          <VStack gap={8} maxH="450px" overflowY="auto">
             <ParentInfo
               formData={form}
               setFormData={setForm}

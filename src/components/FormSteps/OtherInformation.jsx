@@ -7,8 +7,8 @@ import { GoAlertFill } from "react-icons/go";
 const classTimeOptions = createListCollection({
   items: [
     { label: "Mornings (10AM WAT)", value: "Mornings(10AM WAT)" },
-    { label: "Evenings (5PM WAT)", value: "Evenings(5PM WAT)" },
-    { label: "Any time", value: "Any time" },
+    // { label: "Evenings (5PM WAT)", value: "Evenings(5PM WAT)" },
+    // { label: "Any time", value: "Any time" },
   ],
 });
 
@@ -160,7 +160,7 @@ const OtherInformation = ({ handleChange, formData, errors }) => {
             </Select.Control>
             <Portal>
               <Select.Positioner>
-                <Select.Content h="200px" overflowY="auto" px={2} border="none" boxShadow="lg">
+                <Select.Content h="auto" py={2} overflowY="auto" px={2} border="none" boxShadow="lg">
                   {classTimeOptions.items.map((item) => (
                     <Select.Item key={item.value} item={item} p={2}>
                       {item.label}

@@ -8,10 +8,10 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
     "Introduction to Coding with Scratch",
     "Web Development",
     "Graphics Design",
-    "Data Analysis",
-    "Cyber Security",
-    "Animation",
-    "Illustration Design"
+    // "Data Analysis",
+    // "Cyber Security",
+    "Animation/Illustration Design",
+    // "Illustration Design"
   ];
 
   return (
@@ -28,14 +28,14 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
         position="relative"
         _after={{
           content: '""',
-          position: 'absolute',
-          bottom: '-8px',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '60px',
-          height: '3px',
-          background: 'linear-gradient(135deg, #059C02 0%, #0b7f03 100%)',
-          borderRadius: '2px',
+          position: "absolute",
+          bottom: "-8px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "60px",
+          height: "3px",
+          background: "linear-gradient(135deg, #059C02 0%, #0b7f03 100%)",
+          borderRadius: "2px",
         }}
       >
         Applicant Information
@@ -58,7 +58,7 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
               style={{
                 color: "#e53e3e",
                 fontSize: "8px",
-                marginLeft: "6px"
+                marginLeft: "6px",
               }}
             />
           </Text>
@@ -69,23 +69,31 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             onChange={handleChange("applicantFullname")}
             placeholder="Enter applicant's full name"
             bg="rgba(255, 255, 255, 0.8)"
-            border={errors.applicantFullname ? "1px solid #e53e3e" : "1px solid rgba(0, 0, 0, 0.1)"}
+            border={
+              errors.applicantFullname
+                ? "1px solid #e53e3e"
+                : "1px solid rgba(0, 0, 0, 0.1)"
+            }
             borderRadius="12px"
             py={6}
             px={4}
             fontSize="16px"
             _placeholder={{
               color: "gray.400",
-              fontSize: "14px"
+              fontSize: "14px",
             }}
             _hover={{
-              borderColor: errors.applicantFullname ? "#e53e3e" : "rgba(5, 156, 2, 0.3)",
-              bg: "rgba(255, 255, 255, 0.9)"
+              borderColor: errors.applicantFullname
+                ? "#e53e3e"
+                : "rgba(5, 156, 2, 0.3)",
+              bg: "rgba(255, 255, 255, 0.9)",
             }}
             _focus={{
               borderColor: errors.applicantFullname ? "#e53e3e" : "green.500",
-              boxShadow: errors.applicantFullname ? "0 0 0 3px rgba(229, 62, 62, 0.1)" : "0 0 0 3px rgba(5, 156, 2, 0.1)",
-              bg: "white"
+              boxShadow: errors.applicantFullname
+                ? "0 0 0 3px rgba(229, 62, 62, 0.1)"
+                : "0 0 0 3px rgba(5, 156, 2, 0.1)",
+              bg: "white",
             }}
             transition="all 0.3s ease"
           />
@@ -112,7 +120,7 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
               style={{
                 color: "#e53e3e",
                 fontSize: "8px",
-                marginLeft: "6px"
+                marginLeft: "6px",
               }}
             />
           </Text>
@@ -123,23 +131,31 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             onChange={handleChange("applicantAge")}
             placeholder="Enter age"
             bg="rgba(255, 255, 255, 0.8)"
-            border={errors.applicantAge ? "1px solid #e53e3e" : "1px solid rgba(0, 0, 0, 0.1)"}
+            border={
+              errors.applicantAge
+                ? "1px solid #e53e3e"
+                : "1px solid rgba(0, 0, 0, 0.1)"
+            }
             borderRadius="12px"
             py={6}
             px={4}
             fontSize="16px"
             _placeholder={{
               color: "gray.400",
-              fontSize: "14px"
+              fontSize: "14px",
             }}
             _hover={{
-              borderColor: errors.applicantAge ? "#e53e3e" : "rgba(5, 156, 2, 0.3)",
-              bg: "rgba(255, 255, 255, 0.9)"
+              borderColor: errors.applicantAge
+                ? "#e53e3e"
+                : "rgba(5, 156, 2, 0.3)",
+              bg: "rgba(255, 255, 255, 0.9)",
             }}
             _focus={{
               borderColor: errors.applicantAge ? "#e53e3e" : "green.500",
-              boxShadow: errors.applicantAge ? "0 0 0 3px rgba(229, 62, 62, 0.1)" : "0 0 0 3px rgba(5, 156, 2, 0.1)",
-              bg: "white"
+              boxShadow: errors.applicantAge
+                ? "0 0 0 3px rgba(229, 62, 62, 0.1)"
+                : "0 0 0 3px rgba(5, 156, 2, 0.1)",
+              bg: "white",
             }}
             transition="all 0.3s ease"
           />
@@ -161,7 +177,13 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             mb={2}
           >
             Applicant's Email
-            <Box as="span" fontSize="12px" color="gray.500" ml={2} fontWeight="normal">
+            <Box
+              as="span"
+              fontSize="12px"
+              color="gray.500"
+              ml={2}
+              fontWeight="normal"
+            >
               (Optional)
             </Box>
           </Text>
@@ -172,23 +194,31 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             onChange={handleChange("applicantEmail")}
             placeholder="Enter applicant's email (optional)"
             bg="rgba(255, 255, 255, 0.8)"
-            border={errors.applicantEmail ? "1px solid #e53e3e" : "1px solid rgba(0, 0, 0, 0.1)"}
+            border={
+              errors.applicantEmail
+                ? "1px solid #e53e3e"
+                : "1px solid rgba(0, 0, 0, 0.1)"
+            }
             borderRadius="12px"
             py={6}
             px={4}
             fontSize="16px"
             _placeholder={{
               color: "gray.400",
-              fontSize: "14px"
+              fontSize: "14px",
             }}
             _hover={{
-              borderColor: errors.applicantEmail ? "#e53e3e" : "rgba(5, 156, 2, 0.3)",
-              bg: "rgba(255, 255, 255, 0.9)"
+              borderColor: errors.applicantEmail
+                ? "#e53e3e"
+                : "rgba(5, 156, 2, 0.3)",
+              bg: "rgba(255, 255, 255, 0.9)",
             }}
             _focus={{
               borderColor: errors.applicantEmail ? "#e53e3e" : "green.500",
-              boxShadow: errors.applicantEmail ? "0 0 0 3px rgba(229, 62, 62, 0.1)" : "0 0 0 3px rgba(5, 156, 2, 0.1)",
-              bg: "white"
+              boxShadow: errors.applicantEmail
+                ? "0 0 0 3px rgba(229, 62, 62, 0.1)"
+                : "0 0 0 3px rgba(5, 156, 2, 0.1)",
+              bg: "white",
             }}
             transition="all 0.3s ease"
           />
@@ -215,7 +245,7 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
               style={{
                 color: "#e53e3e",
                 fontSize: "8px",
-                marginLeft: "6px"
+                marginLeft: "6px",
               }}
             />
           </Text>
@@ -224,30 +254,46 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
               <Box
                 key={index}
                 bg="rgba(255, 255, 255, 0.8)"
-                border={errors.applicantCourse ? "1px solid #e53e3e" : "1px solid rgba(0, 0, 0, 0.1)"}
+                border={
+                  errors.applicantCourse
+                    ? "1px solid #e53e3e"
+                    : "1px solid rgba(0, 0, 0, 0.1)"
+                }
                 borderRadius="12px"
                 p={4}
                 transition="all 0.3s ease"
                 _hover={{
                   bg: "rgba(255, 255, 255, 0.9)",
-                  borderColor: errors.applicantCourse ? "#e53e3e" : "rgba(5, 156, 2, 0.3)",
+                  borderColor: errors.applicantCourse
+                    ? "#e53e3e"
+                    : "rgba(5, 156, 2, 0.3)",
                   transform: "translateY(-1px)",
-                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)"
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
                 }}
                 cursor="pointer"
-                onClick={() => handleChange("applicantCourse")({ target: { value: course } })}
+                onClick={() =>
+                  handleChange("applicantCourse")({ target: { value: course } })
+                }
               >
-                                    <HStack gap={3}>
+                <HStack gap={3}>
                   <Box
                     width="20px"
                     height="20px"
                     borderRadius="50%"
                     border="2px solid"
-                    borderColor={formData.applicantCourse === course ? "#059C02" : "#d1d5db"}
+                    borderColor={
+                      formData.applicantCourse === course
+                        ? "#059C02"
+                        : "#d1d5db"
+                    }
                     display="flex"
                     alignItems="center"
                     justifyContent="center"
-                    bg={formData.applicantCourse === course ? "#059C02" : "transparent"}
+                    bg={
+                      formData.applicantCourse === course
+                        ? "#059C02"
+                        : "transparent"
+                    }
                     transition="all 0.3s ease"
                   >
                     {formData.applicantCourse === course && (
@@ -289,7 +335,13 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             mb={2}
           >
             Applicant's Phone Number
-            <Box as="span" fontSize="12px" color="gray.500" ml={2} fontWeight="normal">
+            <Box
+              as="span"
+              fontSize="12px"
+              color="gray.500"
+              ml={2}
+              fontWeight="normal"
+            >
               (Optional)
             </Box>
           </Text>
@@ -300,23 +352,33 @@ const ApplicantInfo = ({ formData, handleChange, errors }) => {
             onChange={handleChange("applicantPhoneNumber")}
             placeholder="Enter applicant's phone number (optional)"
             bg="rgba(255, 255, 255, 0.8)"
-            border={errors.applicantPhoneNumber ? "1px solid #e53e3e" : "1px solid rgba(0, 0, 0, 0.1)"}
+            border={
+              errors.applicantPhoneNumber
+                ? "1px solid #e53e3e"
+                : "1px solid rgba(0, 0, 0, 0.1)"
+            }
             borderRadius="12px"
             py={6}
             px={4}
             fontSize="16px"
             _placeholder={{
               color: "gray.400",
-              fontSize: "14px"
+              fontSize: "14px",
             }}
             _hover={{
-              borderColor: errors.applicantPhoneNumber ? "#e53e3e" : "rgba(5, 156, 2, 0.3)",
-              bg: "rgba(255, 255, 255, 0.9)"
+              borderColor: errors.applicantPhoneNumber
+                ? "#e53e3e"
+                : "rgba(5, 156, 2, 0.3)",
+              bg: "rgba(255, 255, 255, 0.9)",
             }}
             _focus={{
-              borderColor: errors.applicantPhoneNumber ? "#e53e3e" : "green.500",
-              boxShadow: errors.applicantPhoneNumber ? "0 0 0 3px rgba(229, 62, 62, 0.1)" : "0 0 0 3px rgba(5, 156, 2, 0.1)",
-              bg: "white"
+              borderColor: errors.applicantPhoneNumber
+                ? "#e53e3e"
+                : "green.500",
+              boxShadow: errors.applicantPhoneNumber
+                ? "0 0 0 3px rgba(229, 62, 62, 0.1)"
+                : "0 0 0 3px rgba(5, 156, 2, 0.1)",
+              bg: "white",
             }}
             transition="all 0.3s ease"
           />
