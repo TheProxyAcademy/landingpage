@@ -6,6 +6,13 @@ import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg
 import { keyframes } from "@emotion/react";
 import Logo from "../assets/icon.svg";
 
+const quickLinks = [
+  { name: "About Us", href: "#why-us" },
+  { name: "Programs", href: "#our-programmes" },
+  { name: "Bootcamp", href: "/summer-bootcamp" },
+  { name: "Contact", href: "#" },
+];
+
 // Keyframes for animations
 const floatUp = keyframes`
   0% { transform: translateY(0px) rotate(0deg); opacity: 0.3; }
@@ -266,10 +273,10 @@ export default function Component() {
                 Quick Links
               </Text>
               <VStack align="start" spacing={3}>
-                {['About Us', 'Programs', 'Bootcamp', 'Contact'].map((link, index) => (
+                {quickLinks.map((link, index) => (
                   <Link
                     key={index}
-                    href="#"
+                    href={link.href}
                     fontSize="14px"
                     color="gray.300"
                     _hover={{
@@ -278,7 +285,7 @@ export default function Component() {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    {link}
+                    {link.name}
                   </Link>
                 ))}
               </VStack>

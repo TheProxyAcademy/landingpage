@@ -486,7 +486,7 @@ function Bootcamp() {
               >
                 <Button
                   as={Link}
-                  to="/summerbootcamp"
+                  to="/summer-bootcamp"
                   size="lg"
                   px={10}
                   py={6}

@@ -47,7 +47,7 @@ function Nav() {
           </Link>
           <Button
             as={Link}
-            to="/register"
+            to="/summer-bootcamp"
             px={8}
             py={3}
             textTransform="uppercase"

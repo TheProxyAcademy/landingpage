@@ -106,6 +106,7 @@ function WhyUs() {
       position="relative"
       overflow="hidden"
       py={{ base: 20, lg: 32 }}
+      id="why-us"
     >
       {/* Background gradient overlay */}
       <Box

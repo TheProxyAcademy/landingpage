@@ -24,7 +24,7 @@ const usePageTracking = () => {
   useEffect(() => {
     ReactGA.send({ hitType: "pageview", page: location.pathname });
 
-    if (location.pathname === "/summerbootcamp") {
+    if (location.pathname === "/summer-bootcamp") {
       ReactGA.event({
         category: "Page",
         action: "Visited Summer Bootcamp Page",

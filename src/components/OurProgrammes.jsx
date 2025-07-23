@@ -131,6 +131,7 @@ function OurProgrammes() {
       bg="linear-gradient(135deg, #DFF8D5 0%, #f0fdf4 50%, #DFF8D5 100%)"
       position="relative"
       overflow="hidden"
+      id="our-programmes"
     >
       {/* Floating Background Elements */}
       <Box
