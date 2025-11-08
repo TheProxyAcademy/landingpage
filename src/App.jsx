@@ -15,6 +15,7 @@ import Register from "./pages/Register";
 import Bootcamp from "./pages/Bootcamp";
 import { Box } from "@chakra-ui/react";
 import { Toaster } from "react-hot-toast";
+import WhatsAppButton from "./components/WhatsAppButton";
 
 ReactGA.initialize("G-TMLPEYRV71");
 
@@ -73,6 +74,7 @@ const App = () => {
               />
             </Routes>
             <Footer />
+            <WhatsAppButton />
             <Toaster />
           </Box>
         </PageTrackingWrapper>
