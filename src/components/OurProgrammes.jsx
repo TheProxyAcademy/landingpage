@@ -1,13 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Flex, VStack, Text, SimpleGrid, Container, Center } from "@chakra-ui/react";
+import { Box, VStack, Text, SimpleGrid, Container, Link as ChakraLink, Wrap, WrapItem, Icon } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCode,
-  faCodeMerge,
-  faChartSimple,
-  faPenNib,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCode, faCodeMerge, faChartSimple, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { keyframes } from "@emotion/react";
+import { FaDownload, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -122,6 +118,27 @@ function OurProgrammes() {
       animation: slideInRight,
       glowColor: "rgba(5, 156, 2, 0.3)"
     }
+  ];
+
+  const resourceLinks = [
+    {
+      title: "Curriculum Overview",
+      description: "Age groups, module breakdown and learning outcomes.",
+      href: "/assets/resources/curriculum-overview.pdf",
+      icon: FaDownload,
+    },
+    {
+      title: "Sample Weekly Timetable",
+      description: "See how we blend live sessions, practice time and mentoring.",
+      href: "/assets/resources/sample-timetable.pdf",
+      icon: FaRegCalendarAlt,
+    },
+    {
+      title: "Tuition & Payment Guide",
+      description: "Tuition tiers, instalment options and available discounts.",
+      href: "/assets/resources/tuition-guide.pdf",
+      icon: FaWallet,
+    },
   ];
 
   return (
@@ -242,6 +259,57 @@ function OurProgrammes() {
             Discover the perfect path for your child's tech journey today!
           </Text>
         </VStack>
+        
+        <Wrap
+          spacing={{ base: 4, md: 6 }}
+          mt={10}
+          justify="center"
+          id="programme-resources"
+        >
+          {resourceLinks.map((resource) => (
+            <WrapItem key={resource.title}>
+              <Box
+                maxW="280px"
+                bg="white"
+                borderRadius="16px"
+                p={5}
+                boxShadow="0 18px 40px rgba(15, 23, 42, 0.08)"
+                border="1px solid rgba(226, 232, 240, 0.6)"
+                display="flex"
+                flexDirection="column"
+                gap={3}
+              >
+                <Box
+                  w="48px"
+                  h="48px"
+                  borderRadius="12px"
+                  bg="rgba(5, 156, 2, 0.12)"
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                >
+                  <Icon as={resource.icon} boxSize={6} color="green.600" />
+                </Box>
+                <Text fontWeight="bold" fontSize="lg" color="gray.800">
+                  {resource.title}
+                </Text>
+                <Text fontSize="sm" color="gray.600" lineHeight="1.6">
+                  {resource.description}
+                </Text>
+                <ChakraLink
+                  href={resource.href}
+                  download
+                  color="green.600"
+                  fontWeight="semibold"
+                  fontSize="sm"
+                  _hover={{ color: "green.700", textDecoration: "underline" }}
+                >
+                  Download PDF
+                </ChakraLink>
+              </Box>
+            </WrapItem>
+          ))}
+        </Wrap>
         
         <SimpleGrid 
           columns={{ base: 1, md: 2, lg: 4 }}

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Box, Flex, VStack, Text, Button, Image, Container } from "@chakra-ui/react";
+import { Box, VStack, Text, Button, Image, Container, Link as ChakraLink, Wrap, WrapItem } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 import BoyIllustration from "../assets/boy.png";
+import { FaDownload, FaPhoneAlt, FaRegCalendarCheck } from "react-icons/fa";
 
 // Keyframe animations
 const float = keyframes`
@@ -244,51 +245,150 @@ function Hero() {
         </Box>
         
         {/* Enhanced Button with animations */}
-        <Box
+        <VStack
+          align={{ base: "flex-start", md: "flex-start" }}
+          spacing={5}
           opacity={isVisible ? 1 : 0}
           transform={isVisible ? "translateY(0)" : "translateY(20px)"}
           transition="all 1s ease-out"
           transitionDelay="1s"
         >
-          <Button
-            as={Link}
-            to="/register"
-            px={10}
-            py={4}
-            textTransform="uppercase"
-            fontWeight="bold"
-            fontSize="md"
-            borderRadius="full"
-            bg="linear-gradient(45deg, #FFD700, #FFA500)"
-            color="gray.800"
-            border="3px solid transparent"
-            backgroundClip="padding-box"
-            position="relative"
-            _hover={{
-              transform: "scale(1.08) translateY(-2px)",
-              boxShadow: "0 10px 25px rgba(255, 215, 0, 0.4)",
-              bg: "linear-gradient(45deg, #FFA500, #FFD700)",
-            }}
-            _active={{
-              transform: "scale(1.02) translateY(0px)",
-            }}
-            transition="all 0.3s ease"
-            _before={{
-              content: '""',
-              position: "absolute",
-              top: "-3px",
-              left: "-3px",
-              right: "-3px",
-              bottom: "-3px",
-              background: "linear-gradient(45deg, #FFD700, #FFA500, #FFD700)",
-              borderRadius: "full",
-              zIndex: -1,
-              animation: `${pulse} 2s ease-in-out infinite`,
-            }}
-          >
-            Enrol Now
-          </Button>
-        </Box>
+          <Wrap spacing={4}>
+            <WrapItem>
+              <Button
+                as={RouterLink}
+                to="/register"
+                px={10}
+                py={4}
+                textTransform="uppercase"
+                fontWeight="bold"
+                fontSize="md"
+                borderRadius="full"
+                bg="linear-gradient(45deg, #FFD700, #FFA500)"
+                color="gray.800"
+                border="3px solid transparent"
+                backgroundClip="padding-box"
+                position="relative"
+                _hover={{
+                  transform: "scale(1.08) translateY(-2px)",
+                  boxShadow: "0 10px 25px rgba(255, 215, 0, 0.4)",
+                  bg: "linear-gradient(45deg, #FFA500, #FFD700)",
+                }}
+                _active={{
+                  transform: "scale(1.02) translateY(0px)",
+                }}
+                transition="all 0.3s ease"
+                _before={{
+                  content: '""',
+                  position: "absolute",
+                  top: "-3px",
+                  left: "-3px",
+                  right: "-3px",
+                  bottom: "-3px",
+                  background: "linear-gradient(45deg, #FFD700, #FFA500, #FFD700)",
+                  borderRadius: "full",
+                  zIndex: -1,
+                  animation: `${pulse} 2s ease-in-out infinite`,
+                }}
+              >
+                Enrol Now
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                as="a"
+                href="/assets/TPA-Brochure.pdf"
+                download
+                px={8}
+                py={4}
+                fontWeight="bold"
+                fontSize="md"
+                borderRadius="full"
+                bg="white"
+                color="green.700"
+                border="2px solid rgba(5, 156, 2, 0.2)"
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                _hover={{
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 12px 25px rgba(5, 156, 2, 0.15)",
+                }}
+                _active={{
+                  transform: "translateY(0)",
+                }}
+              >
+                <FaDownload />
+                Download Brochure
+              </Button>
+            </WrapItem>
+            <WrapItem>
+              <Button
+                as="a"
+                href="https://calendly.com/proxyacademyint/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                px={8}
+                py={4}
+                fontWeight="bold"
+                fontSize="md"
+                borderRadius="full"
+                bg="linear-gradient(45deg, rgba(5, 156, 2, 0.9), rgba(4, 127, 1, 0.9))"
+                color="white"
+                display="inline-flex"
+                alignItems="center"
+                gap={2}
+                _hover={{
+                  transform: "translateY(-2px)",
+                  boxShadow: "0 15px 30px rgba(5, 156, 2, 0.4)",
+                }}
+                _active={{
+                  transform: "translateY(0)",
+                }}
+              >
+                <FaPhoneAlt />
+                Book a Call
+              </Button>
+            </WrapItem>
+          </Wrap>
+          {/* <Wrap spacing={4}>
+            {[
+              {
+                label: "Curriculum overview",
+                href: "/assets/resources/curriculum-overview.pdf",
+              },
+              {
+                label: "Sample weekly timetable",
+                href: "/assets/resources/sample-timetable.pdf",
+              },
+              {
+                label: "Tuition & payment guide",
+                href: "/assets/resources/tuition-guide.pdf",
+              },
+            ].map((resource, index) => (
+              <WrapItem key={resource.label}>
+                <ChakraLink
+                  href={resource.href}
+                  download
+                  color="white"
+                  fontSize="sm"
+                  display="inline-flex"
+                  alignItems="center"
+                  gap={2}
+                  opacity={0.9}
+                  _hover={{
+                    color: "yellow.300",
+                    textDecoration: "none",
+                    transform: "translateY(-2px)",
+                  }}
+                >
+                  <FaRegCalendarCheck />
+                  {resource.label}
+                </ChakraLink>
+              </WrapItem>
+            ))}
+          </Wrap> */}
+        </VStack>
       </Container>
       
       {/* Enhanced Boy Illustration */}
