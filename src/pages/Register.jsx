@@ -39,6 +39,8 @@ function Register({ onFormInteraction, onFormSubmission }) {
             w="full"
             maxW="400px"
             mx="auto"
+            loading="lazy"
+            decoding="async"
           />
           <Text 
             fontSize="xs" 

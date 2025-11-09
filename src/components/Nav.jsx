@@ -43,6 +43,8 @@ function Nav() {
               src={Logo}
               alt="Proxy Academy's Logo icon"
               h="50px"
+              loading="lazy"
+              decoding="async"
             />
           </Link>
           <Button

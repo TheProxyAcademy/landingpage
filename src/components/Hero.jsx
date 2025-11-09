@@ -406,6 +406,9 @@ function Hero() {
         transitionDelay="0.6s"
         filter="drop-shadow(0 20px 40px rgba(0,0,0,0.3))"
         animation={`${float} 6s ease-in-out infinite`}
+        loading="eager"
+        decoding="async"
+        sizes="(max-width: 768px) 220px, (max-width: 1536px) 450px, 800px"
         _hover={{
           transform: "scale(1.05)",
           transition: "transform 0.3s ease",
