@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Box, VStack, Text, Button, Image, Container, Link as ChakraLink, Wrap, WrapItem } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { Link as RouterLink } from "react-router-dom";
-import BoyIllustration from "../assets/boy.png";
+import BoyIllustration from "../assets/optimized/boy.webp";
 import { FaDownload, FaPhoneAlt, FaRegCalendarCheck } from "react-icons/fa";
 
 // Keyframe animations

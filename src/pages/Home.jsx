@@ -6,6 +6,7 @@ import OurProgrammes from "../components/OurProgrammes";
 import Testimonials from "../components/Testimonials";
 import Faqs from "../components/Faqs";
 import Bootcamp from "../components/Bootcamp";
+import DeferredRender from "../components/DeferredRender";
 // import ProgrammeModal from "../components/ProgrammeModal";
 
 function Home() {
@@ -19,8 +20,10 @@ function Home() {
         <Bootcamp />
         <WhyUs />
         <OurProgrammes />
-        <Testimonials />
-        <Faqs />
+        <DeferredRender>
+          <Testimonials />
+          <Faqs />
+        </DeferredRender>
       </Box>
     </Box>
   );

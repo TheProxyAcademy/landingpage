@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Text, Image, Link, Container } from "@chakra-ui/react";
 import BootcampForm from "../components/BootcampComponents/BootcampForm";
-import RegIllustration from "../assets/reg-illustration.png";
+import RegIllustration from "../assets/optimized/reg-illustration.webp";
 
 function Register({ onFormInteraction, onFormSubmission }) {
   return (
