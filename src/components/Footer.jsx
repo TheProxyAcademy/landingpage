@@ -59,6 +59,7 @@ export default function Component() {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleSections, setVisibleSections] = useState([]);
   const footerRef = useRef(null);
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -390,7 +391,7 @@ export default function Component() {
               color="gray.400"
               fontFamily="'Syne', sans-serif"
             >
-              © 2025 The Proxy Academy Ltd. All rights reserved. | Empowering Future Tech Leaders
+              © {currentYear} The Proxy Academy Ltd. All rights reserved. | Empowering Future Tech Leaders
             </Text>
           </VStack>
         </VStack>
