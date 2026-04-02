@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Flex, Text, Image, Link, Container } from "@chakra-ui/react";
-import BootcampForm from "../components/BootcampComponents/BootcampForm";
 import RegIllustration from "../assets/optimized/reg-illustration.webp";
 
 function Register({ onFormInteraction, onFormSubmission }) {
@@ -70,10 +69,24 @@ function Register({ onFormInteraction, onFormSubmission }) {
           bg="gray.100"
           borderRadius="md"
         >
-          <BootcampForm
-            onFormInteraction={onFormInteraction}
-            onFormSubmission={onFormSubmission}
-          />
+          <Box
+            onMouseDown={() => onFormInteraction?.()}
+            onTouchStart={() => onFormInteraction?.()}
+          >
+            <Box
+              as="iframe"
+              title="Enrolment form"
+              src="https://docs.google.com/forms/d/e/1FAIpQLScgv-0ZAajAhevEJV4cBQ4ASqKqKUyW-McVFlj4_i2nCVu2dA/viewform?embedded=true"
+              w="full"
+              maxW="700px"
+              h="520px"
+              border={0}
+              mx="auto"
+              display="block"
+              bg="white"
+              borderRadius="md"
+            />
+          </Box>
         </Box>
       </Flex>
     </Container>

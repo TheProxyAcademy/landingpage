@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, Flex, Text, Container, VStack, HStack, Badge } from "@chakra-ui/react";
+import { Box, Flex, Text, Container, VStack, HStack, Badge, Button } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-import BootcampForm from "./BootcampForm";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -249,7 +248,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                 {/* Feature Highlights */}
                 <VStack align="start" spacing={4} w="full" mt={4}>
                   {[
-                    { icon: "📅", text: "August 2 - September 6, 2025" },
+                    { icon: "📅", text: "August 3" },
                     { icon: "👥", text: "Ages 5-17 Welcome" },
                     { icon: "💻", text: "100% Online Learning" },
                   ].map((item, index) => (
@@ -379,11 +378,37 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                 </Text>
               </VStack> */}
 
-              {/* Form Component */}
-              <BootcampForm
-                onFormInteraction={onFormInteraction}
-                onFormSubmission={onFormSubmission}
-              />
+              <VStack spacing={4} textAlign="center">
+                <Text
+                  fontSize="22px"
+                  fontFamily="'Syne', sans-serif"
+                  fontWeight="bold"
+                  color="gray.800"
+                  textTransform="uppercase"
+                  letterSpacing="wide"
+                >
+                  Bootcamp registration is currently closed
+                </Text>
+                <Text fontSize="14px" color="gray.600" lineHeight="1.6" maxW="420px">
+                  Next bootcamp date: <Text as="span" fontWeight="bold" color="green.600">August 3</Text>. Please check back soon.
+                </Text>
+                <Button
+                  isDisabled
+                  w="full"
+                  py={6}
+                  borderRadius="full"
+                  bg="rgba(5, 156, 2, 0.12)"
+                  color="green.700"
+                  border="1px solid rgba(5, 156, 2, 0.25)"
+                  fontFamily="'Syne', sans-serif"
+                  fontWeight="bold"
+                  textTransform="uppercase"
+                  letterSpacing="wide"
+                  cursor="not-allowed"
+                >
+                  Registration opens soon
+                </Button>
+              </VStack>
               
             </Box>
           </Box>
