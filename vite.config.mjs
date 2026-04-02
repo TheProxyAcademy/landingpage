@@ -10,9 +10,8 @@ export default defineConfig(() => {
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('@chakra-ui') || id.includes('@emotion')) return 'ui';
-              if (id.includes('react-icons') || id.includes('@fortawesome')) return 'icons';
-              if (id.includes('react-router')) return 'router';
+              // On VPS setups without perfect HTTP/2 + compression, too many chunks can hurt.
+              // Keep chunking conservative: only split obvious route/feature clusters.
               if (id.includes('react-slick') || id.includes('slick-carousel')) return 'carousel';
               if (id.includes('react-ga4')) return 'analytics';
               return 'vendor';
