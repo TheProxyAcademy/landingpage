@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Badge, Box, Container, SimpleGrid, Text, VStack } from "@chakra-ui/react";
+import { Badge, Box, Container, HStack, Text, VStack } from "@chakra-ui/react";
 // import { Link as RouterLink } from "react-router-dom";
 
 function Bootcamp() {
@@ -26,6 +26,34 @@ function Bootcamp() {
     { label: "Minutes", value: minutes },
     { label: "Seconds", value: seconds },
   ];
+
+  const TimeBox = ({ label, value }) => (
+    <VStack spacing={1} minW={{ base: "64px", md: "90px" }}>
+      <Box
+        bg="gray.50"
+        border="1px solid"
+        borderColor="gray.200"
+        borderRadius="14px"
+        px={{ base: 4, md: 6 }}
+        py={{ base: 3, md: 4 }}
+        w="full"
+      >
+        <Text
+          fontSize={{ base: "28px", md: "44px" }}
+          fontWeight="bold"
+          color="green.700"
+          lineHeight="1"
+          textAlign="center"
+          fontFamily="'Syne', sans-serif"
+        >
+          {String(value).padStart(2, "0")}
+        </Text>
+      </Box>
+      <Text fontSize="11px" color="gray.500" textTransform="uppercase" letterSpacing="wider">
+        {label}
+      </Text>
+    </VStack>
+  );
 
   return (
     <Box py={{ base: 10, lg: 16 }} bg="white">
@@ -59,25 +87,38 @@ function Bootcamp() {
             </Text>
           </VStack>
 
-          <SimpleGrid columns={{ base: 2, md: 4 }} spacing={4} w="full" maxW="720px">
-            {tiles.map((t) => (
-              <Box
-                key={t.label}
-                bg="gray.50"
-                border="1px solid"
-                borderColor="gray.200"
-                borderRadius="16px"
-                p={{ base: 4, md: 6 }}
-              >
-                <Text fontSize={{ base: "28px", md: "40px" }} fontWeight="bold" color="green.700">
-                  {String(t.value).padStart(2, "0")}
-                </Text>
-                <Text fontSize="12px" color="gray.500" textTransform="uppercase" letterSpacing="wider">
-                  {t.label}
-                </Text>
-              </Box>
+          <HStack
+            spacing={{ base: 2, md: 3 }}
+            justify="center"
+            flexWrap="wrap"
+            w="full"
+            maxW="900px"
+          >
+            {tiles.map((t, idx) => (
+              <React.Fragment key={t.label}>
+                <TimeBox label={t.label} value={t.value} />
+                {idx < tiles.length - 1 && (
+                  <Text
+                    fontSize={{ base: "28px", md: "42px" }}
+                    fontWeight="bold"
+                    color="gray.400"
+                    lineHeight="1"
+                    px={{ base: 0, md: 1 }}
+                    pb="18px"
+                    userSelect="none"
+                  >
+                    :
+                  </Text>
+                )}
+              </React.Fragment>
             ))}
-          </SimpleGrid>
+          </HStack>
+
+          {!isLive && (
+            <Badge colorScheme="green" variant="subtle" px={3} py={2} borderRadius="full">
+              It’s bootcamp day
+            </Badge>
+          )}
 
           {/* <HStack spacing={3} pt={2} flexWrap="wrap" justify="center">
             <Button
