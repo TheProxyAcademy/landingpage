@@ -1,10 +1,16 @@
 import React from "react";
 import { Box, Flex, Text, Image, Link, Container } from "@chakra-ui/react";
 import RegIllustration from "../assets/optimized/reg-illustration.webp";
+import Seo from "../components/Seo";
 
 function Register({ onFormInteraction, onFormSubmission }) {
   return (
     <Container maxW="1440px" py={{ base: 10, lg: 20 }} px={{ base: 5, lg: 20 }}>
+      <Seo
+        title="Enrol"
+        description="Enrol for classes at The Proxy Academy. Complete our quick form to get started with tech training for kids and teens."
+        canonicalPath="/register"
+      />
       <Flex 
         direction={{ base: "column", lg: "row" }}
         justify="space-between"
