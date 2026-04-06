@@ -33,7 +33,8 @@
   },
   "scripts": {
     "start": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/copy-spa-fallback.mjs",
+    "zip:cpanel": "pnpm run build && node scripts/make-cpanel-zip.mjs",
     "serve": "vite preview"
   },
   "eslintConfig": {
