@@ -16,6 +16,7 @@ import WhatsAppButton from "./components/WhatsAppButton";
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Bootcamp = lazy(() => import("./pages/Bootcamp"));
+const FocusflowCohort = lazy(() => import("./pages/FocusflowCohort"));
 
 const GA_MEASUREMENT_ID = "G-TMLPEYRV71";
 let gaPromise;
@@ -45,6 +46,12 @@ const usePageTracking = () => {
         ReactGA.event({
           category: "Page",
           action: "Visited Summer Bootcamp Page",
+        });
+      }
+      if (location.pathname === "/focusflow-cohort") {
+        ReactGA.event({
+          category: "Page",
+          action: "Visited FocusFlow Cohort Page",
         });
       }
     };
@@ -97,6 +104,7 @@ const App = () => {
                     />
                   }
                 />
+                <Route path="/focusflow-cohort" element={<FocusflowCohort />} />
               </Routes>
             </Suspense>
             <Footer />
