@@ -12,10 +12,18 @@ function absoluteUrl(pathname) {
   return `${SITE_ORIGIN}${path === "/" ? "/" : path}`;
 }
 
+function resolveImageUrl(image) {
+  if (!image) return DEFAULT_IMAGE;
+  if (image.startsWith("http://") || image.startsWith("https://")) return image;
+  const path = image.startsWith("/") ? image : `/${image}`;
+  return `${SITE_ORIGIN}${path}`;
+}
+
 export default function Seo({
   title,
   description,
   image = DEFAULT_IMAGE,
+  imageAlt,
   canonicalPath,
   noindex = false,
   type = "website",
@@ -23,6 +31,7 @@ export default function Seo({
   const { pathname } = useLocation();
   const canonical = canonicalPath ? absoluteUrl(canonicalPath) : absoluteUrl(pathname);
   const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Tech Classes for Kids & Teens`;
+  const ogImage = resolveImageUrl(image);
 
   return (
     <Helmet>
@@ -41,13 +50,17 @@ export default function Seo({
       <meta property="og:title" content={fullTitle} />
       {description ? <meta property="og:description" content={description} /> : null}
       <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={ogImage} />
+      <meta property="og:image:secure_url" content={ogImage} />
+      {imageAlt ? <meta property="og:image:alt" content={imageAlt} /> : null}
+      {ogImage.endsWith(".png") ? <meta property="og:image:type" content="image/png" /> : null}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       {description ? <meta name="twitter:description" content={description} /> : null}
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={ogImage} />
+      {imageAlt ? <meta name="twitter:image:alt" content={imageAlt} /> : null}
     </Helmet>
   );
 }
