@@ -546,6 +546,10 @@ export function PricingSection() {
                 fontFamily="'Syne', sans-serif"
                 fontWeight="bold"
                 leftIcon={<FaWhatsapp />}
+                _hover={{ transform: "translateY(-2px)", shadow: "lg" }}
+                transition="all 0.3s ease"
+                px={4}
+                py={2}
               >
                 Questions about pricing? Chat with us
               </Button>

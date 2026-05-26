@@ -27,7 +27,7 @@ export const COHORT = {
 };
 
 export const PRICING = {
-  fullPrice: "₦120,000",
+  fullPrice: "₦60,000",
   installmentLabel: "Pay in 2 or 3 installments",
   installmentNote: "Flexible payment plans available — chat with us to choose what works for your family.",
   includes: [
