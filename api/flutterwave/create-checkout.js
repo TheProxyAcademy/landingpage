@@ -35,6 +35,8 @@ export default async function handler(req, res) {
       redirectOrigin ||
       req.headers.origin ||
       process.env.SITE_ORIGIN ||
+      process.env.URL ||
+      process.env.DEPLOY_PRIME_URL ||
       "https://theproxyacademy.com";
     const redirectUrl = `${String(origin).replace(/\/$/, "")}/focusflow-cohort/register?payment=return`;
 

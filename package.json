@@ -33,6 +33,7 @@
   },
   "scripts": {
     "start": "vite",
+    "dev:netlify": "netlify dev",
     "build": "vite build && node scripts/prerender-focusflow-cohort.mjs && node scripts/copy-spa-fallback.mjs",
     "zip:cpanel": "pnpm run build && node scripts/make-cpanel-zip.mjs",
     "serve": "vite preview"

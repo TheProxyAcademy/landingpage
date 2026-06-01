@@ -5,13 +5,25 @@
 [build.environment]
   NODE_VERSION = "18.18.0"
   PNPM_VERSION = "9"
-  
-# Force npm usage
-[build.processing]
-  skip_processing = false
 
-# Client-side routes (/register, /summer-bootcamp): serve index.html so React Router runs.
-# Also ship public/_redirects into build/ as a fallback if deploy root omits this file.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Flutterwave API (must come before SPA fallback)
+[[redirects]]
+  from = "/api/flutterwave/create-checkout"
+  to = "/.netlify/functions/flutterwave-create-checkout"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/flutterwave/verify"
+  to = "/.netlify/functions/flutterwave-verify"
+  status = 200
+  force = true
+
+# React Router — static files (e.g. /focusflow-cohort/index.html) are served first
 [[redirects]]
   from = "/*"
   to = "/index.html"
