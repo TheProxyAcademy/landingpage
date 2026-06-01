@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Box, Flex, Image, Button, Container } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../assets/icon.svg";
 
 function Nav() {
+  const { pathname } = useLocation();
+  const enrolPath = pathname.startsWith("/focusflow-cohort")
+    ? "/focusflow-cohort/register"
+    : "/register";
   const [stickyClass, setStickyClass] = useState("relative");
 
   useEffect(() => {
@@ -49,7 +53,7 @@ function Nav() {
           </Link>
           <Button
             as={Link}
-            to="/register"
+            to={enrolPath}
             px={8}
             py={3}
             textTransform="uppercase"

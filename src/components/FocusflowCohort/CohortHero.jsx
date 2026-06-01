@@ -152,7 +152,7 @@ function CohortHero() {
           <HStack spacing={4} flexWrap="wrap" justify="center" pt={2}>
             <Button
               as={RouterLink}
-              to="/register"
+              to="/focusflow-cohort/register"
               size="lg"
               px={10}
               py={7}

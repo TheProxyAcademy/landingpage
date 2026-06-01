@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { vercelApiPlugin } from './scripts/vite-vercel-api-plugin.mjs';
 
 export default defineConfig(() => {
   return {
@@ -20,6 +21,6 @@ export default defineConfig(() => {
         },
       },
     },
-    plugins: [react()],
+    plugins: [react(), vercelApiPlugin()],
   };
 });

@@ -17,6 +17,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Bootcamp = lazy(() => import("./pages/Bootcamp"));
 const FocusflowCohort = lazy(() => import("./pages/FocusflowCohort"));
+const FocusflowCohortRegister = lazy(() => import("./pages/FocusflowCohortRegister"));
 
 const GA_MEASUREMENT_ID = "G-TMLPEYRV71";
 let gaPromise;
@@ -54,6 +55,12 @@ const usePageTracking = () => {
           action: "Visited FocusFlow Cohort Page",
         });
       }
+      if (location.pathname === "/focusflow-cohort/register") {
+        ReactGA.event({
+          category: "Page",
+          action: "Visited FocusFlow Cohort Register Page",
+        });
+      }
     };
 
     // Defer analytics so it doesn't compete with first paint.
@@ -83,7 +90,15 @@ const App = () => {
         <PageTrackingWrapper>
           <Box bg="white" minH="100vh" color="gray.800">
             <Nav />
-            <Suspense fallback={null}>
+            <Suspense
+              fallback={
+                <Box minH="40vh" display="flex" alignItems="center" justifyContent="center">
+                  <Box color="gray.500" fontSize="sm">
+                    Loading…
+                  </Box>
+                </Box>
+              }
+            >
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
@@ -105,6 +120,10 @@ const App = () => {
                   }
                 />
                 <Route path="/focusflow-cohort" element={<FocusflowCohort />} />
+                <Route
+                  path="/focusflow-cohort/register"
+                  element={<FocusflowCohortRegister />}
+                />
               </Routes>
             </Suspense>
             <Footer />

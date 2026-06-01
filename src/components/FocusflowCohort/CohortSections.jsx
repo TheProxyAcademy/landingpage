@@ -522,7 +522,7 @@ export function PricingSection() {
               </Text>
               <Button
                 as={RouterLink}
-                to="/register"
+                to="/focusflow-cohort/register"
                 size="lg"
                 borderRadius="full"
                 bg="linear-gradient(135deg, #059C02 0%, #0b7f03 100%)"
@@ -712,7 +712,7 @@ export function FinalCtaSection() {
         <HStack spacing={4} justify="center" flexWrap="wrap">
           <Button
             as={RouterLink}
-            to="/register"
+            to="/focusflow-cohort/register"
             size="lg"
             px={10}
             borderRadius="full"
