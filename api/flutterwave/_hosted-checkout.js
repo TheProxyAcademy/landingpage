@@ -4,6 +4,24 @@ export function isV4ChargeId(id) {
   return typeof id === "string" && id.startsWith("chg_");
 }
 
+/** Returns null if valid, or a user-facing error string. */
+export function validateFlutterwaveSecretKey(secretKey) {
+  if (!secretKey) return "FLUTTERWAVE_SECRET_KEY is not set.";
+
+  if (secretKey.startsWith("FLWPUBK")) {
+    return "FLUTTERWAVE_SECRET_KEY looks like a Public Key (FLWPUBK-...). Use your Secret Key (FLWSECK-...) from Flutterwave → Settings → API Keys.";
+  }
+
+  if (
+    !secretKey.startsWith("FLWSECK_TEST-") &&
+    !secretKey.startsWith("FLWSECK-")
+  ) {
+    return "FLUTTERWAVE_SECRET_KEY must be your Flutterwave Secret Key (FLWSECK-... or FLWSECK_TEST-...), not Client Secret or Encryption Key. Find it under Flutterwave → Settings → API Keys.";
+  }
+
+  return null;
+}
+
 export async function createV3HostedPayment({
   secretKey,
   reference,

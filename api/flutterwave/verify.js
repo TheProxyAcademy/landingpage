@@ -2,8 +2,13 @@ import {
   getChargeById,
   getChargeByReference,
   normalizeEnv,
+  shouldUseV4Payment,
 } from "./_flw-v4.js";
-import { isV4ChargeId, verifyV3Transaction } from "./_hosted-checkout.js";
+import {
+  isV4ChargeId,
+  validateFlutterwaveSecretKey,
+  verifyV3Transaction,
+} from "./_hosted-checkout.js";
 
 /**
  * Google Apps Script web apps often 302-redirect POST → GET, which drops the body
@@ -179,39 +184,26 @@ export default async function handler(req, res) {
 
   try {
     const secretKey = normalizeEnv(process.env.FLUTTERWAVE_SECRET_KEY);
+    const validV3Key = secretKey && !validateFlutterwaveSecretKey(secretKey);
     const useV4 =
+      shouldUseV4Payment() ||
       isV4ChargeId(chargeLookupId) ||
-      (!secretKey && normalizeEnv(process.env.FLUTTERWAVE_CLIENT_ID));
+      !validV3Key;
 
     let result;
 
-    if (useV4 && !secretKey) {
+    if (useV4) {
       result = await verifyV4Payment({
         chargeLookupId,
         chargeReference,
-        expectedAmount,
-        expectedCurrency,
-      });
-    } else if (secretKey && chargeLookupId && !isV4ChargeId(chargeLookupId)) {
-      result = await verifyV3Transaction({
-        secretKey,
-        transactionId: chargeLookupId,
-        tx_ref: chargeReference,
-        expectedAmount,
-        expectedCurrency,
-      });
-    } else if (secretKey && chargeReference && !chargeLookupId) {
-      result = await verifyV3Transaction({
-        secretKey,
-        transactionId: chargeLookupId,
-        tx_ref: chargeReference,
         expectedAmount,
         expectedCurrency,
       });
     } else {
-      result = await verifyV4Payment({
-        chargeLookupId,
-        chargeReference,
+      result = await verifyV3Transaction({
+        secretKey,
+        transactionId: chargeLookupId,
+        tx_ref: chargeReference,
         expectedAmount,
         expectedCurrency,
       });

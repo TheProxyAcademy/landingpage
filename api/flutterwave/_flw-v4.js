@@ -28,6 +28,21 @@ export function getFlutterwaveEnv() {
   return "test";
 }
 
+export function hasV4Credentials() {
+  return !!(
+    normalizeEnv(process.env.FLUTTERWAVE_CLIENT_ID) &&
+    normalizeEnv(process.env.FLUTTERWAVE_CLIENT_SECRET)
+  );
+}
+
+/** v4 when OAuth creds exist unless FLUTTERWAVE_USE_V4=false */
+export function shouldUseV4Payment() {
+  if (!hasV4Credentials()) return false;
+  const prefer = normalizeEnv(process.env.FLUTTERWAVE_USE_V4).toLowerCase();
+  if (prefer === "false" || prefer === "0") return false;
+  return true;
+}
+
 export function getApiBaseUrl() {
   const override = normalizeEnv(process.env.FLUTTERWAVE_API_BASE_URL);
   if (override) return override.replace(/\/$/, "");
