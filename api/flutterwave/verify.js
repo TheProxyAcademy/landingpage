@@ -2,6 +2,7 @@ import {
   getChargeById,
   getChargeByReference,
 } from "./_flw-v4.js";
+import { isV4ChargeId, verifyV3Transaction } from "./_hosted-checkout.js";
 
 /**
  * Google Apps Script web apps often 302-redirect POST → GET, which drops the body
@@ -42,6 +43,115 @@ async function postToGoogleAppsScript(url, payload) {
   return { response, json };
 }
 
+async function storeRegistration({ registration, flutterwave }) {
+  const sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+  const sheetsToken = process.env.GOOGLE_SHEETS_WEBHOOK_TOKEN;
+  if (!sheetsUrl) return { stored: false, storeError: null };
+
+  try {
+    const payload = {
+      token: sheetsToken || null,
+      source: "focusflow-cohort",
+      storedAt: new Date().toISOString(),
+      registration: registration || null,
+      flutterwave,
+    };
+
+    const { response: storeRes, json: storeJson } = await postToGoogleAppsScript(
+      sheetsUrl,
+      payload
+    );
+
+    const stored = storeRes.ok && storeJson?.ok !== false;
+    if (stored) return { stored: true, storeError: null };
+
+    return {
+      stored: false,
+      storeError:
+        storeJson ||
+        {
+          status: storeRes.status,
+          hint:
+            storeJson?.error ||
+            "Sheet webhook failed. Redeploy Apps Script and use the /exec URL.",
+        },
+    };
+  } catch (e) {
+    return { stored: false, storeError: { message: e?.message || String(e) } };
+  }
+}
+
+async function verifyV4Payment({
+  chargeLookupId,
+  chargeReference,
+  expectedAmount,
+  expectedCurrency,
+}) {
+  const data = chargeLookupId
+    ? await getChargeById(chargeLookupId)
+    : await getChargeByReference(chargeReference);
+
+  if (!data) {
+    return { verified: false, notFound: true };
+  }
+
+  const status = data.status;
+  const amount = Number(data.amount);
+  const currency = data.currency;
+  const fwReference = data.reference;
+
+  const okStatus = status === "succeeded";
+  const okCurrency = currency === expectedCurrency;
+  const okAmount =
+    typeof expectedAmount === "number"
+      ? Number(amount) === Number(expectedAmount)
+      : true;
+  const okRef = chargeReference ? fwReference === chargeReference : true;
+
+  if (!okStatus || !okCurrency || !okAmount || !okRef) {
+    return {
+      verified: false,
+      reason: { okStatus, okCurrency, okAmount, okRef },
+      flutterwave: {
+        id: data.id,
+        tx_ref: fwReference,
+        reference: fwReference,
+        status,
+        amount,
+        currency,
+        created_at: data.created_datetime,
+        customer: data.billing_details
+          ? {
+              name: data.billing_details.name,
+              email: data.billing_details.email,
+              phone_number: data.billing_details.phone,
+            }
+          : null,
+      },
+    };
+  }
+
+  return {
+    verified: true,
+    flutterwave: {
+      id: data.id,
+      tx_ref: fwReference,
+      reference: fwReference,
+      status,
+      amount,
+      currency,
+      created_at: data.created_datetime,
+      customer: data.billing_details
+        ? {
+            name: data.billing_details.name,
+            email: data.billing_details.email,
+            phone_number: data.billing_details.phone,
+          }
+        : null,
+    },
+  };
+}
+
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ ok: false, error: "Method not allowed" });
@@ -67,111 +177,75 @@ export default async function handler(req, res) {
   }
 
   try {
-    const data = chargeLookupId
-      ? await getChargeById(chargeLookupId)
-      : await getChargeByReference(chargeReference);
+    const secretKey = process.env.FLUTTERWAVE_SECRET_KEY;
+    const useV4 =
+      isV4ChargeId(chargeLookupId) ||
+      (!secretKey && process.env.FLUTTERWAVE_CLIENT_ID);
 
-    if (!data) {
+    let result;
+
+    if (useV4 && !secretKey) {
+      result = await verifyV4Payment({
+        chargeLookupId,
+        chargeReference,
+        expectedAmount,
+        expectedCurrency,
+      });
+    } else if (secretKey && chargeLookupId && !isV4ChargeId(chargeLookupId)) {
+      result = await verifyV3Transaction({
+        secretKey,
+        transactionId: chargeLookupId,
+        tx_ref: chargeReference,
+        expectedAmount,
+        expectedCurrency,
+      });
+    } else if (secretKey && chargeReference && !chargeLookupId) {
+      result = await verifyV3Transaction({
+        secretKey,
+        transactionId: chargeLookupId,
+        tx_ref: chargeReference,
+        expectedAmount,
+        expectedCurrency,
+      });
+    } else {
+      result = await verifyV4Payment({
+        chargeLookupId,
+        chargeReference,
+        expectedAmount,
+        expectedCurrency,
+      });
+    }
+
+    if (result.notFound) {
       res.status(404).json({
         ok: false,
         verified: false,
-        error: "Charge not found",
+        error: "Payment not found",
       });
       return;
     }
 
-    const status = data.status;
-    const amount = Number(data.amount);
-    const currency = data.currency;
-    const fwReference = data.reference;
-
-    const okStatus = status === "succeeded";
-    const okCurrency = currency === expectedCurrency;
-    const okAmount =
-      typeof expectedAmount === "number"
-        ? Number(amount) === Number(expectedAmount)
-        : true;
-    const okRef = chargeReference ? fwReference === chargeReference : true;
-
-    if (!okStatus || !okCurrency || !okAmount || !okRef) {
+    if (!result.verified) {
       res.status(400).json({
         ok: false,
         verified: false,
-        reason: { okStatus, okCurrency, okAmount, okRef },
-        flutterwave: {
-          id: data.id,
-          status,
-          amount,
-          currency,
-          reference: fwReference,
-        },
+        reason: result.reason,
+        flutterwave: result.flutterwave,
       });
       return;
     }
 
-    const sheetsUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-    const sheetsToken = process.env.GOOGLE_SHEETS_WEBHOOK_TOKEN;
-    let stored = false;
-    let storeError = null;
-
-    if (sheetsUrl) {
-      try {
-        const payload = {
-          token: sheetsToken || null,
-          source: "focusflow-cohort",
-          storedAt: new Date().toISOString(),
-          registration: registration || null,
-          flutterwave: {
-            id: data.id,
-            reference: data.reference,
-            tx_ref: data.reference,
-            status: data.status,
-            amount: data.amount,
-            currency: data.currency,
-            created_at: data.created_datetime,
-            billing_details: data.billing_details || null,
-            customer: data.billing_details
-              ? {
-                  name: data.billing_details.name,
-                  email: data.billing_details.email,
-                  phone_number: data.billing_details.phone,
-                }
-              : null,
-          },
-        };
-
-        const { response: storeRes, json: storeJson } = await postToGoogleAppsScript(
-          sheetsUrl,
-          payload
-        );
-
-        stored = storeRes.ok && storeJson?.ok !== false;
-        if (!stored) {
-          storeError = storeJson || {
-            status: storeRes.status,
-            hint:
-              storeJson?.error ||
-              "Sheet webhook failed. Redeploy Apps Script and use the /exec URL.",
-          };
-        }
-      } catch (e) {
-        storeError = { message: e?.message || String(e) };
-      }
-    }
+    const { stored, storeError } = await storeRegistration({
+      registration,
+      flutterwave: result.flutterwave,
+    });
 
     res.status(200).json({
       ok: true,
       verified: true,
       stored,
       storeError,
-      flutterwave: {
-        id: data.id,
-        reference: data.reference,
-        status: data.status,
-        amount: data.amount,
-        currency: data.currency,
-        billing_details: data.billing_details || null,
-      },
+      flutterwave: result.flutterwave,
     });
   } catch (e) {
     res.status(500).json({ ok: false, error: e?.message || String(e) });

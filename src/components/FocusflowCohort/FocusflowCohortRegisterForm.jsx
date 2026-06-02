@@ -188,9 +188,9 @@ export default function FocusflowCohortRegisterForm() {
         currency: "NGN",
         registration: buildRegistration(),
       });
-    } catch {
+    } catch (err) {
       setIsPaying(false);
-      toast.error("Payment failed to start. Please try again.");
+      toast.error(err?.message || "Payment failed to start. Please try again.");
     }
   };
 
