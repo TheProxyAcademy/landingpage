@@ -20,6 +20,40 @@ const outDir = path.join(buildDir, "focusflow-cohort");
 const outHtml = path.join(outDir, "index.html");
 const srcImage = path.join(root, "src/assets/focusflow/focusflow-1.png");
 const publicImage = path.join(root, "public/focusflow/focusflow-1.png");
+const buildImage = path.join(buildDir, "focusflow/focusflow-1.png");
+
+function resolveOgImageSource() {
+  if (fs.existsSync(srcImage)) return srcImage;
+  if (fs.existsSync(publicImage)) return publicImage;
+
+  const assetsDir = path.join(buildDir, "assets");
+  if (fs.existsSync(assetsDir)) {
+    const hashed = fs
+      .readdirSync(assetsDir)
+      .find((name) => name.includes("focusflow-1"));
+    if (hashed) return path.join(assetsDir, hashed);
+  }
+
+  return null;
+}
+
+function syncOgImage() {
+  const source = resolveOgImageSource();
+  if (!source) {
+    console.warn(
+      "prerender-focusflow-cohort: focusflow-1.png not found; skipping OG image copy."
+    );
+    return;
+  }
+
+  fs.mkdirSync(path.dirname(buildImage), { recursive: true });
+  fs.copyFileSync(source, buildImage);
+
+  if (source === srcImage && !fs.existsSync(publicImage)) {
+    fs.mkdirSync(path.dirname(publicImage), { recursive: true });
+    fs.copyFileSync(srcImage, publicImage);
+  }
+}
 
 const SITE_NAME = "The Proxy Academy";
 const fullTitle = `${FOCUSFLOW_COHORT_SEO.title} | ${SITE_NAME}`;
@@ -117,13 +151,8 @@ if (!fs.existsSync(indexHtml)) {
   process.exit(0);
 }
 
-fs.mkdirSync(path.dirname(publicImage), { recursive: true });
-if (fs.existsSync(srcImage)) {
-  fs.copyFileSync(srcImage, publicImage);
-}
-
 const html = injectMeta(fs.readFileSync(indexHtml, "utf8"));
 fs.mkdirSync(outDir, { recursive: true });
-fs.copyFileSync(publicImage, path.join(buildDir, "focusflow/focusflow-1.png"));
+syncOgImage();
 fs.writeFileSync(outHtml, html);
 console.log("prerender-focusflow-cohort: wrote build/focusflow-cohort/index.html");
