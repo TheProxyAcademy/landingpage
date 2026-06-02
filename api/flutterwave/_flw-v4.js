@@ -4,12 +4,35 @@ let tokenExpiresAt = 0;
 const TOKEN_URL =
   "https://idp.flutterwave.com/realms/flutterwave/protocol/openid-connect/token";
 
+export function normalizeEnv(value) {
+  if (!value) return "";
+  return String(value).trim().replace(/^["']|["']$/g, "");
+}
+
+/** test | live — inferred from FLUTTERWAVE_ENV, secret key prefix, or Netlify production. */
+export function getFlutterwaveEnv() {
+  const explicit = normalizeEnv(process.env.FLUTTERWAVE_ENV).toLowerCase();
+  if (explicit === "live" || explicit === "test") return explicit;
+
+  const secret = normalizeEnv(process.env.FLUTTERWAVE_SECRET_KEY);
+  if (secret.includes("_TEST-")) return "test";
+  if (secret.startsWith("FLWSECK")) return "live";
+
+  if (
+    process.env.CONTEXT === "production" ||
+    process.env.NODE_ENV === "production"
+  ) {
+    return "live";
+  }
+
+  return "test";
+}
+
 export function getApiBaseUrl() {
-  const override = process.env.FLUTTERWAVE_API_BASE_URL;
+  const override = normalizeEnv(process.env.FLUTTERWAVE_API_BASE_URL);
   if (override) return override.replace(/\/$/, "");
 
-  const env = (process.env.FLUTTERWAVE_ENV || "test").toLowerCase();
-  return env === "live"
+  return getFlutterwaveEnv() === "live"
     ? "https://f4bexperience.flutterwave.com"
     : "https://developersandbox-api.flutterwave.com";
 }
@@ -42,8 +65,8 @@ export function parseNgPhone(phone) {
 }
 
 export async function getAccessToken() {
-  const clientId = process.env.FLUTTERWAVE_CLIENT_ID;
-  const clientSecret = process.env.FLUTTERWAVE_CLIENT_SECRET;
+  const clientId = normalizeEnv(process.env.FLUTTERWAVE_CLIENT_ID);
+  const clientSecret = normalizeEnv(process.env.FLUTTERWAVE_CLIENT_SECRET);
   if (!clientId || !clientSecret) {
     throw new Error("Missing FLUTTERWAVE_CLIENT_ID or FLUTTERWAVE_CLIENT_SECRET");
   }

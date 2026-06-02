@@ -1,7 +1,9 @@
 import {
   flwRequest,
+  getFlutterwaveEnv,
   makeReference,
   makeTraceId,
+  normalizeEnv,
   parseNgPhone,
   splitName,
 } from "./_flw-v4.js";
@@ -57,7 +59,7 @@ async function createV4HostedPayment({
   const session = sessionJson?.data;
   if (!session?.checkout_url) {
     const err = new Error(
-      "Flutterwave v4 checkout session did not include checkout_url. Enable Checkout Sessions on your Flutterwave account, or set FLUTTERWAVE_SECRET_KEY for hosted checkout."
+      "Flutterwave v4 checkout session did not include checkout_url. Use FLUTTERWAVE_SECRET_KEY for hosted checkout instead."
     );
     err.details = sessionJson;
     throw err;
@@ -95,9 +97,10 @@ export default async function handler(req, res) {
     return;
   }
 
-  const secretKey = process.env.FLUTTERWAVE_SECRET_KEY;
+  const secretKey = normalizeEnv(process.env.FLUTTERWAVE_SECRET_KEY);
   const hasV4 =
-    process.env.FLUTTERWAVE_CLIENT_ID && process.env.FLUTTERWAVE_CLIENT_SECRET;
+    normalizeEnv(process.env.FLUTTERWAVE_CLIENT_ID) &&
+    normalizeEnv(process.env.FLUTTERWAVE_CLIENT_SECRET);
   const reference = makeReference();
   const origin = resolveRedirectOrigin(req, redirectOrigin);
   const redirectUrl = `${String(origin).replace(/\/$/, "")}/focusflow-cohort/register?payment=return`;
@@ -106,14 +109,12 @@ export default async function handler(req, res) {
     res.status(500).json({
       ok: false,
       error:
-        "Payment is not configured. Add FLUTTERWAVE_SECRET_KEY (hosted checkout) or FLUTTERWAVE_CLIENT_ID + FLUTTERWAVE_CLIENT_SECRET (v4) to your environment.",
+        "Payment is not configured. Add FLUTTERWAVE_SECRET_KEY (recommended) or FLUTTERWAVE_CLIENT_ID + FLUTTERWAVE_CLIENT_SECRET.",
     });
     return;
   }
 
-  let lastError = null;
-
-  // v3 Standard hosted checkout — reliable link for local dev and production
+  // Prefer v3 Standard hosted checkout — works reliably with FLWSECK / FLWSECK_TEST keys
   if (secretKey) {
     try {
       const result = await createV3HostedPayment({
@@ -127,11 +128,22 @@ export default async function handler(req, res) {
       res.status(200).json({ ok: true, ...result });
       return;
     } catch (e) {
-      lastError = e;
+      const isTestKey = secretKey.includes("_TEST-");
+      const hint = isTestKey
+        ? "You are using a TEST secret key. On your live site, set FLUTTERWAVE_SECRET_KEY to your live secret (FLWSECK-..., not FLWSECK_TEST-...) in Netlify → Environment variables → Production."
+        : "Check that FLUTTERWAVE_SECRET_KEY is your live Flutterwave secret key in Netlify Production env vars.";
+
+      res.status(502).json({
+        ok: false,
+        error: e?.message || "Flutterwave hosted checkout failed",
+        hint,
+        details: e?.details || null,
+      });
+      return;
     }
   }
 
-  // v4 checkout sessions — when Flutterwave returns checkout_url on your account
+  // v4 only when no secret key is configured
   if (hasV4) {
     try {
       const result = await createV4HostedPayment({
@@ -144,25 +156,25 @@ export default async function handler(req, res) {
       res.status(200).json({ ok: true, ...result });
       return;
     } catch (e) {
-      lastError = e;
       const flwCode = e?.details?.error?.code;
-      const env = (process.env.FLUTTERWAVE_ENV || "test").toLowerCase();
+      const env = getFlutterwaveEnv();
 
       if (flwCode === "10403" && env === "test") {
         res.status(502).json({
           ok: false,
           error:
-            "Flutterwave v4 rejected the request (Forbidden). Your keys look like live credentials but FLUTTERWAVE_ENV defaults to test/sandbox. Set FLUTTERWAVE_ENV=live, or add FLUTTERWAVE_SECRET_KEY for hosted checkout.",
+            "Flutterwave v4 rejected the request (Forbidden). Set FLUTTERWAVE_ENV=live in Netlify Production env vars, or add FLUTTERWAVE_SECRET_KEY for hosted checkout.",
           details: e?.details || null,
         });
         return;
       }
+
+      res.status(502).json({
+        ok: false,
+        error: e?.message || "Could not start Flutterwave checkout",
+        details: e?.details || null,
+      });
+      return;
     }
   }
-
-  res.status(502).json({
-    ok: false,
-    error: lastError?.message || "Could not start Flutterwave checkout",
-    details: lastError?.details || null,
-  });
 }

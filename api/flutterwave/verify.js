@@ -1,6 +1,7 @@
 import {
   getChargeById,
   getChargeByReference,
+  normalizeEnv,
 } from "./_flw-v4.js";
 import { isV4ChargeId, verifyV3Transaction } from "./_hosted-checkout.js";
 
@@ -177,10 +178,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const secretKey = process.env.FLUTTERWAVE_SECRET_KEY;
+    const secretKey = normalizeEnv(process.env.FLUTTERWAVE_SECRET_KEY);
     const useV4 =
       isV4ChargeId(chargeLookupId) ||
-      (!secretKey && process.env.FLUTTERWAVE_CLIENT_ID);
+      (!secretKey && normalizeEnv(process.env.FLUTTERWAVE_CLIENT_ID));
 
     let result;
 
