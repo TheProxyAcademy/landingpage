@@ -1,6 +1,6 @@
-import handler from "../../api/flutterwave/verify.js";
-import { runNetlifyHandler } from "./_adapter.mjs";
+import verifyPayment from "../../api/flutterwave/verify.js";
+import { runNetlifyHandler } from "../lib/adapter.mjs";
 
 export async function handler(event) {
-  return runNetlifyHandler(handler, event);
+  return runNetlifyHandler(verifyPayment, event);
 }
