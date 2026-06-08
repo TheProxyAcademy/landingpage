@@ -184,11 +184,10 @@ export default async function handler(req, res) {
 
   try {
     const secretKey = normalizeEnv(process.env.FLUTTERWAVE_SECRET_KEY);
-    const validV3Key = secretKey && !validateFlutterwaveSecretKey(secretKey);
+    const keyError = validateFlutterwaveSecretKey(secretKey);
     const useV4 =
-      shouldUseV4Payment() ||
       isV4ChargeId(chargeLookupId) ||
-      !validV3Key;
+      (shouldUseV4Payment() && !!keyError);
 
     let result;
 
@@ -199,6 +198,9 @@ export default async function handler(req, res) {
         expectedAmount,
         expectedCurrency,
       });
+    } else if (keyError) {
+      res.status(500).json({ ok: false, error: keyError });
+      return;
     } else {
       result = await verifyV3Transaction({
         secretKey,

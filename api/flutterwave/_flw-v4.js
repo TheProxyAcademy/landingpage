@@ -35,12 +35,11 @@ export function hasV4Credentials() {
   );
 }
 
-/** v4 when OAuth creds exist unless FLUTTERWAVE_USE_V4=false */
+/** v4 only when explicitly enabled (FLUTTERWAVE_USE_V4=true) and OAuth creds exist */
 export function shouldUseV4Payment() {
   if (!hasV4Credentials()) return false;
   const prefer = normalizeEnv(process.env.FLUTTERWAVE_USE_V4).toLowerCase();
-  if (prefer === "false" || prefer === "0") return false;
-  return true;
+  return prefer === "true" || prefer === "1";
 }
 
 export function getApiBaseUrl() {
