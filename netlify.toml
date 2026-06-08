@@ -23,6 +23,12 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/api/flutterwave/test-sheet"
+  to = "/.netlify/functions/flutterwave-test-sheet"
+  status = 200
+  force = true
+
 # React Router — static files (e.g. /focusflow-cohort/index.html) are served first
 [[redirects]]
   from = "/*"
