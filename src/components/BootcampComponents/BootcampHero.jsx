@@ -217,7 +217,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                   opacity={visibleSections.includes('title') ? 1 : 0}
                   animation={visibleSections.includes('title') ? `${slideInUp} 1s ease-out` : 'none'}
                 >
-                  Summer Tech Bootcamp 4.0
+                  Summer Tech Bootcamp 5.0
                 </Text>
 
                 <Box
