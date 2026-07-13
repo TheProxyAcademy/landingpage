@@ -3,6 +3,7 @@ import { Box, VStack, Text, Button, Image, Container, Link as ChakraLink, Wrap, 
 import { keyframes } from "@emotion/react";
 import { Link as RouterLink } from "react-router-dom";
 import BoyIllustration from "../assets/optimized/boy.webp";
+import BrochurePdf from "../assets/TPA-Brochure.pdf";
 import { FaDownload, FaPhoneAlt, FaRegCalendarCheck } from "react-icons/fa";
 
 // Keyframe animations
@@ -297,8 +298,8 @@ function Hero() {
             <WrapItem>
               <Button
                 as="a"
-                href="/assets/TPA-Brochure.pdf"
-                download
+                href={BrochurePdf}
+                download="TPA-Brochure.pdf"
                 px={8}
                 py={4}
                 fontWeight="bold"
