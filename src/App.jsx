@@ -163,14 +163,14 @@ const trackFormSubmission = () => {
   });
 };
 
-// const BootcampPage = () => {
-//   return (
-//     <Bootcamp
-//       onFormInteraction={trackFormInteraction}
-//       onFormSubmission={trackFormSubmission}
-//     />
-//   );
-// };
+const BootcampPage = () => {
+  return (
+    <Bootcamp
+      onFormInteraction={trackFormInteraction}
+      onFormSubmission={trackFormSubmission}
+    />
+  );
+};
 
 const RegistrationPage = () => {
   return (

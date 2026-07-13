@@ -199,7 +199,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     letterSpacing="wide"
                     animation={`${glow} 2s ease-in-out infinite`}
                   >
-                    5% OFF
+                    16% OFF
                   </Badge>
                 </HStack>
 
@@ -315,14 +315,14 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     <Text fontSize="16px" color="gray.700" lineHeight="1.6">
                       Enroll your children and get a whopping&nbsp;
                       <Text as="span" fontSize="20px" fontWeight="bold" color="green.600">
-                        5% OFF
+                        16% OFF
                       </Text>&nbsp;
                       the original Bootcamp fee of&nbsp;
                       <Text as="span" textDecoration="line-through" color="gray.500">
-                        ₦45,000
+                        ₦60,000
                       </Text>&nbsp;
                       <Text as="span" fontSize="20px" fontWeight="bold" color="green.600">
-                        ₦42,750
+                        ₦50,000
                       </Text>
                     </Text>
                   </VStack>
@@ -354,7 +354,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
               }}
             >
               {/* Form Header */}
-              {/* <VStack spacing={4} mb={8}>
+              <VStack spacing={4} mb={8}>
                 <Text
                   fontSize="24px"
                   fontFamily="'Syne', sans-serif"
@@ -376,9 +376,11 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                 >
                   Secure your child's spot in our exclusive summer bootcamp
                 </Text>
-              </VStack> */}
+              </VStack>
 
-              <VStack spacing={4} textAlign="center">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1EuSjVsOdkm-oPUVU8BCmA9Qd-zzFgJqLCK7-W2DFgoGoxw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+              {/* <VStack spacing={4} textAlign="center">
                 <Text
                   fontSize="22px"
                   fontFamily="'Syne', sans-serif"
@@ -409,7 +411,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                   Registration opens soon
                 </Button>
               </VStack>
-              
+               */}
             </Box>
           </Box>
         </Flex>
