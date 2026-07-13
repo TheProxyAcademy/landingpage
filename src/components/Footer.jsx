@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Box, Container, Text, HStack, Link, Icon, Flex, VStack, SimpleGrid, Input, Button } from "@chakra-ui/react";
 import { BsLinkedin, BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faPhone, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import { keyframes } from "@emotion/react";
 import Logo from "../assets/icon.svg";
+import { FaWhatsapp } from "react-icons/fa";
 
 const quickLinks = [
   { name: "About Us", href: "#why-us" },
@@ -233,8 +234,12 @@ export default function Component() {
                     borderRadius="8px"
                     bg="rgba(5, 156, 2, 0.2)"
                     color="green.400"
+                    display="flex"
+                    alignItems="center"
+                    gap={2}
                   >
                     <FontAwesomeIcon icon={faPhone} size="sm" />
+                    <FaWhatsapp size="16" />
                   </Box>
                   <VStack align="start" spacing={1}>
                     <Text fontSize="14px" color="gray.300">
