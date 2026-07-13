@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Badge, Box, Container, HStack, Text, VStack } from "@chakra-ui/react";
-// import { Link as RouterLink } from "react-router-dom";
+import { Badge, Box, Container, HStack, Text, VStack, Button } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 function Bootcamp() {
   const targetDate = useMemo(() => new Date("2026-08-03T00:00:00"), []);
@@ -116,14 +116,14 @@ function Bootcamp() {
 
           {!isLive && (
             <Badge colorScheme="green" variant="subtle" px={3} py={2} borderRadius="full">
-              It’s bootcamp day
+              It&apos;s bootcamp day
             </Badge>
           )}
 
-          {/* <HStack spacing={3} pt={2} flexWrap="wrap" justify="center">
+          <HStack spacing={3} pt={2} flexWrap="wrap" justify="center">
             <Button
               as={RouterLink}
-              to="/register"
+              to="/summer-bootcamp"
               px={8}
               py={6}
               borderRadius="full"
@@ -143,10 +143,10 @@ function Bootcamp() {
 
             {!isLive && (
               <Badge colorScheme="green" variant="subtle" px={3} py={2} borderRadius="full">
-                It’s bootcamp day
+                It&apos;s bootcamp day
               </Badge>
             )}
-          </HStack> */}
+          </HStack>
         </VStack>
       </Container>
     </Box>
