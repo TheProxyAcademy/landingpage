@@ -238,9 +238,6 @@ export default function Component() {
                   </Box>
                   <VStack align="start" spacing={1}>
                     <Text fontSize="14px" color="gray.300">
-                      +2348174453349
-                    </Text>
-                    <Text fontSize="14px" color="gray.300">
                       +2349152811014
                     </Text>
                   </VStack>
