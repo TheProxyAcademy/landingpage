@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, VStack, Text, SimpleGrid, Container, Link as ChakraLink, Wrap, WrapItem, Icon } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faCodeMerge, faChartSimple, faPenNib } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faCodeMerge, faChartSimple, faPenNib, faRobot } from "@fortawesome/free-solid-svg-icons";
 import { keyframes } from "@emotion/react";
 import { FaDownload, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
 
@@ -54,7 +54,7 @@ function OurProgrammes() {
           if (entry.isIntersecting) {
             setIsVisible(true);
             // Stagger card animations
-            const cards = [0, 1, 2, 3];
+            const cards = [0, 1, 2, 3, 4];
             cards.forEach((cardIndex) => {
               setTimeout(() => {
                 setVisibleCards(prev => [...prev, cardIndex]);
@@ -81,7 +81,7 @@ function OurProgrammes() {
     {
       icon: faCode,
       title: "Introduction to Coding",
-      description: "Designed for beginners, this engaging 3-months programme teaches the fundamentals of coding through fun, interactive lessons. Using kid-friendly programming languages and tools, students will create their own projects and develop essential problem-solving skills.",
+      description: "A beginner-friendly journey into programming with visual tools like Scratch and Blockly. Kids aged 5–17 build interactive stories, games and animations from their very first session, developing problem-solving and logical thinking through play, and finishing with a portfolio-ready project.",
       gradient: "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)",
       iconColor: "#059C02",
       textColor: "green.600",
@@ -91,7 +91,7 @@ function OurProgrammes() {
     {
       icon: faCodeMerge,
       title: "Web Development",
-      description: "Students learn to create stunning websites from scratch, mastering essential languages like HTML, CSS, and JavaScript. Through hands-on projects, participants will develop the skills to design, build, and launch their own web pages, gaining a solid foundation in both front-end and back-end development.",
+      description: "Students build responsive, interactive websites from the ground up, mastering HTML, CSS and JavaScript before moving into React and modern frameworks. Every module ends with a live, shareable project deployed on the real internet.",
       gradient: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
       iconColor: "#FFFFFF",
       textColor: "white",
@@ -99,9 +99,9 @@ function OurProgrammes() {
       glowColor: "rgba(255, 255, 255, 0.3)"
     },
     {
-      icon: faChartSimple,
-      title: "Data Analysis",
-      description: "Designed to equip young learners with skills in data interpretation and decision-making. Through engaging, hands-on projects, students will explore the fundamentals of data collection, visualization, and analysis using industry-standard tools.",
+      icon: faRobot,
+      title: "AI, Robotics & ML",
+      description: "Teens explore the fundamentals of artificial intelligence, machine learning and hands-on robotics using Python and industry AI tools. From building their first chatbot to training neural networks, students finish with a documented, portfolio-ready AI project.",
       gradient: "linear-gradient(135deg, #059C02 0%, #0b7f03 100%)",
       iconColor: "#FFFFFF",
       textColor: "white",
@@ -109,9 +109,19 @@ function OurProgrammes() {
       glowColor: "rgba(5, 156, 2, 0.3)"
     },
     {
+      icon: faChartSimple,
+      title: "Data Analysis",
+      description: "Young learners collect, clean, analyse and visualise real data to uncover insights. The curriculum builds from spreadsheets to Python, SQL, statistics and Tableau, closing with a complete, portfolio-ready data report.",
+      gradient: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
+      iconColor: "#FFFFFF",
+      textColor: "white",
+      animation: slideInRight,
+      glowColor: "rgba(255, 255, 255, 0.3)"
+    },
+    {
       icon: faPenNib,
       title: "Digital Design",
-      description: "This engaging array of courses introduces young learners to the exciting world of digital arts, including graphic design, animation, and product design. Whether it's creating eye-catching graphics, dynamic animations, or innovative digital projects, our Digital Design programme nurtures artistic talent and technical proficiency.",
+      description: "An immersive path through illustration and graphic design, from drawing fundamentals and typography to branding, icons and professional artwork using industry-standard tools like Photoshop, Illustrator and Canva. Students graduate with a signature design portfolio.",
       gradient: "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)",
       iconColor: "#059C02",
       textColor: "green.600",
@@ -311,8 +321,8 @@ function OurProgrammes() {
           ))}
         </Wrap>
         
-        <SimpleGrid 
-          columns={{ base: 1, md: 2, lg: 4 }}
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 3 }}
           gap={6}
           mt={16}
         >
@@ -320,6 +330,7 @@ function OurProgrammes() {
             <Box
               key={index}
               position="relative"
+              h="100%"
               opacity={visibleCards.includes(index) ? 1 : 0}
               animation={visibleCards.includes(index) ? `${programme.animation} 0.8s ease-out` : 'none'}
               _hover={{
@@ -330,9 +341,10 @@ function OurProgrammes() {
               <Box
                 background={programme.gradient}
                 w="full"
-                h={{base:"280px", lg:"380px"}}
+                h="100%"
+                minH={{ base: "300px", lg: "360px" }}
                 borderRadius="20px"
-                p={6}
+                p={{ base: 6, lg: 8 }}
                 position="relative"
                 overflow="hidden"
                 backdropFilter="blur(10px)"
@@ -357,7 +369,7 @@ function OurProgrammes() {
                 />
 
                 {/* Card Content */}
-                <VStack spacing={4} height="100%" justify="space-between">
+                <VStack spacing={4} height="100%" p={4} justify="space-between">
                   <Box textAlign="center">
                     <Box
                       p={4}
