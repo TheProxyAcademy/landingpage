@@ -111,7 +111,7 @@ const App = () => {
                   }
                 />
                 <Route
-                  path="/summer-bootcamp"
+                  path="/summerbootcamp"
                   element={
                     <Bootcamp
                       onFormInteraction={handleFormInteraction}
