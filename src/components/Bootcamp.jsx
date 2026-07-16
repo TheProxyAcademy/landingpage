@@ -123,7 +123,7 @@ function Bootcamp() {
           <HStack spacing={3} pt={2} flexWrap="wrap" justify="center">
             <Button
               as={RouterLink}
-              to="/summer-bootcamp"
+              to="/summerbootcamp"
               px={8}
               py={6}
               borderRadius="full"
