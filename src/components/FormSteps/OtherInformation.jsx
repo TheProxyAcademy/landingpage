@@ -199,7 +199,7 @@ const OtherInformation = ({ handleChange, formData, errors }) => {
               💳 Payment Information
             </Text>
             <Text fontSize="14px" color="gray.700" lineHeight="1.6">
-              Please make a payment of <Text as="span" fontWeight="bold" color="green.600">₦45,000</Text> per child for the registration fee to the account details below:
+              Please make a payment of <Text as="span" fontWeight="bold" color="green.600">₦60,000</Text> per child for the registration fee to the account details below:
             </Text>
             
             <Box

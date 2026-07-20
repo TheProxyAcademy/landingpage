@@ -310,19 +310,12 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                       color="green.600"
                       textTransform="uppercase"
                     >
-                      🎉 Special Offer
+                      🎉 Bootcamp Fee
                     </Text>
                     <Text fontSize="16px" color="gray.700" lineHeight="1.6">
-                      Enroll your children and get a whopping&nbsp;
+                      Enroll your children for just&nbsp;
                       <Text as="span" fontSize="20px" fontWeight="bold" color="green.600">
-                        16% OFF
-                      </Text>&nbsp;
-                      the original Bootcamp fee of&nbsp;
-                      <Text as="span" textDecoration="line-through" color="gray.500">
                         ₦60,000
-                      </Text>&nbsp;
-                      <Text as="span" fontSize="20px" fontWeight="bold" color="green.600">
-                        ₦50,000
                       </Text>
                     </Text>
                   </VStack>
@@ -340,13 +333,14 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
             <Box
               bg="rgba(255, 255, 255, 0.8)"
               backdropFilter="blur(10px)"
-              borderRadius="24px"
-              p={8}
+              borderRadius={{ base: "16px", lg: "24px" }}
+              p={{ base: 4, lg: 8 }}
               border="1px solid rgba(255, 255, 255, 0.3)"
               boxShadow="0 20px 40px rgba(0, 0, 0, 0.1)"
               position="relative"
-              overflow="hidden"
-              h="full"
+              overflow="visible"
+              h="auto"
+              w="full"
               _hover={{
                 boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
                 transform: "translateY(-2px)",
@@ -378,7 +372,19 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                 </Text>
               </VStack>
 
-              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe1EuSjVsOdkm-oPUVU8BCmA9Qd-zzFgJqLCK7-W2DFgoGoxw/viewform?embedded=true" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+              <Box
+                as="iframe"
+                title="Bootcamp registration form"
+                src="https://docs.google.com/forms/d/e/1FAIpQLSe1EuSjVsOdkm-oPUVU8BCmA9Qd-zzFgJqLCK7-W2DFgoGoxw/viewform?embedded=true"
+                w="full"
+                h={{ base: "600px", md: "800px", lg: "1000px" }}
+                border={0}
+                display="block"
+                bg="white"
+                borderRadius="md"
+              >
+                Loading…
+              </Box>
 
               {/* <VStack spacing={4} textAlign="center">
                 <Text
