@@ -187,8 +187,8 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     🚀 Limited Time Offer
                   </Badge>
                   <Badge
-                    bg="linear-gradient(135deg, #f59e0b 0%, #d97706 100%)"
-                    color="white"
+                    bg="gray.200"
+                    color="gray.500"
                     px={4}
                     py={2}
                     borderRadius="full"
@@ -197,9 +197,14 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     fontSize="12px"
                     textTransform="uppercase"
                     letterSpacing="wide"
-                    animation={`${glow} 2s ease-in-out infinite`}
+                    opacity={0.7}
+                    cursor="not-allowed"
+                    border="1px solid"
+                    borderColor="gray.300"
+                    title="This offer has expired"
                   >
-                    16% OFF
+                    <Text as="span" textDecoration="line-through">16% OFF</Text>
+                    &nbsp;· Expired
                   </Badge>
                 </HStack>
 
