@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Flex, Text, Container, VStack, HStack, Badge, Button } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
-import { trackOnce } from "../../lib/pixel";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -57,10 +56,6 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
   useEffect(() => {
     const handleBlur = () => {
       if (document.activeElement !== formRef.current) return;
-      trackOnce("bootcamp-form", "Lead", {
-        content_name: "Summer Bootcamp",
-        content_category: "Bootcamp",
-      });
       onFormInteraction?.();
     };
 

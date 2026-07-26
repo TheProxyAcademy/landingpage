@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
+import { Fragment, Suspense, lazy, useEffect, useRef } from "react";
 import ScrollToTop from "./ScrollToTop";
 import {
   BrowserRouter as Router,
@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import { Box } from "@chakra-ui/react";
 import { Toaster } from "react-hot-toast";
 import WhatsAppButton from "./components/WhatsAppButton";
-import { track, trackPageView } from "./lib/pixel";
+import { track, trackOnce, trackPageView } from "./lib/pixel";
 
 const BOOTCAMP_PATH = "/summerbootcamp";
 
@@ -96,16 +96,6 @@ const usePageTracking = () => {
 };
 
 const App = () => {
-  const [formInteracted, setFormInteracted] = useState(false);
-
-  const handleFormInteraction = () => {
-    setFormInteracted(true);
-  };
-
-  const handleFormSubmission = () => {
-    setFormInteracted(false);
-  };
-
   return (
     <Provider>
       <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
@@ -128,17 +118,17 @@ const App = () => {
                   path="/register"
                   element={
                     <Register
-                      onFormInteraction={handleFormInteraction}
-                      onFormSubmission={handleFormSubmission}
+                      onFormInteraction={onRegisterInteraction}
+                      onFormSubmission={onRegisterSubmission}
                     />
                   }
                 />
                 <Route
-                  path="/summerbootcamp"
+                  path={BOOTCAMP_PATH}
                   element={
                     <Bootcamp
-                      onFormInteraction={handleFormInteraction}
-                      onFormSubmission={handleFormSubmission}
+                      onFormInteraction={onBootcampInteraction}
+                      onFormSubmission={onBootcampSubmission}
                     />
                   }
                 />
@@ -164,44 +154,40 @@ const PageTrackingWrapper = ({ children }) => {
   return <Fragment>{children}</Fragment>;
 };
 
-const trackFormInteraction = () => {
+const trackFormInteraction = (label) => {
+  // Both registration forms are cross-origin Google Forms, so engaging with one
+  // is the strongest conversion signal the pixel can actually observe. Fired
+  // once per page visit so re-clicking the form doesn't inflate the count.
+  trackOnce(`form:${label}`, "Lead", { content_name: label });
+
   void loadAnalytics().then((ReactGA) => {
     if (!ReactGA) return;
     ReactGA.event({
       category: "Form",
       action: "Interacted with Registration Form",
-      label: "Class Registration",
+      label,
     });
   });
 };
 
-const trackFormSubmission = () => {
+const trackFormSubmission = (label) => {
+  track("CompleteRegistration", { content_name: label });
+
   void loadAnalytics().then((ReactGA) => {
     if (!ReactGA) return;
     ReactGA.event({
       category: "Form",
       action: "Submitted Registration Form",
-      label: "Class Registration",
+      label,
     });
   });
 };
 
-const BootcampPage = () => {
-  return (
-    <Bootcamp
-      onFormInteraction={trackFormInteraction}
-      onFormSubmission={trackFormSubmission}
-    />
-  );
-};
-
-const RegistrationPage = () => {
-  return (
-    <Register
-      onFormInteraction={trackFormInteraction}
-      onFormSubmission={trackFormSubmission}
-    />
-  );
-};
+// Defined at module scope so their identities stay stable across renders —
+// BootcampHero subscribes to onFormInteraction in an effect.
+const onRegisterInteraction = () => trackFormInteraction("Class Registration");
+const onRegisterSubmission = () => trackFormSubmission("Class Registration");
+const onBootcampInteraction = () => trackFormInteraction("Summer Bootcamp");
+const onBootcampSubmission = () => trackFormSubmission("Summer Bootcamp");
 
 export default App;
