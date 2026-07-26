@@ -1207,6 +1207,166 @@ export const TRACKS = [
 
 export const getTrack = (slug) => TRACKS.find((track) => track.slug === slug);
 
+// ── Programme FAQs ───────────────────────────────────────────────────────
+// TBC marks a detail not confirmed internally yet. A question listing a TBC key
+// in `requires` is dropped from the page rather than answered with a guess —
+// fill the value in below and the question appears.
+export const TBC = null;
+
+export const PROGRAMME_DETAILS = {
+  // Tuition is the single most-asked question and nothing on the site states it.
+  tuitionPerTerm: TBC, // e.g. "₦120,000 per term"
+  tuitionBillingCycle: TBC, // e.g. "termly, three terms a year"
+  paymentPlan: TBC, // e.g. "Pay monthly, or in two instalments per term"
+  siblingDiscount: TBC, // exact terms, or false if none
+  classCap: TBC, // e.g. 10
+  platform: TBC, // e.g. "Zoom"
+  nextIntake: TBC, // e.g. "September 2026"
+  trialSession: TBC, // e.g. "One paid trial session, refundable if you don't continue"
+};
+
+export const PROGRAMME_FAQS = [
+  {
+    q: "How is the programme structured?",
+    a: () => [
+      "Your child picks one of four tracks and progresses through up to three competency levels: Foundation (months 0–6), Architect (months 7–15) and Capstone (months 16–24).",
+      "Each level ends with a public graduation and a framed credential. Introduction to Coding is a six-month Foundation track; the other three run the full 18–24 months.",
+      "Sessions are twice a week — 45–60 minutes for Introduction to Coding, an hour for the other tracks.",
+    ],
+  },
+  {
+    q: "Does my child have to commit to 24 months?",
+    a: () => [
+      "No. The levels are designed to be complete in themselves — a child who finishes Foundation at month 6 leaves with a real portfolio, a graduation and a credential, whether or not they continue.",
+      "Most families decide one level at a time. We will tell you honestly at each graduation whether your child is ready for, and interested in, the next one.",
+    ],
+  },
+  {
+    q: "How much does it cost?",
+    requires: ["tuitionPerTerm"],
+    a: (d) => [
+      `${d.tuitionPerTerm}${d.tuitionBillingCycle ? `, billed ${d.tuitionBillingCycle}` : ""}.`,
+      d.paymentPlan ? `Payment plan: ${d.paymentPlan}.` : null,
+      "That covers every live session, all materials, the quarterly exhibitions and the credential at each level graduation.",
+    ].filter(Boolean),
+  },
+  {
+    q: "Is there a discount for two children?",
+    requires: ["siblingDiscount"],
+    a: (d) => [
+      d.siblingDiscount,
+      "Siblings in the same cohort also tend to finish their projects at a noticeably higher rate — they keep each other going.",
+    ],
+  },
+  {
+    q: "Which track should my child start with?",
+    a: () => [
+      "Go by what they already enjoy. Ages 5–9 start with Introduction to Coding regardless of interest — it is the entry point for that age group.",
+      "From age 9 up: always asking how things work → Web Development; obsessed with games → Game Development; always drawing → Design & Brand Strategy.",
+      "Message us with your child's age and what they do when nobody is telling them what to do, and we will recommend one. A confident recommendation beats a menu.",
+    ],
+  },
+  {
+    q: "Can my child switch tracks later?",
+    a: () => [
+      "Between levels, yes — a child who graduates Foundation in Introduction to Coding can move into any of the other three tracks as an Architect-level learner.",
+      "Within a level we keep them on one track. The whole model depends on finishing production cycles, and switching mid-level means finishing nothing.",
+    ],
+  },
+  {
+    q: "Does my child need any experience to start?",
+    a: () => [
+      "No. Every track begins at zero, and most students arrive having only ever used a phone.",
+      "If they can read comfortably and type slowly, that is all that is required. The typing speeds up on its own.",
+    ],
+  },
+  {
+    q: "What does my child need at home?",
+    a: () => [
+      "A laptop or desktop computer, a stable internet connection, and headphones if the house is busy during class hours.",
+      "A phone will not work. Every session ends with something your child has built running on their own screen, and that is not something you can do on a phone.",
+      "You will also want to plan for power for the length of a session on class days.",
+    ],
+  },
+  {
+    q: "What days and times do classes run?",
+    requires: ["platform"],
+    a: (d) => [
+      `Sessions run live on ${d.platform}, twice a week. Exact days and times are set per cohort and confirmed with you before your child starts.`,
+      "Tell us your household's constraints when you enrol and we will place your child in the cohort that fits.",
+    ],
+  },
+  {
+    q: "How many students are in a class?",
+    requires: ["classCap"],
+    a: (d) => [
+      `Cohorts are capped at ${d.classCap}.`,
+      "Online, that number matters more than it does in a room — beyond a certain point an instructor cannot see who has gone quiet.",
+    ],
+  },
+  {
+    q: "When is the next intake?",
+    requires: ["nextIntake"],
+    a: (d) => [
+      `The next intake is ${d.nextIntake}. Register and we will confirm your child's cohort and starting level before it begins.`,
+    ],
+  },
+  {
+    q: "Can we try a session before committing?",
+    requires: ["trialSession"],
+    a: (d) => [d.trialSession],
+  },
+  {
+    q: "How will I know my child is making progress?",
+    a: () => [
+      "Four ways, and none of them require you to ask. A weekly build update after each session with a screenshot or link to what was made. A written report card each quarter covering competencies mastered and production cycles completed. A quarterly exhibition where your child presents to you directly. And a shared folder with every project, session note and portfolio asset.",
+      "Every three months there is a new publicly accessible asset in their portfolio. Nothing about this programme is invisible.",
+    ],
+  },
+  {
+    q: "Will this help with school work or exams?",
+    a: () => [
+      "We will not claim it is exam preparation — it is not, and anyone promising you that is guessing.",
+      "What it does build is the habit of explaining an idea clearly, breaking a large task into steps, and checking whether an answer is actually correct instead of accepting it. Parents tell us they notice it in how their child approaches assignments.",
+    ],
+  },
+  {
+    q: "Will this get my child a job?",
+    a: () => [
+      "Not on its own, and not quickly. What 24 months produces is a portfolio of real, live work, original intellectual property the student owns, and the experience of presenting it to adults who are not their parents.",
+      "For a teenager applying to university or a first role, that is a genuinely unusual position to be in. We are honest about it being a starting advantage, not a guarantee.",
+    ],
+  },
+  {
+    q: "Is my child safe online during sessions?",
+    a: () => [
+      "An instructor is present for the whole of every session — no child is ever on a call alone.",
+      "Students work in accounts we set up and monitor rather than personal ones, and online-safety ground rules are taught in the first weeks: never put your full name, address, school or photos into a tool, and tell an instructor immediately if anything strange appears on screen.",
+    ],
+  },
+  {
+    q: "What are the quarterly exhibitions, and do I have to attend?",
+    a: () => [
+      "Four times a year, students present their work to parents, guests and — at the higher levels — invited industry professionals. Each runs about 90 minutes.",
+      "You are not required to come, but it is the part parents tell us they remember. Many of these children have never presented anything to a room of adults before, and the change in confidence is the thing you cannot see in a project link.",
+    ],
+  },
+  {
+    q: "How is this different from a summer bootcamp?",
+    a: () => [
+      "The bootcamp is three weeks and produces one project — it is the best way to find out whether your child catches the bug.",
+      "The mastery programme is the long road: 8+ portfolio assets, up to three credentials, real client commissions, founder modules, and original work the student owns. Plenty of families start with the bootcamp and continue from there.",
+    ],
+  },
+];
+
+export const resolveProgrammeFaqs = (details = PROGRAMME_DETAILS) =>
+  PROGRAMME_FAQS.filter((faq) =>
+    (faq.requires || []).every(
+      (key) => details[key] !== TBC && details[key] !== undefined
+    )
+  ).map((faq) => ({ question: faq.q, paragraphs: faq.a(details) }));
+
 // ── Programme systems ────────────────────────────────────────────────────
 export const ROI_CARDS = [
   {

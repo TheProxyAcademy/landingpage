@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Box,
@@ -25,6 +26,20 @@ import {
   FeatureCard,
   slideInUp,
 } from "../components/Programmes/shared";
+import ProgrammeFaqs from "../components/Programmes/ProgrammeFaqs";
+import { resolveProgrammeFaqs } from "../components/Programmes/programmeData";
+
+// Declared only here, not on each track page. The same questions appear on all
+// of them, and one canonical marked-up copy is what search engines want.
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: resolveProgrammeFaqs().map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.paragraphs.join(" ") },
+  })),
+};
 
 function Programmes() {
   return (
@@ -34,6 +49,9 @@ function Programmes() {
         description="The Elite Mastery Program: four tracks, three competency levels, up to 24 months. Children graduate with a professional portfolio, quarterly public exhibitions and framed credentials."
         canonicalPath="/programmes"
       />
+      <Helmet>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      </Helmet>
 
       {/* Hero */}
       <Box
@@ -334,6 +352,8 @@ function Programmes() {
               See how the programme works →
             </Button>
           </Box>
+
+          <ProgrammeFaqs />
 
           {/* CTA */}
           <Box

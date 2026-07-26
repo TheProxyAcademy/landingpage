@@ -7,6 +7,7 @@ import {
   VStack
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
+import { HOME_FAQS } from "./homeFaqData";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -65,8 +66,7 @@ function Faqs() {
           if (entry.isIntersecting) {
             setIsVisible(true);
             // Stagger FAQ animations
-            const faqCount = 6;
-            Array.from({ length: faqCount }).forEach((_, index) => {
+            Array.from({ length: HOME_FAQS.length }).forEach((_, index) => {
               setTimeout(() => {
                 setVisibleFaqs(prev => [...prev, index]);
               }, index * 150);
@@ -88,37 +88,14 @@ function Faqs() {
     };
   }, []);
 
-  const faqData = [
-    {
-      question: "What programs do you offer?",
-      answer: "We offer various tech skills including scratch, web development, data analysis, cyber security, Animation, Graphics Design, and more are coming."
-    },
-    {
-      question: "When does the summer camp start?",
-      answer: "Our summer camp is usually between July and August."
-    },
-    {
-      question: "Do you teach outside of summer holidays?",
-      answer: "Yes. Our program is all year round. We also offer personalised and group classes outside of our summer program"
-    },
-    {
-      question: "What would my child need to prepare?",
-      answer: "They only need a laptop and internet connection"
-    },
-    {
-      question: "My child doesn't want to code, can they learn something else?",
-      answer: "Absolutely! We believe every child has unique interest and we tailor their needs with other non-coding courses like data analysis, design, animation e.t.c"
-    },
-    {
-      question: "My child already does IT in school, why do they need this?",
-      answer: "Tech is a rather broad space that has evolved beyond microsoft word, excel and powerpoint. In other for them not to be left behind, they need to learn more advanced skills like coding, design, data analysis e.t.c"
-    }
-  ];
+  const faqData = HOME_FAQS;
 
   return (
-    <Box 
+    <Box
       ref={sectionRef}
-      p={{ base: 5, lg: 20 }} 
+      id="faqs"
+      scrollMarginTop="90px"
+      p={{ base: 5, lg: 20 }}
       bg="linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f1f5f9 100%)"
       position="relative"
       overflow="hidden"

@@ -13,6 +13,7 @@ import {
 import Seo from "../components/Seo";
 import { getTrack, LEVELS, TRACKS } from "../components/Programmes/programmeData";
 import { Pill, slideInUp } from "../components/Programmes/shared";
+import ProgrammeFaqs from "../components/Programmes/ProgrammeFaqs";
 
 const MonthLabel = ({ children, accent }) => (
   <HStack gap={3} align="center" mt={8} mb={4}>
@@ -454,6 +455,10 @@ function ProgrammeDetail() {
             );
           })}
         </Accordion.Root>
+
+        <Box mt={16}>
+          <ProgrammeFaqs trackName={track.name} />
+        </Box>
 
         {/* CTA */}
         <Box

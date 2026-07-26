@@ -17,7 +17,9 @@ import focusflow2 from "../../assets/focusflow/focusflow-2.png";
 import focusflow3 from "../../assets/focusflow/focusflow-3.png";
 import {
   COHORT,
+  COHORT_DETAILS,
   PRICING,
+  TBC,
   WHATSAPP_ENROL,
   WHATSAPP_PRICING,
 } from "./constants";
@@ -611,38 +613,120 @@ export function FounderSection() {
   );
 }
 
-export function CohortFaqSection() {
-  const { ref, visible } = useInView();
-  const faqs = [
+// `requires` lists COHORT_DETAILS keys the answer depends on. A question whose
+// detail is still TBC is filtered out by resolveCohortFaqs() below rather than
+// published half-answered — fill the value into constants.js and it appears.
+const COHORT_FAQS = [
+    {
+      q: "What exactly will my child build?",
+      a: `${COHORT.product} — a working productivity app they code themselves and deploy live to a real public URL. You can try the finished version at ${COHORT.demoUrl}. It is not a tutorial they follow along to; it is theirs, and it stays in their portfolio.`,
+    },
+    {
+      q: "How long is the course, and how much time does it take each week?",
+      a: `${COHORT.durationWeeks} weeks. Each week your child gets a full instructional video plus ${COHORT.sessionsPerWeek} live session of ${COHORT.sessionMinutes} minutes with a mentor. The video stays available until 24 hours after the live session, so they can watch it first and come to the session with questions.`,
+    },
+    {
+      q: "What days and times are the live sessions?",
+      requires: ["classDay", "classTime"],
+      a: (d) =>
+        `Live sessions run ${d.classDay} at ${d.classTime}, for ${COHORT.sessionMinutes} minutes.`,
+    },
+    {
+      q: "When does the next cohort start?",
+      requires: ["nextStartDate"],
+      a: (d) =>
+        `The next cohort starts ${d.nextStartDate}. Once you register we confirm your child's place and send the onboarding details before the first session.`,
+    },
+    {
+      q: "How old does my child need to be?",
+      a: `The cohort is built for ages ${COHORT.ages}. If your child is just outside that range, message us — there is often a better fit among our other programmes, and we would rather place them somewhere they will thrive.`,
+    },
     {
       q: "Does my child need prior experience?",
-      a: "No. Absolute beginners are welcome. We start from the fundamentals and move at a pace that supports every learner.",
+      a: "No. Absolute beginners are welcome. We start from the fundamentals and move at a pace that supports every learner — most students arrive having never written a line of code.",
     },
     {
       q: "What equipment does my child need?",
-      a: "Any laptop or computer with a stable internet connection. We'll guide you through setup if needed.",
-    },
-    {
-      q: "How long is the course?",
-      a: `${COHORT.durationWeeks} weeks — ${COHORT.sessionsPerWeek} live sessions per week, ${COHORT.sessionMinutes} minutes each.`,
+      a: "A laptop or desktop computer and a stable internet connection. A phone will not work — your child will be writing code and running it, not watching. Headphones help if the house is busy. We will walk you through the setup before the first session.",
     },
     {
       q: "Is this online, in-person, or both?",
-      a: COHORT.delivery,
+      a: `${COHORT.delivery}. Your child can join from anywhere with a laptop and internet.`,
     },
     {
-      q: "What happens after the course?",
-      a: "Your child keeps their live project in their portfolio, stays connected to our community, and can advance into next-level courses.",
+      q: "What platform do the live sessions run on?",
+      requires: ["platform"],
+      a: (d) =>
+        `Sessions run on ${d.platform}. You get the link before the first session, and we check the setup with you in advance so nobody is troubleshooting on day one.`,
+    },
+    {
+      q: "How much is it, and can I pay in instalments?",
+      a: `${PRICING.fullPrice} for the full ${COHORT.durationWeeks} weeks, covering every live session, the instructional videos, one-to-one support, deployment of the project and the certificate. ${PRICING.installmentLabel} — ${PRICING.installmentNote}`,
+    },
+    {
+      q: "What does the deposit reserve?",
+      requires: ["depositAmount"],
+      a: (d) =>
+        `${d.depositAmount} holds your child's place. Until a deposit is in, places stay open to whoever pays first.`,
+    },
+    {
+      q: "How does the money-back guarantee work?",
+      requires: ["guaranteeTerms"],
+      a: (d) => d.guaranteeTerms,
+    },
+    {
+      q: "How many students are in a cohort?",
+      requires: ["classCap"],
+      a: (d) =>
+        `We cap each cohort at ${d.classCap}. Online, that number matters more than it does in a room — beyond a certain point a mentor cannot see who is lost.`,
     },
     {
       q: "What if my child falls behind?",
-      a: "Mentors provide extra support sessions and check-ins. No student is left to struggle alone — we track progress weekly.",
+      a: "Mentors provide extra support sessions and check-ins, and we track progress weekly. No student is left to struggle alone. If your child is disengaging, tell us early rather than waiting — it is usually the project topic or the pace, and both are fixable.",
+    },
+    {
+      q: "What if my child misses a live session?",
+      a: "The instructional video for that week covers the same ground, and the mentor picks your child up at the start of the next session. If you already know about a clash, tell us at registration and we will plan around it.",
+    },
+    {
+      q: "What if the power or network goes during a session?",
+      a: "It happens — this is Nigeria and we plan for it. The weekly video means the material is never lost, and mentors fill any gaps at the start of the following session. What helps is planning for power for the length of the session on class days.",
+    },
+    {
+      q: "Do I need to sit with my child during sessions?",
+      a: "No. The mentor runs the session and students work independently. It helps to be nearby for the first ten minutes of the first session in case the link or audio needs sorting — after that they are fine on their own.",
+    },
+    {
+      q: "Is it safe? Who is supervising online?",
+      a: "A mentor is present for the whole of every live session — no child is ever on a call alone. Students use accounts we set up and monitor rather than personal accounts, and we go through online-safety ground rules at the start of the cohort.",
+    },
+    {
+      q: "Does my child get a certificate?",
+      a: "Yes — a certificate of completion. Honestly though, the deployed app matters more. Anyone can print a certificate; what counts is that your child can open a laptop and show you something live that did not exist ten weeks earlier.",
     },
     {
       q: "How is this different from YouTube tutorials?",
-      a: "Cohort structure, live accountability, mentor feedback, a deployed portfolio project, and a certificate — not passive watching.",
+      a: "Cohort structure, live accountability, a mentor who knows your child by name and reviews their code, a deployed portfolio project, and a certificate. Free tutorials are abundant; finishing them is the rare part, and that is what a cohort is for.",
     },
-  ];
+    {
+      q: "What happens after the course?",
+      a: "Your child keeps their live project in their portfolio, stays in our student community, and can move into our longer mastery tracks — Web Development continues from exactly where this cohort ends.",
+    },
+];
+
+export const resolveCohortFaqs = (details = COHORT_DETAILS) =>
+  COHORT_FAQS.filter((faq) =>
+    (faq.requires || []).every(
+      (key) => details[key] !== TBC && details[key] !== undefined
+    )
+  ).map((faq) => ({
+    q: faq.q,
+    a: typeof faq.a === "function" ? faq.a(details) : faq.a,
+  }));
+
+export function CohortFaqSection() {
+  const { ref, visible } = useInView();
+  const faqs = resolveCohortFaqs();
 
   return (
     <SectionWrapper
