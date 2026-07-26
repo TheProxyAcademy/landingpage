@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useRef } from "react";
+import { Fragment, Suspense, lazy, useEffect } from "react";
 import ScrollToTop from "./ScrollToTop";
 import {
   BrowserRouter as Router,
@@ -36,22 +36,29 @@ function loadAnalytics() {
   return gaPromise;
 }
 
+// The pixel base code in index.html already counted a PageView for whichever URL
+// the browser loaded, so that path starts out already tracked. Deduping by path
+// (rather than a "first render" flag) also absorbs StrictMode's double-invoked
+// effects in dev, which would otherwise send every landing event twice.
+let trackedPath = typeof window === "undefined" ? null : window.location.pathname;
+let bootcampViewTracked = false;
+
 const usePageTracking = () => {
   const location = useLocation();
-  // The pixel base code in index.html already fires PageView for the first
-  // render, so only client-side navigations after it need one.
-  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-    } else {
+    const path = location.pathname;
+
+    if (path !== trackedPath) {
+      trackedPath = path;
+      bootcampViewTracked = false;
       trackPageView();
     }
 
     // Bootcamp ad traffic is the reason the pixel exists — mark the landing
     // page itself as a ViewContent so it can seed a retargeting audience.
-    if (location.pathname === BOOTCAMP_PATH) {
+    if (path === BOOTCAMP_PATH && !bootcampViewTracked) {
+      bootcampViewTracked = true;
       track("ViewContent", {
         content_name: "Summer Bootcamp",
         content_category: "Bootcamp",
@@ -156,8 +163,8 @@ const PageTrackingWrapper = ({ children }) => {
 
 const trackFormInteraction = (label) => {
   // Both registration forms are cross-origin Google Forms, so engaging with one
-  // is the strongest conversion signal the pixel can actually observe. Fired
-  // once per page visit so re-clicking the form doesn't inflate the count.
+  // is the strongest conversion signal the pixel can actually observe. Fired at
+  // most once per label per page load, so re-clicking can't inflate the count.
   trackOnce(`form:${label}`, "Lead", { content_name: label });
 
   void loadAnalytics().then((ReactGA) => {
