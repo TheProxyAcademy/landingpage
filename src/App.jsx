@@ -19,6 +19,9 @@ const BOOTCAMP_PATH = "/summerbootcamp";
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
 const Bootcamp = lazy(() => import("./pages/Bootcamp"));
+const Programmes = lazy(() => import("./pages/Programmes"));
+const ProgrammeDetail = lazy(() => import("./pages/ProgrammeDetail"));
+const ProgrammeSystems = lazy(() => import("./pages/ProgrammeSystems"));
 const FocusflowCohort = lazy(() => import("./pages/FocusflowCohort"));
 const FocusflowCohortRegister = lazy(() => import("./pages/FocusflowCohortRegister"));
 
@@ -139,6 +142,11 @@ const App = () => {
                     />
                   }
                 />
+                {/* /programmes/how-it-works is declared before the :slug route so
+                    it is not swallowed as a track slug. */}
+                <Route path="/programmes" element={<Programmes />} />
+                <Route path="/programmes/how-it-works" element={<ProgrammeSystems />} />
+                <Route path="/programmes/:slug" element={<ProgrammeDetail />} />
                 <Route path="/focusflow-cohort" element={<FocusflowCohort />} />
                 <Route
                   path="/focusflow-cohort/register"

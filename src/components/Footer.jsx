@@ -9,7 +9,8 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const quickLinks = [
   { name: "About Us", href: "#why-us" },
-  { name: "Programs", href: "#our-programmes" },
+  { name: "Programmes", href: "/programmes" },
+  { name: "How It Works", href: "/programmes/how-it-works" },
   { name: "Bootcamp", href: "/summerbootcamp" },
   { name: "Contact", href: "#" },
 ];
@@ -307,10 +308,15 @@ export default function Component() {
                 Programmes
               </Text>
               <VStack align="start" spacing={3}>
-                {['Web Development', 'Data Analysis', 'Digital Design', 'Cyber Security'].map((program, index) => (
+                {[
+                  { name: 'Introduction to Coding', href: '/programmes/introduction-to-coding' },
+                  { name: 'Web Development', href: '/programmes/web-development' },
+                  { name: 'Game Development', href: '/programmes/game-development' },
+                  { name: 'Design & Brand Strategy', href: '/programmes/design-and-brand-strategy' },
+                ].map(({ name: program, href }, index) => (
                   <Link
                     key={index}
-                    href="#"
+                    href={href}
                     fontSize="14px"
                     color="gray.300"
                     _hover={{

@@ -51,25 +51,42 @@ function Nav() {
               decoding="async"
             />
           </Link>
-          <Button
-            as={Link}
-            to={enrolPath}
-            px={8}
-            py={3}
-            textTransform="uppercase"
-            fontWeight="semibold"
-            fontSize="xs"
-            borderRadius="full"
-            bg="green.600"
-            color="white"
-            _hover={{
-              shadow: "md",
-              transform: "scale(1.1)",
-            }}
-            transition="all 0.3s ease-linear"
-          >
-            Enrol
-          </Button>
+          <Flex align="center" gap={{ base: 3, md: 6 }}>
+            <Button
+              as={Link}
+              to="/programmes"
+              variant="plain"
+              px={0}
+              fontWeight="semibold"
+              fontSize="xs"
+              textTransform="uppercase"
+              letterSpacing="wide"
+              color="gray.700"
+              display={{ base: "none", sm: "inline-flex" }}
+              _hover={{ color: "green.600" }}
+            >
+              Programmes
+            </Button>
+            <Button
+              as={Link}
+              to={enrolPath}
+              px={8}
+              py={3}
+              textTransform="uppercase"
+              fontWeight="semibold"
+              fontSize="xs"
+              borderRadius="full"
+              bg="green.600"
+              color="white"
+              _hover={{
+                shadow: "md",
+                transform: "scale(1.1)",
+              }}
+              transition="all 0.3s ease-linear"
+            >
+              Enrol
+            </Button>
+          </Flex>
         </Flex>
       </Container>
     </Box>

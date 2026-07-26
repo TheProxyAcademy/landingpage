@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Box, VStack, Text, SimpleGrid, Container, Link as ChakraLink, Wrap, WrapItem, Icon } from "@chakra-ui/react";
+import { Box, VStack, Text, SimpleGrid, Container, Link as ChakraLink, Wrap, WrapItem, Icon, Button, Center } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faCodeMerge, faChartSimple, faPenNib, faRobot } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faCodeMerge, faChartSimple, faPenNib, faRobot, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { keyframes } from "@emotion/react";
 import { FaDownload, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
 
@@ -54,7 +55,7 @@ function OurProgrammes() {
           if (entry.isIntersecting) {
             setIsVisible(true);
             // Stagger card animations
-            const cards = [0, 1, 2, 3, 4];
+            const cards = [0, 1, 2, 3, 4, 5];
             cards.forEach((cardIndex) => {
               setTimeout(() => {
                 setVisibleCards(prev => [...prev, cardIndex]);
@@ -77,11 +78,14 @@ function OurProgrammes() {
     };
   }, []);
 
+  // `href` points at the full Elite Mastery Program curriculum. The two cards
+  // without one are offerings the mastery programme does not (yet) cover.
   const programmes = [
     {
       icon: faCode,
       title: "Introduction to Coding",
-      description: "A beginner-friendly journey into programming with visual tools like Scratch and Blockly. Kids aged 5–17 build interactive stories, games and animations from their very first session, developing problem-solving and logical thinking through play, and finishing with a portfolio-ready project.",
+      href: "/programmes/introduction-to-coding",
+      description: "A beginner-friendly journey into programming with visual tools like Scratch and Blockly. Kids aged 5–9 build interactive stories, games and animations from their very first session, developing problem-solving and logical thinking through play, and finishing with a portfolio-ready project.",
       gradient: "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)",
       iconColor: "#059C02",
       textColor: "green.600",
@@ -91,7 +95,8 @@ function OurProgrammes() {
     {
       icon: faCodeMerge,
       title: "Web Development",
-      description: "Students build responsive, interactive websites from the ground up, mastering HTML, CSS and JavaScript before moving into React and modern frameworks. Every module ends with a live, shareable project deployed on the real internet.",
+      href: "/programmes/web-development",
+      description: "Students build responsive, interactive websites from the ground up, mastering HTML, CSS and JavaScript before moving into React and Next.js. Every module ends with a live, shareable project deployed on the real internet.",
       gradient: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
       iconColor: "#FFFFFF",
       textColor: "white",
@@ -99,14 +104,36 @@ function OurProgrammes() {
       glowColor: "rgba(255, 255, 255, 0.3)"
     },
     {
-      icon: faRobot,
-      title: "AI, Robotics & ML",
-      description: "Teens explore the fundamentals of artificial intelligence, machine learning and hands-on robotics using Python and industry AI tools. From building their first chatbot to training neural networks, students finish with a documented, portfolio-ready AI project.",
+      icon: faGamepad,
+      title: "Game Development",
+      href: "/programmes/game-development",
+      description: "Students move through four engines — Scratch, GDevelop, Godot and Unity — publishing playable games to a real public audience at every stage. They finish with commercially released original IP and a portfolio of games strangers have actually played.",
       gradient: "linear-gradient(135deg, #059C02 0%, #0b7f03 100%)",
       iconColor: "#FFFFFF",
       textColor: "white",
       animation: slideInLeft,
       glowColor: "rgba(5, 156, 2, 0.3)"
+    },
+    {
+      icon: faPenNib,
+      title: "Design & Brand Strategy",
+      href: "/programmes/design-and-brand-strategy",
+      description: "An immersive path from colour theory and typography into Figma, UX research, motion design and full brand strategy. Students run real client commissions and graduate with a case-study portfolio in industry-standard format.",
+      gradient: "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)",
+      iconColor: "#059C02",
+      textColor: "green.600",
+      animation: slideInRight,
+      glowColor: "rgba(5, 156, 2, 0.3)"
+    },
+    {
+      icon: faRobot,
+      title: "AI, Robotics & ML",
+      description: "Teens explore the fundamentals of artificial intelligence, machine learning and hands-on robotics using Python and industry AI tools. From building their first chatbot to training neural networks, students finish with a documented, portfolio-ready AI project.",
+      gradient: "linear-gradient(135deg, #1a202c 0%, #2d3748 100%)",
+      iconColor: "#FFFFFF",
+      textColor: "white",
+      animation: slideInLeft,
+      glowColor: "rgba(255, 255, 255, 0.3)"
     },
     {
       icon: faChartSimple,
@@ -117,16 +144,6 @@ function OurProgrammes() {
       textColor: "white",
       animation: slideInRight,
       glowColor: "rgba(255, 255, 255, 0.3)"
-    },
-    {
-      icon: faPenNib,
-      title: "Digital Design",
-      description: "An immersive path through illustration and graphic design, from drawing fundamentals and typography to branding, icons and professional artwork using industry-standard tools like Photoshop, Illustrator and Canva. Students graduate with a signature design portfolio.",
-      gradient: "linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%)",
-      iconColor: "#059C02",
-      textColor: "green.600",
-      animation: slideInRight,
-      glowColor: "rgba(5, 156, 2, 0.3)"
     }
   ];
 
@@ -339,6 +356,9 @@ function OurProgrammes() {
               }}
             >
               <Box
+                {...(programme.href
+                  ? { as: RouterLink, to: programme.href, display: "block" }
+                  : {})}
                 background={programme.gradient}
                 w="full"
                 h="100%"
@@ -429,10 +449,9 @@ function OurProgrammes() {
                   fontWeight="bold"
                   textTransform="uppercase"
                   letterSpacing="wide"
-                  animation={`${floatUp} 4s ease-in-out infinite ${index * 0.3}s`}
                   fontFamily="'Syne', sans-serif"
                 >
-                  Popular
+                  {programme.href ? "Full curriculum →" : "Enquire"}
                 </Box>
               </Box>
             </Box>
@@ -440,42 +459,30 @@ function OurProgrammes() {
         </SimpleGrid>
 
         {/* Call to Action */}
-        {/* <Center mt={12}>
-          <Box
+        <Center mt={12}>
+          <Button
+            as={RouterLink}
+            to="/programmes"
             bg="linear-gradient(135deg, #059C02 0%, #0b7f03 100%)"
             color="white"
-            px={8}
-            py={4}
+            px={10}
+            py={7}
             borderRadius="50px"
             fontFamily="'Syne', sans-serif"
             fontWeight="bold"
             fontSize={{ base: "14px", lg: "16px" }}
             textTransform="uppercase"
             letterSpacing="wide"
-            cursor="pointer"
-            animation={isVisible ? `${slideInUp} 1s ease-out 1s both` : 'none'}
+            animation={isVisible ? `${slideInUp} 1s ease-out 1s both` : "none"}
             _hover={{
-              transform: 'translateY(-3px) scale(1.05)',
-              boxShadow: '0 15px 30px rgba(5, 156, 2, 0.4)',
-              transition: 'all 0.3s ease-in-out'
+              transform: "translateY(-3px) scale(1.03)",
+              boxShadow: "0 15px 30px rgba(5, 156, 2, 0.4)",
             }}
-            position="relative"
-            overflow="hidden"
+            transition="all 0.3s ease-in-out"
           >
-            <Box
-              position="absolute"
-              top="0"
-              left="-100%"
-              width="100%"
-              height="100%"
-              background="linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)"
-              animation={`${shimmer} 2s ease-in-out infinite`}
-            />
-            <Text position="relative" zIndex={1}>
-              Explore All Programmes
-            </Text>
-          </Box>
-        </Center> */}
+            Explore the full mastery programme
+          </Button>
+        </Center>
       </Container>
     </Box>
   );
