@@ -10,7 +10,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const quickLinks = [
   { name: "About Us", href: "#why-us" },
   { name: "Programs", href: "#our-programmes" },
-  { name: "Bootcamp", href: "/summer-bootcamp" },
+  { name: "Bootcamp", href: "/summerbootcamp" },
   { name: "Contact", href: "#" },
 ];
 

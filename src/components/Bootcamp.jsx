@@ -2,8 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Badge, Box, Container, HStack, Text, VStack, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
+// Two batches run each season, so the countdown tracks whichever one has not
+// started yet. Once both have started there is nothing left to count down to.
+const BATCH_STARTS = [
+  { label: "Batch 1 · August 3, 2026", startsAt: new Date("2026-08-03T00:00:00") },
+  { label: "Batch 2 · August 24, 2026", startsAt: new Date("2026-08-24T00:00:00") },
+];
+
 function Bootcamp() {
-  const targetDate = useMemo(() => new Date("2026-08-03T00:00:00"), []);
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
@@ -11,8 +17,13 @@ function Bootcamp() {
     return () => clearInterval(id);
   }, []);
 
-  const diffMs = targetDate.getTime() - now.getTime();
-  const isLive = diffMs > 0;
+  const nextBatch = useMemo(
+    () => BATCH_STARTS.find((batch) => batch.startsAt.getTime() > now.getTime()),
+    [now]
+  );
+
+  const diffMs = nextBatch ? nextBatch.startsAt.getTime() - now.getTime() : 0;
+  const hasUpcomingBatch = Boolean(nextBatch);
 
   const totalSeconds = Math.max(0, Math.floor(diffMs / 1000));
   const days = Math.floor(totalSeconds / (60 * 60 * 24));
@@ -80,10 +91,12 @@ function Bootcamp() {
               color="gray.800"
               textTransform="uppercase"
             >
-              Countdown to August 3, 2026
+              {hasUpcomingBatch ? `Countdown to ${nextBatch.label}` : "Summer Tech Bootcamp 5.0"}
             </Text>
             <Text color="gray.600" maxW="700px" lineHeight="1.6">
-              Enrolment is open. Save your spot early.
+              {hasUpcomingBatch
+                ? "Two three-week batches, five tracks, ₦60,000 per batch. Enrolment is open — save your spot early."
+                : "This season's batches have started. See the page for the next available dates."}
             </Text>
           </VStack>
 
@@ -93,6 +106,7 @@ function Bootcamp() {
             flexWrap="wrap"
             w="full"
             maxW="900px"
+            display={hasUpcomingBatch ? "flex" : "none"}
           >
             {tiles.map((t, idx) => (
               <React.Fragment key={t.label}>
@@ -113,12 +127,6 @@ function Bootcamp() {
               </React.Fragment>
             ))}
           </HStack>
-
-          {!isLive && (
-            <Badge colorScheme="green" variant="subtle" px={3} py={2} borderRadius="full">
-              It&apos;s bootcamp day
-            </Badge>
-          )}
 
           <HStack spacing={3} pt={2} flexWrap="wrap" justify="center">
             <Button
@@ -141,9 +149,9 @@ function Bootcamp() {
               Enrol now
             </Button>
 
-            {!isLive && (
+            {!hasUpcomingBatch && (
               <Badge colorScheme="green" variant="subtle" px={3} py={2} borderRadius="full">
-                It&apos;s bootcamp day
+                Bootcamp in progress
               </Badge>
             )}
           </HStack>

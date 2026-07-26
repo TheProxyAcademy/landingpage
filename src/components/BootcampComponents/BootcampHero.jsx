@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Flex, Text, Container, VStack, HStack, Badge, Button } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
+import { BOOTCAMP } from "./bootcampDetails";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -198,11 +199,11 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     letterSpacing="wide"
                     border="1px solid rgba(5, 156, 2, 0.3)"
                   >
-                    🚀 Limited Time Offer
+                    🚀 Registration Open
                   </Badge>
                   <Badge
-                    bg="gray.200"
-                    color="gray.500"
+                    bg="rgba(5, 156, 2, 0.1)"
+                    color="green.600"
                     px={4}
                     py={2}
                     borderRadius="full"
@@ -211,14 +212,9 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     fontSize="12px"
                     textTransform="uppercase"
                     letterSpacing="wide"
-                    opacity={0.7}
-                    cursor="not-allowed"
-                    border="1px solid"
-                    borderColor="gray.300"
-                    title="This offer has expired"
+                    border="1px solid rgba(5, 156, 2, 0.3)"
                   >
-                    <Text as="span" textDecoration="line-through">16% OFF</Text>
-                    &nbsp;· Expired
+                    💻 100% Live Online
                   </Badge>
                 </HStack>
 
@@ -261,15 +257,17 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                   <Text as="span" color="green.600" fontWeight="bold">
                     ONLINE SUMMER TECH BOOTCAMP
                   </Text>&nbsp;
-                  for children aged 5-17. Our classes will be held thrice a week with flexible scheduling options.
+                  for children aged {BOOTCAMP.ageRange}. Your child picks one of five tracks and one
+                  three-week batch, with live classes {BOOTCAMP.sessionsPerWeek} times a week.
                 </Text>
 
                 {/* Feature Highlights */}
                 <VStack align="start" spacing={4} w="full" mt={4}>
                   {[
-                    { icon: "📅", text: "August 3" },
-                    { icon: "👥", text: "Ages 5-17 Welcome" },
-                    { icon: "💻", text: "100% Online Learning" },
+                    { icon: "📅", text: "Batch 1 · 3 – 21 August 2026" },
+                    { icon: "📅", text: "Batch 2 · 24 August – 11 September 2026" },
+                    { icon: "👥", text: `Ages ${BOOTCAMP.ageRange} welcome` },
+                    { icon: "💻", text: "Laptop or desktop needed — a phone won't work" },
                   ].map((item, index) => (
                     <HStack
                       key={index}
@@ -332,10 +330,12 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                       🎉 Bootcamp Fee
                     </Text>
                     <Text fontSize="16px" color="gray.700" lineHeight="1.6">
-                      Enroll your children for just&nbsp;
+                      Enrol your child for just&nbsp;
                       <Text as="span" fontSize="20px" fontWeight="bold" color="green.600">
-                        ₦60,000
+                        {BOOTCAMP.price}
                       </Text>
+                      &nbsp;{BOOTCAMP.priceScope} — one track, three weeks, materials and Demo Day
+                      included. Payment plan available.
                     </Text>
                   </VStack>
                 </Box>
@@ -344,7 +344,9 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
           </Box>
           
           {/* Right Form Section */}
-          <Box 
+          <Box
+            id="register"
+            scrollMarginTop="90px"
             w={{ base: "full", lg: "50%" }}
             opacity={visibleSections.includes('form') ? 1 : 0}
             animation={visibleSections.includes('form') ? `${slideInRight} 1s ease-out` : 'none'}

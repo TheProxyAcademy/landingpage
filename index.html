@@ -13,7 +13,8 @@
       name="keywords"
       content="The Proxy Academy, kids coding classes Nigeria, children's tech academy, STEM programmes for kids, teen coding bootcamp, online tech school for kids"
     />
-    <link rel="canonical" href="https://theproxyacademy.com/" />
+    <!-- Canonical is set per route by src/components/Seo.jsx. A hardcoded one
+         here would point every page at the homepage. -->
     <meta name="author" content="The Proxy Academy" />
 
     <!-- Open Graph -->
@@ -130,62 +131,9 @@
         ]
       }
     </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What programs do you offer?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "We offer various tech skills including Scratch, web development, data analysis, cyber security, animation, graphics design, with more coming soon."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "When does the summer camp start?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Our summer camp typically runs between July and August every year."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do you teach outside of summer holidays?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, our programmes run all year round with personalised and group classes beyond the summer bootcamp."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What would my child need to prepare?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Learners only need a laptop and a stable internet connection to participate."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "My child doesn't want to code, can they learn something else?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely. We tailor learning paths with non-coding options such as data analysis, design and animation."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "My child already does IT in school, why do they need this?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Technology moves fast—beyond basic office tools—so we help them explore advanced skills like coding, design and data to stay ahead."
-            }
-          }
-        ]
-      }
-    </script>
+    <!-- The homepage FAQPage schema lives in src/pages/Home.jsx. Keeping it here
+         would attach the homepage's questions to every route, including
+         /summerbootcamp, which publishes its own FAQPage. -->
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
