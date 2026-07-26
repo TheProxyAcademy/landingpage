@@ -44,15 +44,24 @@ export const BATCHES = [
     id: "batch-1",
     name: "Batch 1",
     dates: "3 – 21 August 2026",
+    startsOn: "3 August",
+    startsAt: "2026-08-03T00:00:00",
     note: "Finishes well before schools resume. Best if you are around in August.",
   },
   {
     id: "batch-2",
     name: "Batch 2",
     dates: "24 August – 11 September 2026",
+    startsOn: "24 August",
+    startsAt: "2026-08-24T00:00:00",
     note: "Same content, later dates. Best if you are travelling in early August.",
   },
 ];
+
+// Whichever batch has not started yet, so urgency copy stays true as the season
+// moves on. Returns null once both are under way.
+export const getNextBatch = (now = new Date()) =>
+  BATCHES.find((batch) => new Date(batch.startsAt).getTime() > now.getTime()) || null;
 
 export const TRACKS = [
   {
@@ -89,8 +98,8 @@ export const TRACKS = [
 export const REQUIREMENTS = [
   {
     icon: "💻",
-    title: "A laptop or desktop",
-    detail: "A phone will not work — they will be building, not watching.",
+    title: "A laptop, desktop or a phone",
+    detail: "A phone might not work — they will be building, not watching.",
   },
   {
     icon: "🌐",

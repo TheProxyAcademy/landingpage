@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import BootcampHero from "../components/BootcampComponents/BootcampHero";
 import BootcampInfo from "../components/BootcampComponents/BootcampInfo";
 import BootcampFaqs from "../components/BootcampComponents/BootcampFaqs";
+import { StickyRegisterBar } from "../components/BootcampComponents/RegisterCta";
 import {
   BOOTCAMP,
   resolveFaqGroups,
@@ -42,6 +43,7 @@ function Bootcamp({ onFormInteraction, onFormSubmission }) {
       />
       <BootcampInfo />
       <BootcampFaqs />
+      <StickyRegisterBar />
     </div>
   );
 }

@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
 import { BOOTCAMP, BATCHES, TRACKS, REQUIREMENTS, INCLUDED } from "./bootcampDetails";
+import { RegisterCta } from "./RegisterCta";
 
 const slideInUp = keyframes`
   0% { transform: translateY(40px); opacity: 0; }
@@ -125,6 +126,14 @@ const BootcampInfo = () => {
                 </Card>
               ))}
             </SimpleGrid>
+
+            <Box mt={8}>
+              <RegisterCta
+                title="Know which dates work?"
+                body="Pick your batch on the registration form. Seats are held in the order they are paid for, and each track is capped so the tutor can see every child."
+                label="Choose my batch"
+              />
+            </Box>
           </Box>
 
           {/* Tracks */}
@@ -166,6 +175,15 @@ const BootcampInfo = () => {
                 </Card>
               ))}
             </SimpleGrid>
+
+            <Box mt={8}>
+              <RegisterCta
+                variant="soft"
+                title="Found the right track?"
+                body="Tell us which one on the form and we will confirm your child's seat. Not sure yet? Register anyway — we can still change the track before the batch starts."
+                label="Reserve a seat"
+              />
+            </Box>
           </Box>
 
           {/* What you need + what's included */}
@@ -242,6 +260,12 @@ const BootcampInfo = () => {
               </Text>
             </Box>
           </SimpleGrid>
+
+          <RegisterCta
+            title="You have everything you need to decide"
+            body={`Dates, tracks, what your child needs at home and what the fee covers. The registration form takes a few minutes — ${BOOTCAMP.price} ${BOOTCAMP.priceScope}, payment plan available.`}
+            label="Register my child"
+          />
         </VStack>
       </Container>
     </Box>

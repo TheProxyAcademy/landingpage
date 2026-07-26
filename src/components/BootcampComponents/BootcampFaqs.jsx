@@ -11,6 +11,7 @@ import {
 import { keyframes } from "@emotion/react";
 import { FaWhatsapp } from "react-icons/fa";
 import { BOOTCAMP, resolveFaqGroups } from "./bootcampDetails";
+import { RegisterCta } from "./RegisterCta";
 
 const slideInUp = keyframes`
   0% { transform: translateY(40px); opacity: 0; }
@@ -44,7 +45,7 @@ const BootcampFaqs = () => {
             </Text>
           </VStack>
 
-          {groups.map((group) => (
+          {groups.map((group, groupIndex) => (
             <Box key={group.id}>
               <Text
                 as="h3"
@@ -115,8 +116,27 @@ const BootcampFaqs = () => {
                   </Accordion.Item>
                 ))}
               </Accordion.Root>
+
+              {/* Break the FAQ run partway through — a parent whose question was
+                  just answered should be able to act without scrolling on. */}
+              {groupIndex === 1 ? (
+                <Box mt={8}>
+                  <RegisterCta
+                    variant="soft"
+                    title="Question answered?"
+                    body="You can register now and still ask us anything afterwards — we confirm every seat in writing the same day."
+                    label="Register now"
+                  />
+                </Box>
+              ) : null}
             </Box>
           ))}
+
+          <RegisterCta
+            title="Ready to secure the seat?"
+            body="That is everything parents normally ask. The next step is the registration form at the top of this page — it takes a few minutes, and we confirm your child's seat the same day."
+            label="Take me to the form"
+          />
 
           {/* Anything not covered above goes straight to a human. */}
           <VStack gap={4} textAlign="center" pt={2}>
