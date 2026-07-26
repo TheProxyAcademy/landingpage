@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Flex, Text, Container, VStack, HStack, Badge, Button } from "@chakra-ui/react";
 import { keyframes } from "@emotion/react";
+import { trackOnce } from "../../lib/pixel";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -48,6 +49,24 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [visibleSections, setVisibleSections] = useState([]);
   const heroRef = useRef(null);
+  const formRef = useRef(null);
+
+  // The registration form is a cross-origin Google Form, so its submit event is
+  // invisible to us. The closest signal we can see is the user clicking into the
+  // iframe: the browser moves focus into it, which blurs the parent window.
+  useEffect(() => {
+    const handleBlur = () => {
+      if (document.activeElement !== formRef.current) return;
+      trackOnce("bootcamp-form", "Lead", {
+        content_name: "Summer Bootcamp",
+        content_category: "Bootcamp",
+      });
+      onFormInteraction?.();
+    };
+
+    window.addEventListener("blur", handleBlur);
+    return () => window.removeEventListener("blur", handleBlur);
+  }, [onFormInteraction]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -379,6 +398,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
 
               <Box
                 as="iframe"
+                ref={formRef}
                 title="Bootcamp registration form"
                 src="https://docs.google.com/forms/d/e/1FAIpQLScf3XkC_0V3Z-GGDOSCqotG1pDS1J7fWqRF-RIssnXEXbHYpA/viewform?embedded=true"
                 w="full"

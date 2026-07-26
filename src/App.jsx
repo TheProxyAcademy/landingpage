@@ -1,4 +1,4 @@
-import { Fragment, Suspense, lazy, useEffect, useState } from "react";
+import { Fragment, Suspense, lazy, useEffect, useRef, useState } from "react";
 import ScrollToTop from "./ScrollToTop";
 import {
   BrowserRouter as Router,
@@ -12,6 +12,9 @@ import Footer from "./components/Footer";
 import { Box } from "@chakra-ui/react";
 import { Toaster } from "react-hot-toast";
 import WhatsAppButton from "./components/WhatsAppButton";
+import { track, trackPageView } from "./lib/pixel";
+
+const BOOTCAMP_PATH = "/summerbootcamp";
 
 const Home = lazy(() => import("./pages/Home"));
 const Register = lazy(() => import("./pages/Register"));
@@ -35,6 +38,26 @@ function loadAnalytics() {
 
 const usePageTracking = () => {
   const location = useLocation();
+  // The pixel base code in index.html already fires PageView for the first
+  // render, so only client-side navigations after it need one.
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+    } else {
+      trackPageView();
+    }
+
+    // Bootcamp ad traffic is the reason the pixel exists — mark the landing
+    // page itself as a ViewContent so it can seed a retargeting audience.
+    if (location.pathname === BOOTCAMP_PATH) {
+      track("ViewContent", {
+        content_name: "Summer Bootcamp",
+        content_category: "Bootcamp",
+      });
+    }
+  }, [location]);
 
   useEffect(() => {
     const sendPageview = async () => {
@@ -43,7 +66,7 @@ const usePageTracking = () => {
 
       ReactGA.send({ hitType: "pageview", page: location.pathname });
 
-      if (location.pathname === "/summer-bootcamp") {
+      if (location.pathname === BOOTCAMP_PATH) {
         ReactGA.event({
           category: "Page",
           action: "Visited Summer Bootcamp Page",
