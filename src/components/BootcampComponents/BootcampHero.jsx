@@ -267,7 +267,7 @@ const BootcampHero = ({ onFormInteraction, onFormSubmission }) => {
                     { icon: "📅", text: "Batch 1 · 3 – 21 August 2026" },
                     { icon: "📅", text: "Batch 2 · 24 August – 11 September 2026" },
                     { icon: "👥", text: `Ages ${BOOTCAMP.ageRange} welcome` },
-                    { icon: "💻", text: "Laptop or desktop needed — a phone won't work" },
+                    { icon: "💻", text: "Laptop or desktop needed — a phone works for the AI track" },
                   ].map((item, index) => (
                     <HStack
                       key={index}

@@ -171,6 +171,22 @@ const BootcampInfo = () => {
                     <Text fontSize="14px" color="gray.600" lineHeight="1.6">
                       {track.blurb}
                     </Text>
+                    {track.note ? (
+                      <Badge
+                        bg="rgba(5, 156, 2, 0.1)"
+                        color="green.700"
+                        px={3}
+                        py={1}
+                        borderRadius="full"
+                        fontFamily="'Syne', sans-serif"
+                        fontSize="10px"
+                        fontWeight="bold"
+                        letterSpacing="wide"
+                        textTransform="uppercase"
+                      >
+                        📱 {track.note}
+                      </Badge>
+                    ) : null}
                   </VStack>
                 </Card>
               ))}

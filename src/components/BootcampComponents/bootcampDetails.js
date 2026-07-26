@@ -69,6 +69,8 @@ export const TRACKS = [
     name: "Artificial Intelligence",
     blurb:
       "How AI actually works, and the CRAFT method for instructing it so it gives back something useful.",
+    // Surfaced on the card: the only track a child can do without a computer.
+    note: "Works on a phone",
   },
   {
     icon: "💻",
@@ -93,13 +95,14 @@ export const TRACKS = [
 ];
 
 // Stated plainly and early on purpose. Classes are live and hands-on, so a
-// parent who only finds out about the laptop on day one is a refund, not a
-// student.
+// parent who only finds out about the device requirement on day one is a refund,
+// not a student. The AI track is the exception — it runs fine on a phone.
 export const REQUIREMENTS = [
   {
     icon: "💻",
-    title: "A laptop, desktop or a phone",
-    detail: "A phone might not work — they will be building, not watching.",
+    title: "A laptop or desktop — or a phone for AI",
+    detail:
+      "The Artificial Intelligence track works on a phone. The other four tracks need a computer, because your child will be building on screen.",
   },
   {
     icon: "🌐",
@@ -212,6 +215,7 @@ export const BOOTCAMP_FAQ_GROUPS = [
           "Always drawing → Design & Illustration",
           "Tells stories, loves cartoons → Animation",
           "Has never done any of this before → Introduction to Coding",
+          "No laptop at home → Artificial Intelligence, the one track that works on a phone.",
           "Still unsure? Message us on WhatsApp with what your child does when nobody is telling them what to do, and we will point you to the right one.",
         ],
       },
@@ -269,10 +273,10 @@ export const BOOTCAMP_FAQ_GROUPS = [
       {
         q: "What device do we need? Can they use a phone?",
         a: () => [
-          "Your child will need a laptop or desktop. A phone will not work for this.",
-          "They will be building things, and building on a phone screen is genuinely frustrating — they would spend three weeks fighting the device instead of learning.",
-          "They will also need headphones or earphones if the house is noisy, plus internet at home.",
-          "If the laptop is the blocker, tell us before you pay rather than after. Sometimes there is a way around it, and we would rather know.",
+          "It depends on the track. On the Artificial Intelligence track a phone is fine — your child can take part fully from one.",
+          "For Web Development, Animation, Introduction to Coding and Design & Illustration they will need a laptop or desktop. Those tracks are about building on screen, and doing that on a phone means spending three weeks fighting the device instead of learning.",
+          "Either way they will need internet at home, plus headphones or earphones if the house is noisy.",
+          "If you do not have a laptop at home, say so before you pay rather than after — Artificial Intelligence is very likely the right track for your child, and we would rather sort that out upfront.",
         ],
       },
       {
@@ -293,7 +297,7 @@ export const BOOTCAMP_FAQ_GROUPS = [
       {
         q: "We are not in Ibadan, or we are outside Nigeria. Can we join?",
         a: () => [
-          "Yes. The bootcamp is fully online this year, so your child can join from anywhere with a laptop and internet.",
+          "Yes. The bootcamp is fully online this year, so your child can join from anywhere with internet and the right device for their track.",
           "If you are outside Nigeria, message us before you pay so we can confirm what the class time works out to in your time zone.",
         ],
       },
