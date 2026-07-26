@@ -22,6 +22,7 @@ const Bootcamp = lazy(() => import("./pages/Bootcamp"));
 const Programmes = lazy(() => import("./pages/Programmes"));
 const ProgrammeDetail = lazy(() => import("./pages/ProgrammeDetail"));
 const ProgrammeSystems = lazy(() => import("./pages/ProgrammeSystems"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 const FocusflowCohort = lazy(() => import("./pages/FocusflowCohort"));
 const FocusflowCohortRegister = lazy(() => import("./pages/FocusflowCohortRegister"));
 
@@ -152,6 +153,7 @@ const App = () => {
                   path="/focusflow-cohort/register"
                   element={<FocusflowCohortRegister />}
                 />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
             <Footer />

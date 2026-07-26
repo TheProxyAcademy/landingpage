@@ -40,9 +40,13 @@ export default function Seo({
       <meta name="theme-color" content={THEME_COLOR} />
       {description ? <meta name="description" content={description} /> : null}
 
-      <link rel="canonical" href={canonical} />
-
-      {noindex ? <meta name="robots" content="noindex,nofollow" /> : null}
+      {/* A noindexed page has no canonical worth declaring — the 404 route would
+          otherwise self-canonicalise to whatever bad URL was requested. */}
+      {noindex ? (
+        <meta name="robots" content="noindex,nofollow" />
+      ) : (
+        <link rel="canonical" href={canonical} />
+      )}
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />
