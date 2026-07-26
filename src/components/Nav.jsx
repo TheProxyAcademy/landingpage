@@ -7,7 +7,7 @@ function Nav() {
   const { pathname } = useLocation();
   const enrolPath = pathname.startsWith("/focusflow-cohort")
     ? "/focusflow-cohort/register"
-    : "/register";
+    : "/summerbootcamp";
   const [stickyClass, setStickyClass] = useState("relative");
 
   useEffect(() => {
