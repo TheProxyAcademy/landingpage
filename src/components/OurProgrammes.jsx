@@ -151,19 +151,19 @@ function OurProgrammes() {
     {
       title: "Curriculum Overview",
       description: "Age groups, module breakdown and learning outcomes.",
-      href: "/assets/resources/curriculum-overview.pdf",
+      href: "/assets/resources/TPA-Brochure.pdf",
       icon: FaDownload,
     },
     {
       title: "Sample Weekly Timetable",
       description: "See how we blend live sessions, practice time and mentoring.",
-      href: "/assets/resources/sample-timetable.pdf",
+      href: "/assets/resources/TPA-Sample-Weekly-Timetable.pdf",
       icon: FaRegCalendarAlt,
     },
     {
       title: "Tuition & Payment Guide",
       description: "Tuition tiers, instalment options and available discounts.",
-      href: "/assets/resources/tuition-guide.pdf",
+      href: "/assets/resources/TPA-Tuition-Payment-Guide.pdf",
       icon: FaWallet,
     },
   ];
