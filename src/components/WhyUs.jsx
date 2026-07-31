@@ -225,7 +225,7 @@ function WhyUs() {
               >
                 <SimpleGrid columns={3} gap={4} textAlign="center">
                   <Box>
-                    <Text fontSize="2xl" fontWeight="bold" color="green.600">500+</Text>
+                    <Text fontSize="2xl" fontWeight="bold" color="green.600">300+</Text>
                     <Text fontSize="sm" color="gray.600">Students Trained</Text>
                   </Box>
                   <Box>

@@ -46,6 +46,9 @@ export const BATCHES = [
     dates: "3 – 21 August 2026",
     startsOn: "3 August",
     startsAt: "2026-08-03T00:00:00",
+    // End of the last class day, so a batch reads as "in progress" until it is
+    // genuinely over rather than the moment the final morning starts.
+    endsAt: "2026-08-21T23:59:59",
     note: "Finishes well before schools resume. Best if you are around in August.",
   },
   {
@@ -54,6 +57,7 @@ export const BATCHES = [
     dates: "24 August – 11 September 2026",
     startsOn: "24 August",
     startsAt: "2026-08-24T00:00:00",
+    endsAt: "2026-09-11T23:59:59",
     note: "Same content, later dates. Best if you are travelling in early August.",
   },
 ];
