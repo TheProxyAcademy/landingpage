@@ -5,6 +5,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faCodeMerge, faChartSimple, faPenNib, faRobot, faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { keyframes } from "@emotion/react";
 import { FaDownload, FaRegCalendarAlt, FaWallet } from "react-icons/fa";
+// Imported rather than written as literal "/assets/..." paths so Vite emits the
+// files and rewrites these to hashed URLs. A hand-written path that does not
+// exist is not a 404: the SPA catch-all rewrites it to index.html with status
+// 200, and `download` then saves that HTML as a .html file.
+import BrochurePdf from "../assets/TPA-Brochure.pdf";
+import TimetablePdf from "../assets/TPA-Sample-Weekly-Timetable.pdf";
+import TuitionGuidePdf from "../assets/TPA-Tuition-Payment-Guide.pdf";
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -151,19 +158,22 @@ function OurProgrammes() {
     {
       title: "Curriculum Overview",
       description: "Age groups, module breakdown and learning outcomes.",
-      href: "/assets/resources/TPA-Brochure.pdf",
+      href: BrochurePdf,
+      fileName: "TPA-Curriculum-Overview.pdf",
       icon: FaDownload,
     },
     {
       title: "Sample Weekly Timetable",
       description: "See how we blend live sessions, practice time and mentoring.",
-      href: "/assets/resources/TPA-Sample-Weekly-Timetable.pdf",
+      href: TimetablePdf,
+      fileName: "TPA-Sample-Weekly-Timetable.pdf",
       icon: FaRegCalendarAlt,
     },
     {
       title: "Tuition & Payment Guide",
       description: "Tuition tiers, instalment options and available discounts.",
-      href: "/assets/resources/TPA-Tuition-Payment-Guide.pdf",
+      href: TuitionGuidePdf,
+      fileName: "TPA-Tuition-Payment-Guide.pdf",
       icon: FaWallet,
     },
   ];
@@ -325,7 +335,7 @@ function OurProgrammes() {
                 </Text>
                 <ChakraLink
                   href={resource.href}
-                  download
+                  download={resource.fileName}
                   color="green.600"
                   fontWeight="semibold"
                   fontSize="sm"

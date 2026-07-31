@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Box, Container, Text, HStack, Link, Icon, Flex, VStack, SimpleGrid, Input, Button } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { BsLinkedin, BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
@@ -7,13 +8,45 @@ import { keyframes } from "@emotion/react";
 import Logo from "../assets/icon.svg";
 import { FaWhatsapp } from "react-icons/fa";
 
+const WHATSAPP_URL =
+  "https://wa.me/+2349152811014?text=" +
+  encodeURIComponent("Hi The Proxy Academy team! I'd like to get in touch.");
+
+// `to` renders a router link (no full page reload); `href` renders a plain
+// anchor and is only used for destinations off the site.
 const quickLinks = [
-  { name: "About Us", href: "#why-us" },
-  { name: "Programmes", href: "/programmes" },
-  { name: "How It Works", href: "/programmes/how-it-works" },
-  { name: "Bootcamp", href: "/summerbootcamp" },
-  { name: "Contact", href: "#" },
+  { name: "About Us", to: "/about" },
+  { name: "Programmes", to: "/programmes" },
+  { name: "How It Works", to: "/programmes/how-it-works" },
+  { name: "Bootcamp", to: "/summerbootcamp" },
+  { name: "Privacy Policy", to: "/privacy" },
+  { name: "Contact", href: WHATSAPP_URL, external: true },
 ];
+
+const programmeLinks = [
+  { name: "Introduction to Coding", to: "/programmes/introduction-to-coding" },
+  { name: "Web Development", to: "/programmes/web-development" },
+  { name: "Game Development", to: "/programmes/game-development" },
+  { name: "Design & Brand Strategy", to: "/programmes/design-and-brand-strategy" },
+  { name: "FocusFlow Cohort", to: "/focusflow-cohort" },
+];
+
+const FooterLink = ({ link }) => (
+  <Link
+    {...(link.to
+      ? { as: RouterLink, to: link.to }
+      : { href: link.href, ...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}) })}
+    fontSize="14px"
+    color="gray.300"
+    _hover={{
+      color: "green.400",
+      transform: "translateX(5px)",
+      transition: "all 0.3s ease",
+    }}
+  >
+    {link.name}
+  </Link>
+);
 
 // Keyframes for animations
 const floatUp = keyframes`
@@ -277,20 +310,8 @@ export default function Component() {
                 Quick Links
               </Text>
               <VStack align="start" spacing={3}>
-                {quickLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    fontSize="14px"
-                    color="gray.300"
-                    _hover={{
-                      color: "green.400",
-                      transform: 'translateX(5px)',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    {link.name}
-                  </Link>
+                {quickLinks.map((link) => (
+                  <FooterLink key={link.name} link={link} />
                 ))}
               </VStack>
             </VStack>
@@ -308,25 +329,8 @@ export default function Component() {
                 Programmes
               </Text>
               <VStack align="start" spacing={3}>
-                {[
-                  { name: 'Introduction to Coding', href: '/programmes/introduction-to-coding' },
-                  { name: 'Web Development', href: '/programmes/web-development' },
-                  { name: 'Game Development', href: '/programmes/game-development' },
-                  { name: 'Design & Brand Strategy', href: '/programmes/design-and-brand-strategy' },
-                ].map(({ name: program, href }, index) => (
-                  <Link
-                    key={index}
-                    href={href}
-                    fontSize="14px"
-                    color="gray.300"
-                    _hover={{
-                      color: "green.400",
-                      transform: 'translateX(5px)',
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    {program}
-                  </Link>
+                {programmeLinks.map((link) => (
+                  <FooterLink key={link.name} link={link} />
                 ))}
               </VStack>
             </VStack>

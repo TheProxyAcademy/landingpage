@@ -20,7 +20,7 @@ function Home() {
     <Box>
       <Seo
         title="Home"
-        description="Live and virtual tech classes for kids and teens—coding, design, data analysis, cyber security and more. Flexible schedules, expert mentors, and certificates."
+        description="Live online tech classes for kids and teens—introduction to coding, web development, game development and design & brand strategy. Expert mentors, flexible schedules and certificates."
         canonicalPath="/"
       />
       <Helmet>

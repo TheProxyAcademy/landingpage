@@ -12,11 +12,6 @@ const float = keyframes`
   50% { transform: translateY(-20px) rotate(5deg); }
 `;
 
-const fadeInUp = keyframes`
-  0% { opacity: 0; transform: translateY(30px); }
-  100% { opacity: 1; transform: translateY(0px); }
-`;
-
 const slideInRight = keyframes`
   0% { opacity: 0; transform: translateX(50px); }
   100% { opacity: 1; transform: translateX(0px); }
@@ -184,9 +179,13 @@ function Hero() {
               Empower the Future:
             </Text>
 
-            {/* Main Title with typing effect */}
+            {/* Main title. The full headline is always in the DOM — the typing
+                effect only fades the untyped remainder to transparent. Rendering
+                it a character at a time would leave crawlers and screen readers
+                with an empty <h1>, and would reflow the block on every keystroke. */}
             <Box>
               <Text
+                as="h1"
                 fontFamily="'Syne', sans-serif"
                 color="white"
                 textTransform="uppercase"
@@ -200,28 +199,29 @@ function Hero() {
                 transitionDelay="0.4s"
               >
                 {displayText}
+                <Box as="span" opacity={0}>
+                  {fullText.slice(textIndex)}
+                </Box>
                 {isTyping && (
-                  <Box as="span" 
+                  <Box as="span"
                     animation={`${pulse} 1s ease-in-out infinite`}
                     color="yellow.400"
                   >
                     |
                   </Box>
                 )}
-                {!isTyping && (
-                  <Box 
-                    as="span" 
-                    color="yellow.400" 
-                    fontSize={{ base: "28px", lg: "76px" }}
-                    textShadow="0 0 20px rgba(255, 255, 0, 0.5)"
-                    display="inline-block"
-                    animation={`${fadeInUp} 0.8s ease-out`}
-                    animationDelay="0.3s"
-                    animationFillMode="both"
-                  >
-                    for Kids
-                  </Box>
-                )}
+                <Box
+                  as="span"
+                  color="yellow.400"
+                  fontSize={{ base: "28px", lg: "76px" }}
+                  textShadow="0 0 20px rgba(255, 255, 0, 0.5)"
+                  display="inline-block"
+                  opacity={isTyping ? 0 : 1}
+                  transform={isTyping ? "translateY(20px)" : "translateY(0)"}
+                  transition="opacity 0.8s ease-out 0.3s, transform 0.8s ease-out 0.3s"
+                >
+                  for Kids
+                </Box>
               </Text>
             </Box>
 
