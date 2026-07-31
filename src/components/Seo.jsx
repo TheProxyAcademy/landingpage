@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 const SITE_NAME = "The Proxy Academy";
 const SITE_ORIGIN = "https://theproxyacademy.com";
-const DEFAULT_IMAGE = `${SITE_ORIGIN}/social-share.jpg`;
+const DEFAULT_IMAGE = `${SITE_ORIGIN}/social-share.png`;
 const THEME_COLOR = "#059C02";
 
 function absoluteUrl(pathname) {
